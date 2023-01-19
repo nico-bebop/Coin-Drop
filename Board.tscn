@@ -1,0 +1,192 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Board Parts/Switch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Board.gd" type="Script" id=2]
+[ext_resource path="res://Background/background.png" type="Texture" id=3]
+[ext_resource path="res://Board Parts/Border.tscn" type="PackedScene" id=4]
+
+[node name="Board" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 90, 120.488 )
+scale = Vector2( 0.227273, 0.227766 )
+texture = ExtResource( 3 )
+
+[node name="OuterBorders" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OuterBorders"]
+position = Vector2( 7.62939e-06, -7.62939e-06 )
+scale = Vector2( 1, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 47, 24, 47, 60, 36, 79, 36, 95, 26, 112, 26, 132, 16, 148, 16, 166, 5, 186, 5, 232, 175, 233, 176, 186, 165, 167, 166, 148, 155, 132, 155, 115, 145, 97, 145, 79, 133, 60, 133, 23 )
+
+[node name="InnerBorders" type="YSort" parent="."]
+
+[node name="Border" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 69, 27 )
+
+[node name="Border2" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 90, 27 )
+
+[node name="Border3" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 110, 27 )
+
+[node name="Border4" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 59, 62 )
+
+[node name="Border5" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 80, 62 )
+
+[node name="Border6" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 101, 62 )
+
+[node name="Border7" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 121, 62 )
+
+[node name="Border8" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 49, 96 )
+
+[node name="Border9" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 70, 96 )
+
+[node name="Border10" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 90, 96 )
+
+[node name="Border11" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 110, 96 )
+
+[node name="Border12" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 132, 96 )
+
+[node name="Border13" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 39, 131 )
+
+[node name="Border14" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 59, 131 )
+
+[node name="Border15" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 79, 131 )
+
+[node name="Border16" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 101, 131 )
+
+[node name="Border17" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 121, 131 )
+
+[node name="Border18" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 141, 131 )
+
+[node name="Border19" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 28, 166 )
+
+[node name="Border20" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 48, 166 )
+
+[node name="Border21" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 68, 166 )
+
+[node name="Border22" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 90, 166 )
+
+[node name="Border23" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 110, 166 )
+
+[node name="Border24" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 130, 166 )
+
+[node name="Border25" parent="InnerBorders" instance=ExtResource( 4 )]
+position = Vector2( 153, 166 )
+
+[node name="Switches" type="YSort" parent="."]
+
+[node name="Switch0" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 59, 62 )
+
+[node name="Switch1" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 80, 62 )
+
+[node name="Switch2" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 101, 62 )
+
+[node name="Switch3" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 121, 62 )
+
+[node name="Switch4" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 49, 93 )
+
+[node name="Switch5" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 69, 93 )
+
+[node name="Switch6" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 90, 93 )
+
+[node name="Switch7" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 110, 93 )
+
+[node name="Switch8" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 132, 93 )
+
+[node name="Switch9" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 39, 130 )
+
+[node name="Switch10" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 59, 130 )
+
+[node name="Switch11" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 79, 130 )
+
+[node name="Switch12" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 100, 130 )
+
+[node name="Switch13" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 120, 130 )
+
+[node name="Switch14" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 141, 130 )
+
+[node name="Switch15" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 28, 166 )
+
+[node name="Switch16" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 49, 166 )
+
+[node name="Switch17" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 69, 166 )
+
+[node name="Switch18" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 90, 166 )
+
+[node name="Switch19" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 110, 166 )
+
+[node name="Switch20" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 132, 166 )
+
+[node name="Switch21" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 153, 166 )
+
+[node name="Switch22" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 17, 199 )
+
+[node name="Switch23" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 39, 199 )
+
+[node name="Switch24" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 59, 199 )
+
+[node name="Switch25" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 78, 199 )
+
+[node name="Switch26" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 100, 199 )
+
+[node name="Switch27" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 120, 199 )
+
+[node name="Switch28" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 141, 199 )
+
+[node name="Switch29" parent="Switches" instance=ExtResource( 1 )]
+position = Vector2( 163, 199 )
