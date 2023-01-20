@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/switch.png-718df85bac31574eef680d31466f9ffb.stex"
+path="res://.import/background_diagonals.png-729f1da2a37ae87d2299b13554813ab4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Board Parts/switch.png"
-dest_files=[ "res://.import/switch.png-718df85bac31574eef680d31466f9ffb.stex" ]
+source_file="res://Background/background_diagonals.png"
+dest_files=[ "res://.import/background_diagonals.png-729f1da2a37ae87d2299b13554813ab4.stex" ]
 
 [params]
 

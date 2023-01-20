@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backgroung_tiles.png-19024440a86258319cb30cc946ea75f8.stex"
+path="res://.import/head.png-fe18535e9d2feb44bcff41b7a1951f0a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Board Parts/backgroung_tiles.png"
-dest_files=[ "res://.import/backgroung_tiles.png-19024440a86258319cb30cc946ea75f8.stex" ]
+source_file="res://Moving Parts/head.png"
+dest_files=[ "res://.import/head.png-fe18535e9d2feb44bcff41b7a1951f0a.stex" ]
 
 [params]
 

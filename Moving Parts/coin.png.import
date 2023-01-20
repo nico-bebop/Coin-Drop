@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/head.png-29b18c1f26d53734ea5493f4408021be.stex"
+path="res://.import/coin.png-f404dc99aa444b65549fa72c8b321798.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Board Parts/head.png"
-dest_files=[ "res://.import/head.png-29b18c1f26d53734ea5493f4408021be.stex" ]
+source_file="res://Moving Parts/coin.png"
+dest_files=[ "res://.import/coin.png-f404dc99aa444b65549fa72c8b321798.stex" ]
 
 [params]
 

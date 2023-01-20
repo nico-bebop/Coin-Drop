@@ -1,6 +1,7 @@
 extends Node2D
 
-var Coin = preload("res://Board Parts/Coin.tscn")
+var Coin = preload("res://Moving Parts/Coin.tscn")
+
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("click"):
