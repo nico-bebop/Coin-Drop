@@ -2,8 +2,7 @@ extends Node2D
 
 onready var animation_player = $AnimationPlayer
 
-const LEFT = -45.0
-const RIGHT = 45.0
+export(String) var orientation
 
 
 func _ready():
@@ -15,10 +14,10 @@ func _ready():
 
 
 func flip_contrary():
-	match global_rotation_degrees:
-		LEFT:
+	match orientation:
+		"LEFT":
 			animation_player.play("FlipToRight")
-		RIGHT:
+		"RIGHT":
 			animation_player.play("FlipToLeft")
 
 

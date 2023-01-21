@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_diagonals.png-729f1da2a37ae87d2299b13554813ab4.stex"
+path="res://.import/board.png-9f5cd3df1656f6c467ab941b9594e82a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Background/background_diagonals.png"
-dest_files=[ "res://.import/background_diagonals.png-729f1da2a37ae87d2299b13554813ab4.stex" ]
+source_file="res://Fixed Parts/board.png"
+dest_files=[ "res://.import/board.png-9f5cd3df1656f6c467ab941b9594e82a.stex" ]
 
 [params]
 
