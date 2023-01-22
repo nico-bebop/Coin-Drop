@@ -23,3 +23,4 @@ func flip_contrary():
 
 func _on_Bottom_body_entered(_body):
 	flip_contrary()
+

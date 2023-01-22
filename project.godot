@@ -66,8 +66,9 @@ click={
 [layer_names]
 
 2d_physics/layer_1="Board"
-2d_physics/layer_2="Switches"
-2d_physics/layer_3="Coins"
+2d_physics/layer_2="Switch Head"
+2d_physics/layer_3="Switch Bottom"
+2d_physics/layer_4="Coin"
 
 [physics]
 
