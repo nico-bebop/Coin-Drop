@@ -11,6 +11,7 @@ func _ready():
 	CoinCollision.connect("coins_combined", self, "change_sprite")
 
 
+#change with label
 func change_sprite():
 	match counter:
 		0:
@@ -20,10 +21,10 @@ func change_sprite():
 	counter += 1
 
 
-func _on_Coin_body_entered(body):
+func _on_SwitchCollision_body_entered(body):
 	is_moving = false
 	orientation = body.get("orientation")
 
 
-func _on_Coin_body_exited(_body):
+func _on_SwitchCollision_body_exited(_body):
 	is_moving = true
