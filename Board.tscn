@@ -174,8 +174,8 @@ position = Vector2( 464, 64 )
 position = Vector2( 496, 64 )
 
 [node name="BottomArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea"]
 position = Vector2( 320, 286 )
@@ -190,6 +190,7 @@ build_mode = 1
 polygon = PoolVector2Array( 256, 16, 384, 16, 384, 81, 400, 96, 400, 128, 416, 144, 416, 176, 432, 192, 432, 224, 448, 240, 448, 288, 192, 288, 192, 240, 208, 224, 208, 192, 224, 176, 224, 144, 240, 128, 240, 96, 256, 80 )
 
 [node name="Inner Borders" type="Node2D" parent="."]
+visible = false
 
 [node name="Row0" type="Node2D" parent="Inner Borders"]
 
@@ -440,5 +441,9 @@ position = Vector2( 432, 255 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border8"]
 shape = SubResource( 9 )
+
+[node name="Testing Camera" type="Camera2D" parent="."]
+position = Vector2( 339, 88 )
+zoom = Vector2( 0.5, 0.5 )
 
 [connection signal="body_entered" from="BottomArea" to="." method="_on_BottomArea_body_entered"]

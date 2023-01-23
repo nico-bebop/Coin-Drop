@@ -18,8 +18,8 @@ run/main_scene="res://Board.tscn"
 window/size/width=640
 window/size/height=320
 window/size/always_on_top=true
-window/size/test_width=1280
-window/size/test_height=720
+window/size/test_width=1600
+window/size/test_height=800
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -66,7 +66,9 @@ click={
 [layer_names]
 
 2d_physics/layer_1="Board"
-2d_physics/layer_2="Switches"
+2d_physics/layer_2="Switch Head"
+2d_physics/layer_3="Switch Bottom"
+2d_physics/layer_4="Coin"
 
 [physics]
 
