@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+const IMPULSE = Vector2(65, 0)
+
 var orientation = null
 var is_moving = true
 
@@ -13,10 +15,9 @@ func _on_Coin_body_exited(_body):
 	is_moving = true
 
 
-# Fix this
 func _on_CoinCollision_area_entered(_area):
 	if !is_moving:
 		if orientation == "LEFT":
-			global_position += Vector2(8, 0)
+			apply_central_impulse(IMPULSE)
 		elif orientation == "RIGHT":
-			global_position += Vector2(-8, 0)
+			apply_central_impulse(-IMPULSE)
