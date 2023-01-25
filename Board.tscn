@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Moving Parts/Switch.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Board.gd" type="Script" id=2]
+[ext_resource path="res://UI/Score System.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fixed Parts/board.png" type="Texture" id=3]
 [ext_resource path="res://Fixed Parts/Slot.tscn" type="PackedScene" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 63.5, 1 )
+[ext_resource path="res://UI/Scoreboard.gd" type="Script" id=5]
+[ext_resource path="res://UI/tinypixel.otf" type="DynamicFontData" id=6]
 
 [sub_resource type="SegmentShape2D" id=2]
 b = Vector2( 0, 15 )
@@ -34,8 +33,11 @@ b = Vector2( 0, 80 )
 [sub_resource type="SegmentShape2D" id=9]
 b = Vector2( 0, 33 )
 
+[sub_resource type="DynamicFont" id=10]
+size = 7
+font_data = ExtResource( 6 )
+
 [node name="Board" type="Node2D"]
-script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 320, 152 )
@@ -172,15 +174,6 @@ position = Vector2( 464, 64 )
 
 [node name="Switch8" parent="Switches/Row5" instance=ExtResource( 1 )]
 position = Vector2( 496, 64 )
-
-[node name="BottomArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea"]
-position = Vector2( 320, 286 )
-scale = Vector2( 2, 1 )
-shape = SubResource( 1 )
 
 [node name="Outer Borders" type="StaticBody2D" parent="."]
 visible = false
@@ -446,4 +439,15 @@ shape = SubResource( 9 )
 position = Vector2( 339, 88 )
 zoom = Vector2( 0.5, 0.5 )
 
-[connection signal="body_entered" from="BottomArea" to="." method="_on_BottomArea_body_entered"]
+[node name="Score System" parent="." instance=ExtResource( 2 )]
+
+[node name="Scoreboard" type="Label" parent="."]
+margin_left = 192.0
+margin_top = 16.0
+margin_right = 240.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 10 )
+text = "SCORE: 0"
+script = ExtResource( 5 )
+
+[connection signal="update_score" from="Score System" to="Scoreboard" method="_on_Score_System_update_score"]
