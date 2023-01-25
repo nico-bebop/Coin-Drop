@@ -16,13 +16,14 @@ func _on_CoinCollision_body_entered(_body):
 
 
 func push_other(coin):
-	if coin.orientation == "LEFT":
-		coin.apply_central_impulse(IMPULSE)
-	elif coin.orientation == "RIGHT":
-		coin.apply_central_impulse(-IMPULSE)
+	match coin.orientation:
+		"LEFT":
+			coin.apply_central_impulse(IMPULSE)
+		"RIGHT":
+			coin.apply_central_impulse(-IMPULSE)
 
 
 func combine(coins):
 	if coins[0].is_moving && coins[1].is_moving:
 		coins[0].queue_free()
-		emit_signal("combine", coins[0].value + coins[1].value)
+		emit_signal("combine", coins[0].multiplier + coins[1].multiplier)
