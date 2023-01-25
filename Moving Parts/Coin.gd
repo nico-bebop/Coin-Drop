@@ -1,24 +1,14 @@
 extends RigidBody2D
 
+const LAST_FRAME = 4
+
 var orientation = null
 var is_moving = true
-var counter = 0
+var value = 1
 
-onready var CoinCollision = $CoinCollision
-
-
-func _ready():
-	CoinCollision.connect("coins_combined", self, "change_sprite")
-
-
-#change with label
-func change_sprite():
-	match counter:
-		0:
-			$Sprite.texture = load("res://Moving Parts/coin2.png")
-		1:
-			$Sprite.texture = load("res://Moving Parts/coin3.png")
-	counter += 1
+onready var coin_collision = $CoinCollision
+onready var animation_player = $AnimationPlayer
+onready var sprite = $Sprite
 
 
 func _on_SwitchCollision_body_entered(body):
@@ -28,3 +18,10 @@ func _on_SwitchCollision_body_entered(body):
 
 func _on_SwitchCollision_body_exited(_body):
 	is_moving = true
+
+
+func _on_CoinCollision_combine(new_value):
+	animation_player.play("HorizontalFlip")
+	yield(animation_player, "animation_finished")
+	value = new_value
+	sprite.frame = LAST_FRAME + value
