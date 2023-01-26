@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Moving Parts/Switch.tscn" type="PackedScene" id=1]
-[ext_resource path="res://UI/Score System.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fixed Parts/BoardBottom.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fixed Parts/board.png" type="Texture" id=3]
 [ext_resource path="res://Fixed Parts/Slot.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/Scoreboard.gd" type="Script" id=5]
+[ext_resource path="res://UI/PlayerScore.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/tinypixel.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Board.gd" type="Script" id=7]
 
 [sub_resource type="SegmentShape2D" id=2]
 b = Vector2( 0, 15 )
@@ -35,9 +36,16 @@ b = Vector2( 0, 33 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 7
+outline_color = Color( 0.180392, 0.662745, 0.188235, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 7
+outline_color = Color( 0.180392, 0.662745, 0.188235, 1 )
 font_data = ExtResource( 6 )
 
 [node name="Board" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 320, 152 )
@@ -175,279 +183,278 @@ position = Vector2( 464, 64 )
 [node name="Switch8" parent="Switches/Row5" instance=ExtResource( 1 )]
 position = Vector2( 496, 64 )
 
-[node name="Outer Borders" type="StaticBody2D" parent="."]
+[node name="OuterBorders" type="StaticBody2D" parent="."]
 visible = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Outer Borders"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OuterBorders"]
 build_mode = 1
 polygon = PoolVector2Array( 256, 16, 384, 16, 384, 81, 400, 96, 400, 128, 416, 144, 416, 176, 432, 192, 432, 224, 448, 240, 448, 288, 192, 288, 192, 240, 208, 224, 208, 192, 224, 176, 224, 144, 240, 128, 240, 96, 256, 80 )
 
-[node name="Inner Borders" type="Node2D" parent="."]
-visible = false
+[node name="InnerBorders" type="Node2D" parent="."]
 
-[node name="Row0" type="Node2D" parent="Inner Borders"]
+[node name="Row0" type="Node2D" parent="InnerBorders"]
 
-[node name="Border1" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 272, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border1"]
 shape = SubResource( 2 )
 
-[node name="Border2" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 288, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border2"]
 shape = SubResource( 3 )
 
-[node name="Border3" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 304, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border3"]
 shape = SubResource( 4 )
 
-[node name="Border4" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 320, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border4"]
 shape = SubResource( 3 )
 
-[node name="Border5" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 336, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border5"]
 shape = SubResource( 5 )
 
-[node name="Border6" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 352, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border6"]
 shape = SubResource( 3 )
 
-[node name="Border7" type="StaticBody2D" parent="Inner Borders/Row0"]
+[node name="Border7" type="StaticBody2D" parent="InnerBorders/Row0"]
 position = Vector2( 368, 17 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row0/Border7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border7"]
 shape = SubResource( 6 )
 
-[node name="Row1" type="Node2D" parent="Inner Borders"]
+[node name="Row1" type="Node2D" parent="InnerBorders"]
 
-[node name="Border1" type="StaticBody2D" parent="Inner Borders/Row1"]
+[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row1"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row1/Border1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border1"]
 shape = SubResource( 7 )
 
-[node name="Border2" type="StaticBody2D" parent="Inner Borders/Row1"]
+[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row1"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row1/Border2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border2"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Border3" type="StaticBody2D" parent="Inner Borders/Row1"]
+[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row1"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row1/Border3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border3"]
 shape = SubResource( 7 )
 
-[node name="Border4" type="StaticBody2D" parent="Inner Borders/Row1"]
+[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row1"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row1/Border4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border4"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Row2" type="Node2D" parent="Inner Borders"]
+[node name="Row2" type="Node2D" parent="InnerBorders"]
 position = Vector2( -16, 48 )
 
-[node name="Border1" type="StaticBody2D" parent="Inner Borders/Row2"]
+[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row2"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row2/Border1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border1"]
 shape = SubResource( 7 )
 
-[node name="Border2" type="StaticBody2D" parent="Inner Borders/Row2"]
+[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row2"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row2/Border2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border2"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Border3" type="StaticBody2D" parent="Inner Borders/Row2"]
+[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row2"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row2/Border3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border3"]
 shape = SubResource( 7 )
 
-[node name="Border4" type="StaticBody2D" parent="Inner Borders/Row2"]
+[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row2"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row2/Border4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border4"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Border5" type="StaticBody2D" parent="Inner Borders/Row2"]
+[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row2"]
 position = Vector2( 368, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row2/Border5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border5"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Row3" type="Node2D" parent="Inner Borders"]
+[node name="Row3" type="Node2D" parent="InnerBorders"]
 position = Vector2( -32, 96 )
 
-[node name="Border1" type="StaticBody2D" parent="Inner Borders/Row3"]
+[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row3"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row3/Border1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border1"]
 shape = SubResource( 7 )
 
-[node name="Border2" type="StaticBody2D" parent="Inner Borders/Row3"]
+[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row3"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row3/Border2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border2"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Border3" type="StaticBody2D" parent="Inner Borders/Row3"]
+[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row3"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row3/Border3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border3"]
 shape = SubResource( 7 )
 
-[node name="Border4" type="StaticBody2D" parent="Inner Borders/Row3"]
+[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row3"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row3/Border4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border4"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Border5" type="StaticBody2D" parent="Inner Borders/Row3"]
+[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row3"]
 position = Vector2( 368, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row3/Border5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border5"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Border6" type="StaticBody2D" parent="Inner Borders/Row3"]
+[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row3"]
 position = Vector2( 400, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row3/Border6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border6"]
 position = Vector2( 32, 0 )
 shape = SubResource( 7 )
 
-[node name="Row4" type="Node2D" parent="Inner Borders"]
+[node name="Row4" type="Node2D" parent="InnerBorders"]
 position = Vector2( -48, 144 )
 
-[node name="Border1" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border1"]
 shape = SubResource( 8 )
 
-[node name="Border2" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 272, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border2"]
 position = Vector2( 32, 0 )
 shape = SubResource( 8 )
 
-[node name="Border3" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border3"]
 shape = SubResource( 8 )
 
-[node name="Border4" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 336, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border4"]
 position = Vector2( 32, 0 )
 shape = SubResource( 8 )
 
-[node name="Border5" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 368, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border5"]
 position = Vector2( 32, 0 )
 shape = SubResource( 8 )
 
-[node name="Border6" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 432, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border6"]
 shape = SubResource( 8 )
 
-[node name="Border7" type="StaticBody2D" parent="Inner Borders/Row4"]
+[node name="Border7" type="StaticBody2D" parent="InnerBorders/Row4"]
 position = Vector2( 432, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row4/Border7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border7"]
 position = Vector2( 32, 0 )
 shape = SubResource( 8 )
 
-[node name="Row5" type="Node2D" parent="Inner Borders"]
+[node name="Row5" type="Node2D" parent="InnerBorders"]
 
-[node name="Border1" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 208, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border1"]
 shape = SubResource( 9 )
 
-[node name="Border2" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 240, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border2"]
 shape = SubResource( 9 )
 
-[node name="Border3" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 272, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border3"]
 shape = SubResource( 9 )
 
-[node name="Border4" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 304, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border4"]
 shape = SubResource( 9 )
 
-[node name="Border5" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 336, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border5"]
 shape = SubResource( 9 )
 
-[node name="Border6" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 368, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border6"]
 shape = SubResource( 9 )
 
-[node name="Border7" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border7" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 400, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border7"]
 shape = SubResource( 9 )
 
-[node name="Border8" type="StaticBody2D" parent="Inner Borders/Row5"]
+[node name="Border8" type="StaticBody2D" parent="InnerBorders/Row5"]
 position = Vector2( 432, 255 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner Borders/Row5/Border8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border8"]
 shape = SubResource( 9 )
 
-[node name="Testing Camera" type="Camera2D" parent="."]
-position = Vector2( 339, 88 )
-zoom = Vector2( 0.5, 0.5 )
+[node name="BoardBottom" parent="." instance=ExtResource( 2 )]
 
-[node name="Score System" parent="." instance=ExtResource( 2 )]
+[node name="UserInterface" type="Node2D" parent="."]
 
-[node name="Scoreboard" type="Label" parent="."]
-margin_left = 192.0
-margin_top = 16.0
-margin_right = 240.0
-margin_bottom = 32.0
+[node name="PlayerScore1" parent="UserInterface" instance=ExtResource( 5 )]
 custom_fonts/font = SubResource( 10 )
-text = "SCORE: 0"
-script = ExtResource( 5 )
+player_name = "PLAYER ONE"
 
-[connection signal="update_score" from="Score System" to="Scoreboard" method="_on_Score_System_update_score"]
+[node name="PlayerScore2" parent="UserInterface" instance=ExtResource( 5 )]
+margin_left = 400.0
+margin_right = 448.0
+custom_fonts/font = SubResource( 12 )
+player_name = "PLAYER TWO"
+
+[connection signal="update_score" from="BoardBottom" to="UserInterface/PlayerScore1" method="_on_BoardBottom_update_score"]
+[connection signal="update_score" from="BoardBottom" to="UserInterface/PlayerScore2" method="_on_BoardBottom_update_score"]

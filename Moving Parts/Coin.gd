@@ -14,6 +14,12 @@ onready var sprite = $Sprite
 onready var shine_timer = $ShineTimer
 onready var label = $Label
 
+signal check_moving_coins
+
+
+func _ready():
+	var _err = connect("check_moving_coins", get_parent(), "get_active_coins")
+
 
 func _physics_process(_delta):
 	if !is_moving && can_shine:
@@ -22,9 +28,14 @@ func _physics_process(_delta):
 		can_shine = false
 
 
+func _on_Coin_tree_exited():
+	emit_signal("check_moving_coins")
+
+
 func _on_SwitchCollision_body_entered(body):
 	is_moving = false
 	orientation = body.get("orientation")
+	emit_signal("check_moving_coins")
 
 
 func _on_SwitchCollision_body_exited(_body):
