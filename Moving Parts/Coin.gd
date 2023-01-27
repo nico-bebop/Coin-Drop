@@ -2,17 +2,19 @@ extends RigidBody2D
 
 const LAST_FRAME = 9
 const MAX_MULTIPLIER = 5
+const MAX_SPEED = 200.0
 
 var orientation = null
 var is_moving = true
 var can_shine = true
 var multiplier = 1 setget set_multiplier
 
-onready var coin_collision = $CoinCollision
 onready var animation_player = $AnimationPlayer
-onready var sprite = $Sprite
-onready var shine_timer = $ShineTimer
+onready var coin_collision = $CoinCollision
+onready var coin_land_audio = $CoinLandAudio
 onready var label = $Label
+onready var shine_timer = $ShineTimer
+onready var sprite = $Sprite
 
 signal check_moving_coins
 
@@ -28,9 +30,14 @@ func _physics_process(_delta):
 		can_shine = false
 
 
+func _integrate_forces(_state):
+	linear_velocity = linear_velocity.limit_length(MAX_SPEED)
+
+
 func _on_SwitchCollision_body_entered(body):
 	is_moving = false
 	orientation = body.get("orientation")
+	coin_land_audio.play()
 	emit_signal("check_moving_coins")
 
 
