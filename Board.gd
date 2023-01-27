@@ -11,32 +11,35 @@ func _ready():
 	randomize()
 	if randi() % 2 == 0:
 		set_turn(player1.player_name)
+		change_outlines(player1, player2)
 	else:
 		set_turn(player2.player_name)
+		change_outlines(player2, player1)
 
 
-func change_turn():
+func next_turn():
 	match current_turn:
 		player1.player_name:
 			set_turn(player2.player_name)
+			change_outlines(player2, player1)
 		player2.player_name:
 			set_turn(player1.player_name)
+			change_outlines(player1, player2)
 
 
 func set_turn(player):
 	current_turn = player
-	match player:
-		player1.player_name:
-			player1.get("custom_fonts/font").outline_size = 1
-			player2.get("custom_fonts/font").outline_size = 0
-		player2.player_name:
-			player1.get("custom_fonts/font").outline_size = 0
-			player2.get("custom_fonts/font").outline_size = 1
+
+
+func change_outlines(active_player, inactive_player):
+	set_turn(active_player.player_name)
+	active_player.get("custom_fonts/font").outline_size = 1
+	inactive_player.get("custom_fonts/font").outline_size = 0
 
 
 func get_active_coins():
-	if get_owner() != null:
+	if is_inside_tree():
 		for coin in get_tree().get_nodes_in_group("Coins"):
 			if coin.is_moving:
 				return
-		change_turn()
+		next_turn()

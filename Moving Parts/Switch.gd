@@ -9,10 +9,9 @@ func _ready():
 	randomize()
 	if randi() % 2 == 0:
 		animation_player.play("FlipToLeft")
-		animation_player.seek(0.6)
 	else:
 		animation_player.play("FlipToRight")
-		animation_player.seek(0.6)
+	animation_player.seek(0.6)
 
 
 func flip_contrary():

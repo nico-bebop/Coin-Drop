@@ -11,6 +11,6 @@ func _ready():
 
 
 func _on_ScoreSlot_add_score(value):
-	var turn = get_tree().current_scene.current_turn
+	var player = get_tree().current_scene.current_turn
 	player_score += value
-	emit_signal("update_score", turn, player_score)
+	emit_signal("update_score", player, player_score)
