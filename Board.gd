@@ -5,6 +5,9 @@ var active_coins
 
 onready var player1 = $UserInterface/PlayerScore1
 onready var player2 = $UserInterface/PlayerScore2
+onready var slots = $Slots
+
+signal turn_ready
 
 
 func _ready():
@@ -25,6 +28,7 @@ func next_turn():
 		player2.player_name:
 			set_turn(player1.player_name)
 			change_outlines(player1, player2)
+	emit_signal("turn_ready")
 
 
 func set_turn(player):

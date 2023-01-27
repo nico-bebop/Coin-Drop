@@ -3,19 +3,23 @@ extends Area2D
 var Coin = preload("res://Moving Parts/Coin.tscn")
 var clickable = true
 
-onready var timer = $Timer
 onready var coin_sprite = $CoinSprite
+
+signal coin_dropped
+
+
+func _ready():
+	var _err = connect("coin_dropped", get_parent(), "change_slots_state")
 
 
 func _on_Slot_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_just_pressed("click") && clickable:
+	if Input.is_action_just_pressed("click") && clickable && coin_sprite.visible:
 		wait_for_coin()
 		spawn_coin()
 
 
 func wait_for_coin():
-	timer.start()
-	clickable = false
+	emit_signal("coin_dropped")
 	yield(coin_sprite, "animation_finished")
 	coin_sprite.visible = false
 
@@ -25,10 +29,6 @@ func spawn_coin():
 	var coin = Coin.instance()
 	coin.position = global_position
 	get_tree().current_scene.add_child(coin)
-
-
-func _on_Timer_timeout():
-	clickable = true
 
 
 func _on_Slot_mouse_entered():
