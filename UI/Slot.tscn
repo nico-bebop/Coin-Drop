@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Fixed Parts/Slot.gd" type="Script" id=1]
+[ext_resource path="res://UI/Slot.gd" type="Script" id=1]
 [ext_resource path="res://Moving Parts/coin.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=9]
@@ -46,7 +46,7 @@ script = ExtResource( 1 )
 visible = false
 frames = SubResource( 8 )
 animation = "HorizontalFlip"
-frame = 0
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -54,9 +54,6 @@ visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="input_event" from="." to="." method="_on_Slot_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Slot_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Slot_mouse_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
