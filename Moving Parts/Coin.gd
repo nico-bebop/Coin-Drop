@@ -11,6 +11,7 @@ var multiplier = 1 setget set_multiplier
 
 onready var animation_player = $AnimationPlayer
 onready var coin_collision = $CoinCollision
+onready var coin_combine_audio = $CoinCombineAudio
 onready var coin_land_audio = $CoinLandAudio
 onready var label = $Label
 onready var shine_timer = $ShineTimer
@@ -51,6 +52,7 @@ func _on_Coin_tree_exited():
 
 func _on_CoinCollision_combine(value):
 	animation_player.play("HorizontalFlip")
+	coin_combine_audio.play()
 	yield(animation_player, "animation_finished")
 	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
 	label.text = str(multiplier)
