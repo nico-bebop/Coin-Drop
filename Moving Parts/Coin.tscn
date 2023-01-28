@@ -78,6 +78,8 @@ contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
 
+[node name="Sparkle" parent="." instance=ExtResource( 7 )]
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 11
@@ -128,8 +130,6 @@ stream = ExtResource( 5 )
 
 [node name="CoinCombineAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-
-[node name="Sparkle" parent="." instance=ExtResource( 7 )]
 
 [connection signal="tree_exited" from="." to="." method="_on_Coin_tree_exited"]
 [connection signal="body_entered" from="CoinCollision" to="CoinCollision" method="_on_CoinCollision_body_entered"]
