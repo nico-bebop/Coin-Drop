@@ -5,8 +5,6 @@ var current_player
 
 export(Array, int) var score_array = [0, 0, 0, 0]
 
-export(Array, int) var score_array = [0, 0, 0, 0]
-
 onready var label = $Label
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
@@ -18,10 +16,6 @@ func _ready():
 	var _err
 	_err = connect("add_score", get_node("../../UserInterface/PlayerScore1"), "update_score")
 	_err = connect("add_score", get_node("../../UserInterface/PlayerScore2"), "update_score")
-	set_score(score_array[0])
-
-
-func _ready():
 	set_score(score_array[0])
 
 
