@@ -9,7 +9,7 @@ flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 50.0
+initial_velocity = 35.0
 angular_velocity = 45.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
@@ -20,9 +20,8 @@ hue_variation_random = 0.5
 
 [node name="Sparkle" type="Particles2D"]
 emitting = false
-amount = 15
+amount = 5
 lifetime = 0.3
-one_shot = true
 explosiveness = 0.5
 randomness = 1.0
 visibility_rect = Rect2( -25, -25, 50, 50 )

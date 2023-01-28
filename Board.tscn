@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Moving Parts/Switch.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Fixed Parts/BoardBottom.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fixed Parts/ScoreSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fixed Parts/board.png" type="Texture" id=3]
 [ext_resource path="res://UI/Slot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/PlayerScore.tscn" type="PackedScene" id=5]
@@ -526,5 +526,3 @@ player_name = "PLAYER TWO"
 
 [connection signal="round_ended" from="." to="BoardBottom" method="_on_Board_round_ended"]
 [connection signal="turn_ready" from="." to="Slots" method="_on_Board_turn_ready"]
-[connection signal="update_score" from="BoardBottom" to="UserInterface/PlayerScore1" method="_on_BoardBottom_update_score"]
-[connection signal="update_score" from="BoardBottom" to="UserInterface/PlayerScore2" method="_on_BoardBottom_update_score"]
