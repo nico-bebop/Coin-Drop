@@ -525,4 +525,6 @@ custom_fonts/font = SubResource( 12 )
 player_name = "PLAYER TWO"
 
 [connection signal="round_ended" from="." to="BoardBottom" method="_on_Board_round_ended"]
+[connection signal="round_ended" from="." to="UserInterface/PlayerScore1" method="_on_Board_round_ended"]
+[connection signal="round_ended" from="." to="UserInterface/PlayerScore2" method="_on_Board_round_ended"]
 [connection signal="turn_ready" from="." to="Slots" method="_on_Board_turn_ready"]
