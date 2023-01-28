@@ -38,7 +38,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 5.75 )
 
-[node name="Slot" type="Area2D"]
+[node name="Slot" type="Area2D" groups=["Slot"]]
 collision_mask = 0
 script = ExtResource( 1 )
 
