@@ -2,11 +2,17 @@ extends Area2D
 
 var slot_score = 0 setget set_score
 
+export(Array, int) var score_array = [0, 0, 0, 0]
+
 onready var label = $Label
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
 
 signal add_score(value)
+
+
+func _ready():
+	set_score(score_array[0])
 
 
 func _on_ScoreSlot_body_entered(body):
