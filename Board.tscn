@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Moving Parts/Switch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fixed Parts/ScoreSlot.tscn" type="PackedScene" id=2]
@@ -9,6 +9,39 @@
 [ext_resource path="res://Board.gd" type="Script" id=7]
 [ext_resource path="res://UI/Slots.gd" type="Script" id=8]
 [ext_resource path="res://Fixed Parts/BoardBottom.gd" type="Script" id=9]
+[ext_resource path="res://UI/slots.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=13]
+resource_name = "Highlight"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="SegmentShape2D" id=2]
 b = Vector2( 0, 15 )
@@ -54,31 +87,41 @@ position = Vector2( 320, 152 )
 texture = ExtResource( 3 )
 
 [node name="Slots" type="Node2D" parent="."]
+position = Vector2( 320, 24 )
 script = ExtResource( 8 )
 
+[node name="Sprite" type="Sprite" parent="Slots"]
+texture = ExtResource( 10 )
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots"]
+playback_speed = 0.6
+anims/Highlight = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
 [node name="Slot1" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 264, 24 )
+position = Vector2( -56, 0 )
 
 [node name="Slot2" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 280, 24 )
+position = Vector2( -40, 0 )
 
 [node name="Slot3" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 296, 24 )
+position = Vector2( -24, 0 )
 
 [node name="Slot4" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 312, 24 )
+position = Vector2( -8, 0 )
 
 [node name="Slot5" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 328, 24 )
+position = Vector2( 8, 0 )
 
 [node name="Slot6" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 344, 24 )
+position = Vector2( 24, 0 )
 
 [node name="Slot7" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 360, 24 )
+position = Vector2( 40, 0 )
 
 [node name="Slot8" parent="Slots" instance=ExtResource( 4 )]
-position = Vector2( 376, 24 )
+position = Vector2( 56, 0 )
 
 [node name="Switches" type="Node2D" parent="."]
 
