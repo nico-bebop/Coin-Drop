@@ -17,7 +17,7 @@ onready var player2 = $UserInterface/PlayerScore2
 onready var slots = $Slots
 
 signal turn_ready
-signal round_ended(next_round)
+signal round_ended(next_round, next_score)
 
 
 func _ready():
@@ -64,9 +64,9 @@ func set_required_score():
 
 
 func check_change_round():
-	if player1.score >= required_score || player2.score >= required_score:
+	if player1.round_score >= required_score || player2.round_score >= required_score:
 		set_round(current_round + 1)
-		emit_signal("round_ended", current_round)
+		emit_signal("round_ended", current_round, required_score)
 
 
 func change_outlines(active_player, inactive_player):
