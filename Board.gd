@@ -1,5 +1,7 @@
 extends Node2D
 
+var GameOver = preload("res://UI/GameOver.tscn")
+
 var active_coins
 var current_turn setget set_turn
 var current_round = 0 setget set_round
@@ -48,7 +50,6 @@ func set_turn(player):
 
 func set_round(current):
 	current_round = current
-	set_required_score()
 
 
 func set_required_score():
@@ -66,7 +67,20 @@ func set_required_score():
 func check_change_round():
 	if player1.round_score >= required_score || player2.round_score >= required_score:
 		set_round(current_round + 1)
+		if current_round == 4:
+			game_over()
+			return
+		set_required_score()
 		emit_signal("round_ended", current_round, required_score)
+
+
+func game_over():
+	var game_over = GameOver.instance()
+	var winner = player1.player_name if player1.total_score > player2.total_score else player2.player_name
+	add_child(game_over)
+	game_over.dialog_text = winner + " WINS"
+	game_over.popup_centered()
+	slots.change_slots_state(false)
 
 
 func change_outlines(active_player, inactive_player):
