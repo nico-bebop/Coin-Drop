@@ -7,7 +7,7 @@ signal combine(value)
 
 func _on_CoinCollision_body_entered(_body):
 	var coin = get_parent()
-	if !coin.is_moving:
+	if coin.sleeping:
 		push_other(coin)
 
 	var bodies = get_overlapping_bodies()
@@ -24,6 +24,6 @@ func push_other(coin):
 
 
 func combine(coins):
-	if coins[0].is_moving && coins[1].is_moving:
+	if !coins[0].sleeping && !coins[1].sleeping:
 		coins[0].queue_free()
 		emit_signal("combine", coins[0].multiplier + coins[1].multiplier)

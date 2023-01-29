@@ -32,6 +32,7 @@ func _ready():
 		change_outlines(player2, player1)
 	set_required_score()
 
+
 func next_turn():
 	match current_turn:
 		player1.player_name:
@@ -90,8 +91,7 @@ func change_outlines(active_player, inactive_player):
 
 func get_active_coins():
 	if is_inside_tree():
-		yield(get_tree().create_timer(0.1), "timeout")
 		for coin in get_tree().get_nodes_in_group("Coins"):
-			if coin.is_moving:
+			if !coin.sleeping:
 				return
 		next_turn()

@@ -1,11 +1,9 @@
 extends RigidBody2D
 
-const LAST_FRAME = 9
 const MAX_MULTIPLIER = 5
 const MAX_SPEED = 150.0
 
 var orientation = null
-var is_moving = true
 var can_shine = true
 var multiplier = 1 setget set_multiplier
 
@@ -24,7 +22,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if !is_moving && can_shine:
+	if sleeping && can_shine:
 		shine_timer.start()
 		animation_player.play("IdleShine")
 		can_shine = false
@@ -35,14 +33,14 @@ func _integrate_forces(_state):
 
 
 func _on_SwitchCollision_body_entered(body):
-	is_moving = false
+	sleeping = true
 	orientation = body.get("orientation")
 	coin_land_audio.play()
 	emit_signal("check_moving_coins")
 
 
 func _on_SwitchCollision_body_exited(_body):
-	is_moving = true
+	sleeping = false
 
 
 func _on_Coin_tree_exited():
