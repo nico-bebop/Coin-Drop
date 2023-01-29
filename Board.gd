@@ -66,7 +66,7 @@ func set_required_score():
 
 
 func check_change_round():
-	if player1.round_score >= required_score || player2.round_score >= required_score:
+	if player1.round_score[current_round] >= required_score || player2.round_score[current_round] >= required_score:
 		set_round(current_round + 1)
 		if current_round == 4:
 			game_over()
