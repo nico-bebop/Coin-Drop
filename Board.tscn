@@ -13,7 +13,7 @@
 
 [sub_resource type="Animation" id=13]
 resource_name = "Highlight"
-length = 0.9
+length = 2.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -22,10 +22,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0, 9, 0, 9, 0, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 8, 7, 6, 5, 4, 3, 2, 1 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -92,10 +92,10 @@ script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Slots"]
 texture = ExtResource( 10 )
-vframes = 9
+vframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Slots"]
-playback_speed = 0.6
+playback_speed = 0.5
 anims/Highlight = SubResource( 13 )
 anims/RESET = SubResource( 14 )
 
