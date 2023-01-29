@@ -15,8 +15,8 @@ signal add_score(player, current, value)
 
 func _ready():
 	var _err
-	_err = connect("add_score", get_node("../../UserInterface/PlayerScore1"), "update_score")
-	_err = connect("add_score", get_node("../../UserInterface/PlayerScore2"), "update_score")
+	_err = connect("add_score", get_node("../../UserInterface/Player1"), "update_score")
+	_err = connect("add_score", get_node("../../UserInterface/Player2"), "update_score")
 	set_score(score_array[0])
 
 

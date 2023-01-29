@@ -14,8 +14,8 @@ enum scores {
 	ROUND_FOUR = 80,
 }
 
-onready var player1 = $UserInterface/PlayerScore1
-onready var player2 = $UserInterface/PlayerScore2
+onready var player1 = $UserInterface/Player1
+onready var player2 = $UserInterface/Player2
 onready var slots = $Slots
 
 signal turn_ready
@@ -26,10 +26,10 @@ func _ready():
 	randomize()
 	if randi() % 2 == 0:
 		set_turn(player1.player_name)
-		change_outlines(player1, player2)
+		change_active_player(player1, player2)
 	else:
 		set_turn(player2.player_name)
-		change_outlines(player2, player1)
+		change_active_player(player2, player1)
 	set_required_score()
 
 
@@ -37,10 +37,10 @@ func next_turn():
 	match current_turn:
 		player1.player_name:
 			set_turn(player2.player_name)
-			change_outlines(player2, player1)
+			change_active_player(player2, player1)
 		player2.player_name:
 			set_turn(player1.player_name)
-			change_outlines(player1, player2)
+			change_active_player(player1, player2)
 	emit_signal("turn_ready")
 	check_change_round()
 
@@ -84,9 +84,9 @@ func game_over():
 	slots.change_slots_state(false)
 
 
-func change_outlines(active_player, inactive_player):
-	active_player.get("custom_fonts/font").outline_size = 1
-	inactive_player.get("custom_fonts/font").outline_size = 0
+func change_active_player(active_player, inactive_player):
+	active_player.set_active(true)
+	inactive_player.set_active(false)
 
 
 func get_active_coins():
