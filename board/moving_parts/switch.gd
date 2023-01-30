@@ -16,9 +16,9 @@ func _ready():
 
 func flip_contrary():
 	match orientation:
-		"LEFT":
+		Globals.LEFT:
 			animation_player.play("FlipToRight")
-		"RIGHT":
+		Globals.RIGHT:
 			animation_player.play("FlipToLeft")
 
 

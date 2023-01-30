@@ -17,9 +17,9 @@ func _on_CoinCollision_body_entered(_body):
 
 func push_other(coin):
 	match coin.orientation:
-		"LEFT":
+		Globals.LEFT:
 			coin.apply_central_impulse(IMPULSE)
-		"RIGHT":
+		Globals.RIGHT:
 			coin.apply_central_impulse(-IMPULSE)
 
 
