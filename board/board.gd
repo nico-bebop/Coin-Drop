@@ -2,7 +2,7 @@ extends Node2D
 
 const GameOver = preload("res://board/ui/game_over.tscn")
 
-onready var turn_system = $UserInterface/TurnSystem
+onready var turn_system = $TurnSystem
 onready var slots = $Slots
 
 

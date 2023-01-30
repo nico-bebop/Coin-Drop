@@ -9,8 +9,8 @@ export(Array, int) var scores = [0, 0, 0, 0]
 onready var label = $Label
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
-onready var player1 = $"../../UserInterface/TurnSystem/Player1"
-onready var player2 = $"../../UserInterface/TurnSystem/Player2"
+onready var player1 = $"../../TurnSystem/Player1"
+onready var player2 = $"../../TurnSystem/Player2"
 
 signal add_score(value)
 

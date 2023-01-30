@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://board/fixed_parts/inner_borders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://board/interactive_parts/slots.gd" type="Script" id=2]
 [ext_resource path="res://board/interactive_parts/slot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://board/ui/player.tscn" type="PackedScene" id=4]
@@ -42,41 +43,15 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="SegmentShape2D" id=2]
-b = Vector2( 0, 15 )
-
-[sub_resource type="SegmentShape2D" id=3]
-b = Vector2( 0, 63 )
-
-[sub_resource type="SegmentShape2D" id=4]
-b = Vector2( 0, 15 )
-
-[sub_resource type="SegmentShape2D" id=5]
-b = Vector2( 0, 15 )
-
-[sub_resource type="SegmentShape2D" id=6]
-b = Vector2( 0, 15 )
-
-[sub_resource type="SegmentShape2D" id=7]
-a = Vector2( 0, -1 )
-b = Vector2( 0, 64 )
-
-[sub_resource type="SegmentShape2D" id=8]
-a = Vector2( 0, -1 )
-b = Vector2( 0, 80 )
-
-[sub_resource type="SegmentShape2D" id=9]
-b = Vector2( 0, 33 )
-
 [node name="Board" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 320, 152 )
+position = Vector2( 160, 160 )
 texture = ExtResource( 8 )
 
 [node name="Slots" type="Node2D" parent="."]
-position = Vector2( 320, 24 )
+position = Vector2( 160, 32 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Slots"]
@@ -115,450 +90,201 @@ position = Vector2( 56, 0 )
 [node name="Switches" type="Node2D" parent="."]
 
 [node name="Row1" type="Node2D" parent="Switches"]
+position = Vector2( 112, 72 )
 
 [node name="Switch1" parent="Switches/Row1" instance=ExtResource( 5 )]
-position = Vector2( 272, 64 )
 
 [node name="Switch2" parent="Switches/Row1" instance=ExtResource( 5 )]
-position = Vector2( 304, 64 )
+position = Vector2( 32, 0 )
 
 [node name="Switch3" parent="Switches/Row1" instance=ExtResource( 5 )]
-position = Vector2( 336, 64 )
+position = Vector2( 64, 0 )
 
 [node name="Switch4" parent="Switches/Row1" instance=ExtResource( 5 )]
-position = Vector2( 368, 64 )
+position = Vector2( 96, 0 )
 
 [node name="Row2" type="Node2D" parent="Switches"]
-position = Vector2( -16, 48 )
+position = Vector2( 96, 120 )
 
 [node name="Switch1" parent="Switches/Row2" instance=ExtResource( 5 )]
-position = Vector2( 272, 64 )
 
 [node name="Switch2" parent="Switches/Row2" instance=ExtResource( 5 )]
-position = Vector2( 304, 64 )
+position = Vector2( 32, 0 )
 
 [node name="Switch3" parent="Switches/Row2" instance=ExtResource( 5 )]
-position = Vector2( 336, 64 )
+position = Vector2( 64, 0 )
 
 [node name="Switch4" parent="Switches/Row2" instance=ExtResource( 5 )]
-position = Vector2( 368, 64 )
+position = Vector2( 96, 0 )
 
 [node name="Switch5" parent="Switches/Row2" instance=ExtResource( 5 )]
-position = Vector2( 400, 64 )
+position = Vector2( 128, 0 )
 
 [node name="Row3" type="Node2D" parent="Switches"]
-position = Vector2( -32, 96 )
+position = Vector2( 80, 168 )
 
 [node name="Switch1" parent="Switches/Row3" instance=ExtResource( 5 )]
-position = Vector2( 272, 64 )
 
 [node name="Switch2" parent="Switches/Row3" instance=ExtResource( 5 )]
-position = Vector2( 304, 64 )
+position = Vector2( 32, 0 )
 
 [node name="Switch3" parent="Switches/Row3" instance=ExtResource( 5 )]
-position = Vector2( 336, 64 )
+position = Vector2( 64, 0 )
 
 [node name="Switch4" parent="Switches/Row3" instance=ExtResource( 5 )]
-position = Vector2( 368, 64 )
+position = Vector2( 96, 0 )
 
 [node name="Switch5" parent="Switches/Row3" instance=ExtResource( 5 )]
-position = Vector2( 400, 64 )
+position = Vector2( 128, 0 )
 
 [node name="Switch6" parent="Switches/Row3" instance=ExtResource( 5 )]
-position = Vector2( 432, 64 )
+position = Vector2( 160, 0 )
 
 [node name="Row4" type="Node2D" parent="Switches"]
-position = Vector2( -48, 144 )
+position = Vector2( 64, 216 )
 
 [node name="Switch1" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 272, 64 )
 
 [node name="Switch2" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 304, 64 )
+position = Vector2( 32, 0 )
 
 [node name="Switch3" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 336, 64 )
+position = Vector2( 64, 0 )
 
 [node name="Switch4" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 368, 64 )
+position = Vector2( 96, 0 )
 
 [node name="Switch5" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 400, 64 )
+position = Vector2( 128, 0 )
 
 [node name="Switch6" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 432, 64 )
+position = Vector2( 160, 0 )
 
 [node name="Switch7" parent="Switches/Row4" instance=ExtResource( 5 )]
-position = Vector2( 464, 64 )
+position = Vector2( 192, 0 )
 
 [node name="Row5" type="Node2D" parent="Switches"]
-position = Vector2( -64, 192 )
+position = Vector2( 48, 263 )
 
 [node name="Switch1" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 272, 64 )
 
 [node name="Switch2" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 304, 64 )
+position = Vector2( 32, 0 )
 
 [node name="Switch3" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 336, 64 )
+position = Vector2( 64, 0 )
 
 [node name="Switch4" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 368, 64 )
+position = Vector2( 96, 0 )
 
 [node name="Switch5" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 400, 64 )
+position = Vector2( 128, 0 )
 
 [node name="Switch6" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 432, 64 )
+position = Vector2( 160, 0 )
 
 [node name="Switch7" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 464, 64 )
+position = Vector2( 192, 0 )
 
 [node name="Switch8" parent="Switches/Row5" instance=ExtResource( 5 )]
-position = Vector2( 496, 64 )
+position = Vector2( 224, 0 )
 
 [node name="OuterBorders" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OuterBorders"]
+visible = false
+position = Vector2( -160, 8 )
 build_mode = 1
 polygon = PoolVector2Array( 256, 16, 384, 16, 384, 81, 400, 96, 400, 128, 416, 144, 416, 176, 432, 192, 432, 224, 448, 240, 448, 288, 192, 288, 192, 240, 208, 224, 208, 192, 224, 176, 224, 144, 240, 128, 240, 96, 256, 80 )
 
-[node name="InnerBorders" type="Node2D" parent="."]
+[node name="InnerBorders" parent="." instance=ExtResource( 1 )]
 
-[node name="Row0" type="Node2D" parent="InnerBorders"]
+[node name="BottomSlots" type="Node2D" parent="."]
+position = Vector2( 40, 288 )
 
-[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 272, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border1"]
-shape = SubResource( 2 )
-
-[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 288, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border2"]
-shape = SubResource( 3 )
-
-[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 304, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border3"]
-shape = SubResource( 4 )
-
-[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 320, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border4"]
-shape = SubResource( 3 )
-
-[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 336, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border5"]
-shape = SubResource( 5 )
-
-[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 352, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border6"]
-shape = SubResource( 3 )
-
-[node name="Border7" type="StaticBody2D" parent="InnerBorders/Row0"]
-position = Vector2( 368, 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row0/Border7"]
-shape = SubResource( 6 )
-
-[node name="Row1" type="Node2D" parent="InnerBorders"]
-
-[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row1"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border1"]
-shape = SubResource( 7 )
-
-[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row1"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border2"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row1"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border3"]
-shape = SubResource( 7 )
-
-[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row1"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row1/Border4"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Row2" type="Node2D" parent="InnerBorders"]
-position = Vector2( -16, 48 )
-
-[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row2"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border1"]
-shape = SubResource( 7 )
-
-[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row2"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border2"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row2"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border3"]
-shape = SubResource( 7 )
-
-[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row2"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border4"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row2"]
-position = Vector2( 368, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row2/Border5"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Row3" type="Node2D" parent="InnerBorders"]
-position = Vector2( -32, 96 )
-
-[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row3"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border1"]
-shape = SubResource( 7 )
-
-[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row3"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border2"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row3"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border3"]
-shape = SubResource( 7 )
-
-[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row3"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border4"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row3"]
-position = Vector2( 368, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border5"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row3"]
-position = Vector2( 400, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row3/Border6"]
-position = Vector2( 32, 0 )
-shape = SubResource( 7 )
-
-[node name="Row4" type="Node2D" parent="InnerBorders"]
-position = Vector2( -48, 144 )
-
-[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border1"]
-shape = SubResource( 8 )
-
-[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 272, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border2"]
-position = Vector2( 32, 0 )
-shape = SubResource( 8 )
-
-[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border3"]
-shape = SubResource( 8 )
-
-[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 336, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border4"]
-position = Vector2( 32, 0 )
-shape = SubResource( 8 )
-
-[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 368, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border5"]
-position = Vector2( 32, 0 )
-shape = SubResource( 8 )
-
-[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 432, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border6"]
-shape = SubResource( 8 )
-
-[node name="Border7" type="StaticBody2D" parent="InnerBorders/Row4"]
-position = Vector2( 432, 64 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row4/Border7"]
-position = Vector2( 32, 0 )
-shape = SubResource( 8 )
-
-[node name="Row5" type="Node2D" parent="InnerBorders"]
-
-[node name="Border1" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 208, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border1"]
-shape = SubResource( 9 )
-
-[node name="Border2" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 240, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border2"]
-shape = SubResource( 9 )
-
-[node name="Border3" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 272, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border3"]
-shape = SubResource( 9 )
-
-[node name="Border4" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 304, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border4"]
-shape = SubResource( 9 )
-
-[node name="Border5" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 336, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border5"]
-shape = SubResource( 9 )
-
-[node name="Border6" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 368, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border6"]
-shape = SubResource( 9 )
-
-[node name="Border7" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 400, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border7"]
-shape = SubResource( 9 )
-
-[node name="Border8" type="StaticBody2D" parent="InnerBorders/Row5"]
-position = Vector2( 432, 255 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerBorders/Row5/Border8"]
-shape = SubResource( 9 )
-
-[node name="BoardBottom" type="Node2D" parent="."]
-
-[node name="ScoreSlot1" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 195, 273 )
+[node name="ScoreSlot1" parent="BottomSlots" instance=ExtResource( 6 )]
 scores = [ 2, 34, 9, 64 ]
 
-[node name="ScoreSlot2" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 211, 273 )
+[node name="ScoreSlot2" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 16, 0 )
 scores = [ 2, 21, 8, 49 ]
 
-[node name="ScoreSlot3" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 227, 273 )
+[node name="ScoreSlot3" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 32, 0 )
 scores = [ 2, 13, 7, 36 ]
 
-[node name="ScoreSlot4" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 243, 273 )
+[node name="ScoreSlot4" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 48, 0 )
 scores = [ 2, 8, 6, 25 ]
 
-[node name="ScoreSlot5" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 259, 273 )
+[node name="ScoreSlot5" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 64, 0 )
 scores = [ 2, 5, 5, 16 ]
 
-[node name="ScoreSlot6" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 275, 273 )
+[node name="ScoreSlot6" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 80, 0 )
 scores = [ 2, 3, 4, 9 ]
 
-[node name="ScoreSlot7" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 291, 273 )
+[node name="ScoreSlot7" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 96, 0 )
 scores = [ 2, 2, 3, 4 ]
 
-[node name="ScoreSlot8" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 307, 273 )
+[node name="ScoreSlot8" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 112, 0 )
 scores = [ 2, 1, 2, 1 ]
 
-[node name="ScoreSlot9" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 323, 273 )
+[node name="ScoreSlot9" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 128, 0 )
 scores = [ 2, 1, 2, 1 ]
 
-[node name="ScoreSlot10" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 339, 273 )
+[node name="ScoreSlot10" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 144, 0 )
 scores = [ 2, 2, 3, 4 ]
 
-[node name="ScoreSlot11" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 355, 273 )
+[node name="ScoreSlot11" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 160, 0 )
 scores = [ 2, 3, 4, 9 ]
 
-[node name="ScoreSlot12" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 371, 273 )
+[node name="ScoreSlot12" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 176, 0 )
 scores = [ 2, 5, 5, 16 ]
 
-[node name="ScoreSlot13" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 387, 273 )
+[node name="ScoreSlot13" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 192, 0 )
 scores = [ 2, 8, 6, 25 ]
 
-[node name="ScoreSlot14" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 403, 273 )
+[node name="ScoreSlot14" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 208, 0 )
 scores = [ 2, 13, 7, 36 ]
 
-[node name="ScoreSlot15" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 419, 273 )
+[node name="ScoreSlot15" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 224, 0 )
 scores = [ 2, 21, 8, 49 ]
 
-[node name="ScoreSlot16" parent="BoardBottom" instance=ExtResource( 6 )]
-position = Vector2( 435, 273 )
+[node name="ScoreSlot16" parent="BottomSlots" instance=ExtResource( 6 )]
+position = Vector2( 240, 0 )
 scores = [ 2, 34, 9, 64 ]
 
-[node name="UserInterface" type="Node2D" parent="."]
-
-[node name="TurnSystem" type="Control" parent="UserInterface"]
+[node name="TurnSystem" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 10 )
 
-[node name="Player1" parent="UserInterface/TurnSystem" instance=ExtResource( 4 )]
+[node name="Player1" parent="TurnSystem" instance=ExtResource( 4 )]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 80.0
+margin_bottom = 43.0
 player_name = "PLAYER ONE"
 
-[node name="Player2" parent="UserInterface/TurnSystem" instance=ExtResource( 4 )]
-margin_left = 400.0
-margin_right = 448.0
+[node name="Player2" parent="TurnSystem" instance=ExtResource( 4 )]
+margin_left = 240.0
+margin_top = 24.0
+margin_right = 288.0
+margin_bottom = 43.0
 player_name = "PLAYER TWO"
 
-[connection signal="game_over" from="UserInterface/TurnSystem" to="." method="_on_TurnSystem_game_over"]
-[connection signal="round_ended" from="UserInterface/TurnSystem" to="UserInterface/TurnSystem/Player1" method="_on_TurnSystem_round_ended"]
-[connection signal="round_ended" from="UserInterface/TurnSystem" to="UserInterface/TurnSystem/Player2" method="_on_TurnSystem_round_ended"]
-[connection signal="turn_ready" from="UserInterface/TurnSystem" to="Slots" method="_on_TurnSystem_turn_ready"]
+[connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]
+[connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player1" method="_on_TurnSystem_round_ended"]
+[connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player2" method="_on_TurnSystem_round_ended"]
+[connection signal="turn_ready" from="TurnSystem" to="Slots" method="_on_TurnSystem_turn_ready"]

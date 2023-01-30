@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://board/interactive_parts/slots.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/slots.png" type="Texture" id=3]
+[ext_resource path="res://board/interactive_parts/slot.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=13]
+resource_name = "Highlight"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 0, 9, 0, 9 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Slots" type="Node2D"]
+position = Vector2( 160, 32 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+anims/Highlight = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
+[node name="Slot1" parent="." instance=ExtResource( 4 )]
+position = Vector2( -56, 0 )
+
+[node name="Slot2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -40, 0 )
+
+[node name="Slot3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -24, 0 )
+
+[node name="Slot4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -8, 0 )
+
+[node name="Slot5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 8, 0 )
+
+[node name="Slot6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 24, 0 )
+
+[node name="Slot7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 40, 0 )
+
+[node name="Slot8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 56, 0 )
