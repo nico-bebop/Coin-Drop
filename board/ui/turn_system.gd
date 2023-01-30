@@ -6,7 +6,7 @@ var current_turn setget set_turn
 var current_round = 0 setget set_round
 var scores = [10, 40, 20, 80]
 
-onready var board_bottom = $"../../BoardBottom"
+onready var bottom_slots = $"../BottomSlots"
 onready var player1 = $Player1
 onready var player2 = $Player2
 
@@ -52,7 +52,7 @@ func change_active_player(active_player, inactive_player):
 
 func update_slots_score(next_round):
 	if next_round < GAME_OVER:
-		for slot in board_bottom.get_children():
+		for slot in bottom_slots.get_children():
 			slot.set_score(slot.scores[next_round])
 
 
