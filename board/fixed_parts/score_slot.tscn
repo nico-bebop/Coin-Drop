@@ -1,9 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://UI/tinypixel.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Fixed Parts/ScoreSlot.gd" type="Script" id=2]
-[ext_resource path="res://Effects/coin-score.wav" type="AudioStream" id=3]
-[ext_resource path="res://Effects/Confetti.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://board/fixed_parts/score_slot.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/coin_score.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/effects/confetti.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 3.5 )

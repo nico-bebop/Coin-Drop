@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/coin.png-f404dc99aa444b65549fa72c8b321798.stex"
+path="res://.import/notch.png-b52d3f7ce51d4feac2519dd60b97cd60.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Moving Parts/coin.png"
-dest_files=[ "res://.import/coin.png-f404dc99aa444b65549fa72c8b321798.stex" ]
+source_file="res://assets/sprites/notch.png"
+dest_files=[ "res://.import/notch.png-b52d3f7ce51d4feac2519dd60b97cd60.stex" ]
 
 [params]
 

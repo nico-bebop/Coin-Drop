@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Moving Parts/Switch.gd" type="Script" id=1]
-[ext_resource path="res://Moving Parts/switch.png" type="Texture" id=2]
-[ext_resource path="res://Fixed Parts/notch.png" type="Texture" id=3]
+[ext_resource path="res://board/moving_parts/switch.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/switch.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/notch.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4, 1 )

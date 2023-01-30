@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://board/ui/game_over.gd" type="Script" id=1]
 
 [node name="GameOver" type="AcceptDialog"]
 popup_exclusive = true

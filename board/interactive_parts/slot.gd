@@ -1,6 +1,7 @@
 extends Area2D
 
-var Coin = preload("res://Moving Parts/Coin.tscn")
+const Coin = preload("res://board/moving_parts/coin.tscn")
+
 var clickable = true
 
 onready var coin_sprite = $CoinSprite

@@ -1,12 +1,14 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Moving Parts/coin.png" type="Texture" id=1]
-[ext_resource path="res://Moving Parts/Coin.gd" type="Script" id=2]
-[ext_resource path="res://Moving Parts/CoinCollision.gd" type="Script" id=3]
-[ext_resource path="res://UI/tinypixel.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://Effects/coin-fall.mp3" type="AudioStream" id=5]
-[ext_resource path="res://Effects/coin-merge.mp3" type="AudioStream" id=6]
-[ext_resource path="res://Effects/Sparkle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/coin_fall.mp3" type="AudioStream" id=2]
+[ext_resource path="res://board/moving_parts/coin.gd" type="Script" id=3]
+[ext_resource path="res://board/moving_parts/coin_collision.gd" type="Script" id=4]
+[ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="StreamTexture" id=10]
+load_path = "res://.import/coin.png-54d5e156d7891d9603a51f76f85b4fd9.stex"
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 5.0
@@ -67,7 +69,7 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=9]
 size = 7
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [node name="Coin" type="RigidBody2D" groups=["Coins"]]
 collision_layer = 8
@@ -76,12 +78,12 @@ mode = 2
 gravity_scale = 1.5
 contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
-[node name="Sparkle" parent="." instance=ExtResource( 7 )]
+[node name="Sparkle" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = SubResource( 10 )
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -93,7 +95,7 @@ shape = SubResource( 5 )
 visible = false
 collision_layer = 8
 collision_mask = 8
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCollision"]
 shape = SubResource( 2 )
@@ -126,10 +128,10 @@ align = 1
 valign = 1
 
 [node name="CoinLandAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 2 )
 
 [node name="CoinCombineAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 1 )
 
 [connection signal="tree_exited" from="." to="." method="_on_Coin_tree_exited"]
 [connection signal="body_entered" from="CoinCollision" to="CoinCollision" method="_on_CoinCollision_body_entered"]

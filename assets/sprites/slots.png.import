@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/board.png-9f5cd3df1656f6c467ab941b9594e82a.stex"
+path="res://.import/slots.png-ef6ac2cce85d5347adebf20cf99da20c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fixed Parts/board.png"
-dest_files=[ "res://.import/board.png-9f5cd3df1656f6c467ab941b9594e82a.stex" ]
+source_file="res://assets/sprites/slots.png"
+dest_files=[ "res://.import/slots.png-ef6ac2cce85d5347adebf20cf99da20c.stex" ]
 
 [params]
 

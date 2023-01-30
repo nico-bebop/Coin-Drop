@@ -1,6 +1,6 @@
 extends Node2D
 
-var GameOver = preload("res://UI/GameOver.tscn")
+const GameOver = preload("res://board/ui/game_over.tscn")
 
 var active_coins
 var current_turn setget set_turn

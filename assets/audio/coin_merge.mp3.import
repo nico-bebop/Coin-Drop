@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/coin_merge.mp3-7be968a3d58c867f22878193b67d780e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/coin_merge.mp3"
+dest_files=[ "res://.import/coin_merge.mp3-7be968a3d58c867f22878193b67d780e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
