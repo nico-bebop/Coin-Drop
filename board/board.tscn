@@ -164,7 +164,7 @@ position = Vector2( 160, 0 )
 position = Vector2( 192, 0 )
 
 [node name="Row5" type="Node2D" parent="Switches"]
-position = Vector2( 48, 263 )
+position = Vector2( 48, 264 )
 
 [node name="Switch1" parent="Switches/Row5" instance=ExtResource( 5 )]
 
