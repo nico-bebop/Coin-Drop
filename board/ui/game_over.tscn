@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://board/ui/game_over.gd" type="Script" id=1]
+
+[node name="GameOver" type="AcceptDialog"]
+popup_exclusive = true
+window_title = "Game Over!"
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="confirmed" from="." to="." method="_on_GameOver_confirmed"]

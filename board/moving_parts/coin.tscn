@@ -1,0 +1,141 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/coin_fall.mp3" type="AudioStream" id=2]
+[ext_resource path="res://board/moving_parts/coin.gd" type="Script" id=3]
+[ext_resource path="res://board/moving_parts/coin_collision.gd" type="Script" id=4]
+[ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="StreamTexture" id=10]
+load_path = "res://.import/coin.png-54d5e156d7891d9603a51f76f85b4fd9.stex"
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 5.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "HorizontalFlip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "IdleShine"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 6, 7, 8, 9, 10, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="DynamicFont" id=9]
+size = 7
+font_data = ExtResource( 6 )
+
+[node name="Coin" type="RigidBody2D" groups=["Coins"]]
+collision_layer = 8
+collision_mask = 7
+mode = 2
+gravity_scale = 1.5
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 3 )
+
+[node name="Sparkle" parent="." instance=ExtResource( 5 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 10 )
+hframes = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="CoinCollision" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCollision"]
+shape = SubResource( 2 )
+
+[node name="SwitchCollision" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchCollision"]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/HorizontalFlip = SubResource( 6 )
+anims/IdleShine = SubResource( 8 )
+anims/RESET = SubResource( 7 )
+
+[node name="ShineTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = -2.0
+margin_top = -3.0
+margin_right = 3.0
+margin_bottom = 5.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+align = 1
+valign = 1
+
+[node name="CoinLandAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="CoinCombineAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[connection signal="tree_exited" from="." to="." method="_on_Coin_tree_exited"]
+[connection signal="body_entered" from="CoinCollision" to="CoinCollision" method="_on_CoinCollision_body_entered"]
+[connection signal="combine" from="CoinCollision" to="." method="_on_CoinCollision_combine"]
+[connection signal="body_entered" from="SwitchCollision" to="." method="_on_SwitchCollision_body_entered"]
+[connection signal="body_exited" from="SwitchCollision" to="." method="_on_SwitchCollision_body_exited"]
+[connection signal="timeout" from="ShineTimer" to="." method="_on_ShineTimer_timeout"]
