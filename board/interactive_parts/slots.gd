@@ -7,7 +7,7 @@ func _ready():
 	animation_player.play("Highlight")
 
 
-func _on_Board_turn_ready():
+func _on_TurnSystem_turn_ready():
 	change_slots_state(true)
 	animation_player.play("Highlight")
 

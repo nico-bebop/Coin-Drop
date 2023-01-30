@@ -9,6 +9,7 @@ var required_score = [10, 40, 20, 80]
 
 onready var p_name = $PlayerName
 onready var score = $Score
+onready var turn_system = $".."
 
 
 func _ready():
@@ -16,15 +17,11 @@ func _ready():
 	set_label_text()
 
 
-func update_score(player, current_round, value):
-	if player_name.begins_with(player):
+func update_score(value):
+	if turn_system.current_turn == self:
 		total_score += value
-		round_score[current_round] += value
+		round_score[turn_system.current_round] += value
 		set_label_text()
-
-
-func _on_Board_round_ended(_next_round, _next_score):
-	set_label_text()
 
 
 func set_label_text():
@@ -35,6 +32,10 @@ func set_label_text():
 	score.text += "\nTOTAL: " + str(total_score)
 
 
+func required_score_met():
+	return round_score[turn_system.current_round] >= required_score[turn_system.current_round]
+
+
 func change_outlines():
 	p_name.get("custom_fonts/font").outline_size = 1 if active else 0
 
@@ -42,3 +43,7 @@ func change_outlines():
 func set_active(value):
 	active = value
 	change_outlines()
+
+
+func _on_TurnSystem_round_ended():
+	set_label_text()

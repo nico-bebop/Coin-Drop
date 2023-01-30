@@ -14,11 +14,11 @@ onready var label = $Label
 onready var shine_timer = $ShineTimer
 onready var sparkle_effect = $Sparkle
 
-signal check_moving_coins
+signal check_sleeping_coins
 
 
 func _ready():
-	var _err = connect("check_moving_coins", get_parent(), "get_active_coins")
+	var _err = connect("check_sleeping_coins", get_parent(), "check_active_coins")
 
 
 func _physics_process(_delta):
@@ -36,7 +36,7 @@ func _on_SwitchCollision_body_entered(body):
 	sleeping = true
 	orientation = body.get("orientation")
 	coin_land_audio.play()
-	emit_signal("check_moving_coins")
+	emit_signal("check_sleeping_coins")
 
 
 func _on_SwitchCollision_body_exited(_body):
@@ -44,7 +44,7 @@ func _on_SwitchCollision_body_exited(_body):
 
 
 func _on_Coin_tree_exited():
-	emit_signal("check_moving_coins")
+	emit_signal("check_sleeping_coins")
 
 
 func _on_CoinCollision_combine(value):
