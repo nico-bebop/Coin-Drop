@@ -1,22 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://board/ui/player.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=3]
-
-[sub_resource type="DynamicFont" id=6]
-resource_local_to_scene = true
-size = 7
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+[ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/ui/coin_meter.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/ui/coin_meter_full.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Highlight"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_fonts/font:outline_color")
+tracks/0/path = NodePath("../Scoreboard:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -25,13 +20,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0.529412, 0.317647, 1 ) ]
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_fonts/font:outline_color")
+tracks/0/path = NodePath("../Scoreboard:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -40,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ) ]
+"values": [ 0 ]
 }
 
 [node name="Player" type="Control"]
@@ -48,20 +43,26 @@ margin_right = 64.0
 margin_bottom = 64.0
 script = ExtResource( 2 )
 
+[node name="Scoreboard" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 4 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PlayerName")
+playback_speed = 0.2
+anims/Highlight = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
 [node name="PlayerName" type="Label" parent="."]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 62.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
 text = "PLAYER NAME"
 align = 1
 valign = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerName"]
-playback_speed = 0.2
-anims/Highlight = SubResource( 4 )
-anims/RESET = SubResource( 5 )
 
 [node name="Score" type="Label" parent="."]
 margin_left = 2.0
@@ -75,3 +76,14 @@ TOTAL SCORE:
 0"
 align = 1
 valign = 1
+
+[node name="CoinMeter" type="TextureProgress" parent="."]
+margin_left = 16.0
+margin_top = 80.0
+margin_right = 32.0
+margin_bottom = 144.0
+max_value = 20.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
+texture_progress_offset = Vector2( 2, 2 )
+fill_mode = 3

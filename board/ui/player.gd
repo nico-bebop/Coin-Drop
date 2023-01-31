@@ -7,10 +7,11 @@ const TOTAL_SCORE = "\nTOTAL SCORE:\n "
 
 var active setget set_active
 var total_score = 0
-var round_score = [0, 0, 0, 0]
-var required_score = [10, 40, 20, 80]
+var round_score = [0, 0, 0, 0, Globals.NO_SCORE]
+var required_score = [10, 40, 20, 80, Globals.NO_SCORE]
 
-onready var animation_player = $PlayerName/AnimationPlayer
+onready var animation_player = $AnimationPlayer
+onready var coin_meter = $CoinMeter
 onready var score = $Score
 onready var turn_system = $".."
 
@@ -18,6 +19,7 @@ onready var turn_system = $".."
 func _ready():
 	$PlayerName.text = player_name
 	set_label_text()
+	set_max_coin_meter()
 
 
 func update_score(value):
@@ -25,6 +27,7 @@ func update_score(value):
 		total_score += value
 		round_score[turn_system.current_round] += value
 		set_label_text()
+		update_coin_meter()
 
 
 func set_label_text():
@@ -36,15 +39,27 @@ func required_score_met():
 	return round_score[turn_system.current_round] >= required_score[turn_system.current_round]
 
 
-func change_outlines():
+func highlight_active_player():
+	# warning-ignore:standalone_ternary
 	animation_player.play("Highlight") if active else animation_player.play("RESET")
+
+
+func update_coin_meter():
+	coin_meter.value = round_score[turn_system.current_round]
+
+
+func set_max_coin_meter():
+	coin_meter.max_value = required_score[turn_system.current_round]
+	coin_meter.step = coin_meter.max_value / 10
 
 
 func set_active(value):
 	active = value
-	change_outlines()
+	highlight_active_player()
 
 
 func _on_TurnSystem_round_ended():
+	set_label_text()
 	if turn_system.current_round != Globals.FINAL_ROUND:
-		set_label_text()
+		update_coin_meter()
+		set_max_coin_meter()
