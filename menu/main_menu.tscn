@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/fonts/default14px.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/sprites/ui/button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/ui/button_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=7]
 
 [node name="MainMenu" type="Control"]
 script = ExtResource( 1 )
@@ -24,6 +25,7 @@ texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="SinglePlayer"]
+material = ExtResource( 7 )
 margin_right = 192.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 4 )
@@ -41,6 +43,7 @@ texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="Versus"]
+material = ExtResource( 7 )
 margin_right = 192.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 4 )

@@ -39,21 +39,30 @@ func _on_SwitchCollision_body_entered(body):
 	emit_signal("check_sleeping_coins")
 
 
+func _on_CoinCollision_combine(value):
+	combine_coin()
+	change_multiplier(value)
+
+
+func combine_coin():
+	animation_player.play("HorizontalFlip")
+	coin_combine_audio.play()
+	yield(animation_player, "animation_finished")
+	sparkle_effect.emitting = true
+	can_shine = false
+
+
+func change_multiplier(value):
+	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
+	label.text = str(multiplier)
+
+
 func _on_SwitchCollision_body_exited(_body):
 	sleeping = false
 
 
 func _on_Coin_tree_exited():
 	emit_signal("check_sleeping_coins")
-
-
-func _on_CoinCollision_combine(value):
-	animation_player.play("HorizontalFlip")
-	coin_combine_audio.play()
-	sparkle_effect.emitting = true
-	yield(animation_player, "animation_finished")
-	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
-	label.text = str(multiplier)
 
 
 func _on_ShineTimer_timeout():
