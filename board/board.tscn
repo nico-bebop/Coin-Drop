@@ -283,16 +283,16 @@ script = ExtResource( 10 )
 
 [node name="Player1" parent="TurnSystem" instance=ExtResource( 4 )]
 margin_left = 16.0
-margin_top = 16.0
+margin_top = 24.0
 margin_right = 80.0
-margin_bottom = 80.0
+margin_bottom = 88.0
 player_name = "PLAYER ONE"
 
 [node name="Player2" parent="TurnSystem" instance=ExtResource( 4 )]
 margin_left = 240.0
-margin_top = 16.0
+margin_top = 24.0
 margin_right = 304.0
-margin_bottom = 80.0
+margin_bottom = 88.0
 player_name = "PLAYER TWO"
 
 [connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]

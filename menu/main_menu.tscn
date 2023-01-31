@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/button.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/default14px.tres" type="DynamicFont" id=4]
 
 [node name="MainMenu" type="Control"]
@@ -11,21 +12,35 @@ script = ExtResource( 1 )
 position = Vector2( 160, 160 )
 texture = ExtResource( 2 )
 
-[node name="SinglePlayer" type="Button" parent="."]
+[node name="SinglePlayer" type="TextureButton" parent="."]
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 256.0
 margin_bottom = 128.0
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="SinglePlayer"]
+margin_right = 192.0
+margin_bottom = 64.0
 custom_fonts/font = ExtResource( 4 )
 text = "SINGLE PLAYER"
+align = 1
+valign = 1
 
-[node name="Versus" type="Button" parent="."]
+[node name="Versus" type="TextureButton" parent="."]
 margin_left = 64.0
 margin_top = 192.0
 margin_right = 256.0
 margin_bottom = 256.0
+texture_normal = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Versus"]
+margin_right = 192.0
+margin_bottom = 64.0
 custom_fonts/font = ExtResource( 4 )
 text = "2 PLAYER VERSUS"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="SinglePlayer" to="." method="_on_SinglePlayer_pressed"]
 [connection signal="pressed" from="Versus" to="." method="_on_Versus_pressed"]
