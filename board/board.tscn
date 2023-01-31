@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://board/fixed_parts/inner_borders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://board/interactive_parts/slots.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/sprites/board.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/slots.png" type="Texture" id=9]
 [ext_resource path="res://board/ui/turn_system.gd" type="Script" id=10]
+[ext_resource path="res://assets/sprites/background.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/ui.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Highlight"
@@ -46,7 +48,15 @@ tracks/0/keys = {
 [node name="Board" type="Node2D"]
 script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 160, 160 )
+texture = ExtResource( 11 )
+
+[node name="UI" type="Sprite" parent="."]
+position = Vector2( 160, 160 )
+texture = ExtResource( 13 )
+
+[node name="Board" type="Sprite" parent="."]
 position = Vector2( 160, 160 )
 texture = ExtResource( 8 )
 
@@ -198,6 +208,7 @@ build_mode = 1
 polygon = PoolVector2Array( 256, 16, 384, 16, 384, 81, 400, 96, 400, 128, 416, 144, 416, 176, 432, 192, 432, 224, 448, 240, 448, 288, 192, 288, 192, 240, 208, 224, 208, 192, 224, 176, 224, 144, 240, 128, 240, 96, 256, 80 )
 
 [node name="InnerBorders" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="BottomSlots" type="Node2D" parent="."]
 position = Vector2( 40, 288 )
@@ -271,17 +282,17 @@ margin_bottom = 40.0
 script = ExtResource( 10 )
 
 [node name="Player1" parent="TurnSystem" instance=ExtResource( 4 )]
-margin_left = 32.0
-margin_top = 24.0
+margin_left = 16.0
+margin_top = 16.0
 margin_right = 80.0
-margin_bottom = 43.0
+margin_bottom = 80.0
 player_name = "PLAYER ONE"
 
 [node name="Player2" parent="TurnSystem" instance=ExtResource( 4 )]
 margin_left = 240.0
-margin_top = 24.0
-margin_right = 288.0
-margin_bottom = 43.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 80.0
 player_name = "PLAYER TWO"
 
 [connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]

@@ -1,29 +1,77 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://board/ui/player.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 resource_local_to_scene = true
 size = 7
-outline_color = Color( 0.180392, 0.662745, 0.188235, 1 )
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 7
-font_data = ExtResource( 1 )
+[sub_resource type="Animation" id=4]
+resource_name = "Highlight"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0.529412, 0.317647, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="Player" type="Control"]
-margin_right = 48.0
-margin_bottom = 19.0
+margin_right = 64.0
+margin_bottom = 64.0
 script = ExtResource( 2 )
 
 [node name="PlayerName" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 62.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 6 )
+text = "PLAYER NAME"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerName"]
+playback_speed = 0.2
+anims/Highlight = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [node name="Score" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 2 )
+margin_left = 2.0
+margin_top = 16.0
+margin_right = 62.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 3 )
+text = "ROUND SCORE:
+0/10
+TOTAL SCORE:
+0"
+align = 1
+valign = 1

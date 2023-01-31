@@ -2,18 +2,21 @@ extends Control
 
 export(String) var player_name
 
+const ROUND_SCORE = "ROUND SCORE:\n"
+const TOTAL_SCORE = "\nTOTAL SCORE:\n "
+
 var active setget set_active
 var total_score = 0
 var round_score = [0, 0, 0, 0]
 var required_score = [10, 40, 20, 80]
 
-onready var p_name = $PlayerName
+onready var animation_player = $PlayerName/AnimationPlayer
 onready var score = $Score
 onready var turn_system = $".."
 
 
 func _ready():
-	p_name.text = player_name
+	$PlayerName.text = player_name
 	set_label_text()
 
 
@@ -25,11 +28,8 @@ func update_score(value):
 
 
 func set_label_text():
-	score.text = "\nR1 : " + str(round_score[0]) + "/" + str(required_score[0])
-	score.text += "\nR2 : " + str(round_score[1]) + "/" + str(required_score[1])
-	score.text += "\nR3 : " + str(round_score[2]) + "/" + str(required_score[2])
-	score.text += "\nR4 : " + str(round_score[3]) + "/" + str(required_score[3])
-	score.text += "\nTOTAL: " + str(total_score)
+	var r = turn_system.current_round
+	score.text = ROUND_SCORE + str(round_score[r]) + "/" + str(required_score[r]) + TOTAL_SCORE + str(total_score)
 
 
 func required_score_met():
@@ -37,7 +37,7 @@ func required_score_met():
 
 
 func change_outlines():
-	p_name.get("custom_fonts/font").outline_size = 1 if active else 0
+	animation_player.play("Highlight") if active else animation_player.play("RESET")
 
 
 func set_active(value):
@@ -46,4 +46,5 @@ func set_active(value):
 
 
 func _on_TurnSystem_round_ended():
-	set_label_text()
+	if turn_system.current_round != Globals.FINAL_ROUND:
+		set_label_text()
