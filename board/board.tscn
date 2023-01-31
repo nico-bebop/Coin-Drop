@@ -7,11 +7,11 @@
 [ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://board/fixed_parts/score_slot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://board/board.gd" type="Script" id=7]
-[ext_resource path="res://assets/sprites/board.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/slots.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/game/slots.png" type="Texture" id=9]
 [ext_resource path="res://board/ui/turn_system.gd" type="Script" id=10]
-[ext_resource path="res://assets/sprites/background.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/ui.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/ui/ui.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Highlight"

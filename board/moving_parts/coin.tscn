@@ -6,7 +6,8 @@
 [ext_resource path="res://board/moving_parts/coin_collision.gd" type="Script" id=4]
 [ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/sprites/coin.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=7]
+
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 5.0
