@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/board.png-916e6b51bf65d609e7d0bcc46bfaacbd.stex"
+path="res://.import/particle.png-0bc8eb111cfbd691f2d45cae1a8e394c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/board.png"
-dest_files=[ "res://.import/board.png-916e6b51bf65d609e7d0bcc46bfaacbd.stex" ]
+source_file="res://assets/sprites/game/particle.png"
+dest_files=[ "res://.import/particle.png-0bc8eb111cfbd691f2d45cae1a8e394c.stex" ]
 
 [params]
 

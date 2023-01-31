@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-dde469fb1f19281f3784b52d4bea96cd.stex"
+path="res://.import/notch.png-1523107151497777d3cfec3b0286be36.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/background.png"
-dest_files=[ "res://.import/background.png-dde469fb1f19281f3784b52d4bea96cd.stex" ]
+source_file="res://assets/sprites/game/notch.png"
+dest_files=[ "res://.import/notch.png-1523107151497777d3cfec3b0286be36.stex" ]
 
 [params]
 
