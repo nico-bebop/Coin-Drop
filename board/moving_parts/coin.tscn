@@ -6,9 +6,7 @@
 [ext_resource path="res://board/moving_parts/coin_collision.gd" type="Script" id=4]
 [ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=6]
-
-[sub_resource type="StreamTexture" id=10]
-load_path = "res://.import/coin.png-54d5e156d7891d9603a51f76f85b4fd9.stex"
+[ext_resource path="res://assets/sprites/coin.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 5.0
@@ -83,7 +81,7 @@ script = ExtResource( 3 )
 [node name="Sparkle" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = SubResource( 10 )
+texture = ExtResource( 7 )
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

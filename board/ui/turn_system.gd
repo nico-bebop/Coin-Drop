@@ -1,7 +1,5 @@
 extends Control
 
-const GAME_OVER = 4
-
 var current_turn setget set_turn
 var current_round = 0 setget set_round
 var scores = [10, 40, 20, 80]
@@ -29,10 +27,10 @@ func set_current_player():
 
 func next_turn():
 	check_change_round()
-	if current_round == GAME_OVER:
+	if current_round == Globals.FINAL_ROUND:
 		emit_signal("game_over")
 		return
-	
+
 	set_current_player()
 	emit_signal("turn_ready")
 
@@ -51,7 +49,7 @@ func change_active_player(active_player, inactive_player):
 
 
 func update_slots_score(next_round):
-	if next_round < GAME_OVER:
+	if next_round < Globals.FINAL_ROUND:
 		for slot in bottom_slots.get_children():
 			slot.set_score(slot.scores[next_round])
 
