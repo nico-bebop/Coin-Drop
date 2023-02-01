@@ -1,5 +1,6 @@
 extends Node
 
+const DOWN = "DOWN"
 const LEFT = "LEFT"
 const RIGHT = "RIGHT"
 

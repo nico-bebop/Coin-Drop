@@ -66,7 +66,7 @@ polygon = PoolVector2Array( 240, -68, 400, -68, 400, 14, 419, 50, 419, 92, 439, 
 [node name="InnerBorders" parent="." instance=ExtResource( 1 )]
 
 [node name="Slots" type="Node2D" parent="."]
-position = Vector2( 179, 112 )
+position = Vector2( 180, 112 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Slots"]
@@ -134,7 +134,7 @@ position = Vector2( 80, 0 )
 position = Vector2( 120, 0 )
 
 [node name="Switch5" parent="Switches/Row2" instance=ExtResource( 5 )]
-position = Vector2( 161, 0 )
+position = Vector2( 160, 0 )
 
 [node name="Row3" type="Node2D" parent="Switches"]
 position = Vector2( 60, 179 )

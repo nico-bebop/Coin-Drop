@@ -9,16 +9,15 @@
 [ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=7]
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=8]
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=11]
 radius = 6.0
-height = 6.0
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 6.0
 height = 6.0
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 6, 2.5 )
+extents = Vector2( 6, 3 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "HorizontalFlip"
@@ -33,7 +32,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 3, 2, 1, 4 ]
+"values": [ 1, 2, 3, 2, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -49,7 +48,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 5, 6, 7, 8, 9, 0 ]
+"values": [ 0, 4, 5, 6, 7, 8, 0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -67,28 +66,22 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[node name="Coin" type="RigidBody2D" groups=["Coins"]]
+[node name="Coin" type="KinematicBody2D" groups=["Coins"]]
 collision_layer = 8
 collision_mask = 7
-mode = 2
-gravity_scale = 1.5
-contacts_reported = 1
-contact_monitor = true
 script = ExtResource( 3 )
 
 [node name="Sparkle" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 7 )
-hframes = 10
+hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 11 )
 
 [node name="CoinCollision" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 4 )
@@ -101,7 +94,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchCollision"]
-position = Vector2( 0, 4.5 )
+position = Vector2( 0, 5 )
 shape = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
