@@ -5,18 +5,20 @@
 [ext_resource path="res://board/moving_parts/coin.gd" type="Script" id=3]
 [ext_resource path="res://board/moving_parts/coin_collision.gd" type="Script" id=4]
 [ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=8]
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 5.0
-height = 4.0
-
-[sub_resource type="CircleShape2D" id=2]
 radius = 6.0
+height = 6.0
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 6.0
+height = 6.0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 6, 2.5 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "HorizontalFlip"
@@ -65,10 +67,6 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="DynamicFont" id=9]
-size = 7
-font_data = ExtResource( 6 )
-
 [node name="Coin" type="RigidBody2D" groups=["Coins"]]
 collision_layer = 8
 collision_mask = 7
@@ -96,15 +94,15 @@ collision_mask = 8
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCollision"]
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 
 [node name="SwitchCollision" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchCollision"]
-shape = SubResource( 4 )
+position = Vector2( 0, 4.5 )
+shape = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
@@ -116,12 +114,13 @@ anims/RESET = SubResource( 7 )
 wait_time = 4.0
 
 [node name="Label" type="Label" parent="."]
-margin_left = -2.0
-margin_top = -3.0
-margin_right = 4.0
-margin_bottom = 5.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 9 )
+material = ExtResource( 8 )
+margin_left = -4.0
+margin_top = -7.0
+margin_right = 6.0
+margin_bottom = 9.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
 align = 1
 valign = 1
 
