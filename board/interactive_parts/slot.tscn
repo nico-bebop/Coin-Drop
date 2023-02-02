@@ -30,7 +30,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 6 )
 
-[node name="Slot" type="Area2D" groups=["Slot"]]
+[node name="Slot" type="Area2D" groups=["Slots"]]
 collision_mask = 0
 script = ExtResource( 1 )
 
@@ -38,7 +38,7 @@ script = ExtResource( 1 )
 visible = false
 frames = SubResource( 8 )
 animation = "HorizontalFlip"
-frame = 5
+frame = 0
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

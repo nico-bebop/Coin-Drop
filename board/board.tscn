@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/slots.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://board/ui/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://board/fixed_parts/score_slot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://board/board.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/game/slots.png" type="Texture" id=9]
 [ext_resource path="res://board/ui/turn_system.gd" type="Script" id=10]
@@ -158,6 +159,7 @@ tracks/3/keys = {
 }
 
 [node name="Board" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 180, 320 )
@@ -431,6 +433,9 @@ player_name = "PLAYER TWO"
 margin_left = 32.0
 margin_right = 48.0
 
+[connection signal="board_ready" from="." to="Slots" method="_on_Board_board_ready"]
+[connection signal="board_ready" from="." to="RoundTransition" method="_on_Board_board_ready"]
+[connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
 [connection signal="no_moving_coins" from="Coins" to="TurnSystem" method="_on_Coins_no_moving_coins"]
 [connection signal="round_ended" from="TurnSystem" to="RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player1" method="_on_TurnSystem_round_ended"]

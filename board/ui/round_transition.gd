@@ -4,7 +4,7 @@ onready var animation_player = $AnimationPlayer
 onready var label = $Label
 
 
-func _ready():
+func _on_Board_board_ready():
 	round_start_animation(0)
 
 

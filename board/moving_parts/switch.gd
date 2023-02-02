@@ -5,13 +5,12 @@ onready var animation_player = $AnimationPlayer
 export(String) var orientation
 
 
-func _ready():
+func set_random_position():
 	randomize()
 	if randi() % 2 == 0:
 		animation_player.play("FlipToLeft")
 	else:
 		animation_player.play("FlipToRight")
-	animation_player.seek(0.6)
 
 
 func flip_contrary():
