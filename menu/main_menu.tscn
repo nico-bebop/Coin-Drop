@@ -3,7 +3,7 @@
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/ui/button.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/default14px.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/default21px.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/sprites/ui/button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/ui/button_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=7]
@@ -16,17 +16,18 @@ position = Vector2( 180, 320 )
 texture = ExtResource( 2 )
 
 [node name="SinglePlayer" type="TextureButton" parent="."]
-margin_left = 84.0
+margin_left = 64.0
 margin_top = 192.0
-margin_right = 276.0
+margin_right = 296.0
 margin_bottom = 256.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
+expand = true
 
 [node name="Label" type="Label" parent="SinglePlayer"]
 material = ExtResource( 7 )
-margin_right = 192.0
+margin_right = 232.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 4 )
 text = "SINGLE PLAYER"
@@ -34,17 +35,18 @@ align = 1
 valign = 1
 
 [node name="Versus" type="TextureButton" parent="."]
-margin_left = 84.0
+margin_left = 64.0
 margin_top = 320.0
-margin_right = 276.0
+margin_right = 295.0
 margin_bottom = 384.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
+expand = true
 
 [node name="Label" type="Label" parent="Versus"]
 material = ExtResource( 7 )
-margin_right = 192.0
+margin_right = 232.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 4 )
 text = "2 PLAYER VERSUS"
