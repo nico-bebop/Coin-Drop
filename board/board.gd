@@ -9,7 +9,7 @@ onready var slots = $Slots
 func check_active_coins():
 	if is_inside_tree():
 		for coin in get_tree().get_nodes_in_group("Coins"):
-			if coin.moving:
+			if coin.is_moving:
 				return
 		turn_system.next_turn()
 

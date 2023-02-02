@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 const MAX_MULTIPLIER = 5
-const MAX_SPEED = 300
-const ACCELERATION = 150
+const MAX_SPEED = 500
+const ACCELERATION = 200
 const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
 
 var can_shine = true
 var direction = Globals.DOWN
 var multiplier = 1 setget set_multiplier
-var moving = true
+var is_moving = true
 var orientation = null
 var target_position
 var velocity = Vector2.ZERO
@@ -29,22 +29,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	process_movement(delta)
 	play_idle_animation()
+	process_movement(delta)
 	velocity = move_and_slide(velocity)
-
-
-func combine_coin():
-	animation_player.stop()
-	animation_player.play("HorizontalFlip")
-	coin_combine_audio.play()
-	yield(animation_player, "animation_finished")
-	sparkle_effect.emitting = true
-
-
-func change_multiplier(value):
-	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
-	label.text = str(multiplier)
 
 
 func process_movement(delta):
@@ -52,21 +39,34 @@ func process_movement(delta):
 		Globals.DOWN:
 			velocity = velocity.move_toward(Vector2.DOWN * MAX_SPEED, ACCELERATION * delta)
 		Globals.LEFT, Globals.RIGHT:
-			global_position = global_position.move_toward(target_position, ACCELERATION * delta)
+			global_position = global_position.move_toward(target_position, ACCELERATION / 2.0 * delta)
 
 	if global_position == target_position:
 		direction = Globals.DOWN
 
 
 func play_idle_animation():
-	if !moving && can_shine:
+	if !is_moving && can_shine:
 		shine_timer.start()
 		animation_player.play("IdleShine")
 		can_shine = false
 
 
+func combine_coin():
+	animation_player.stop()
+	animation_player.play("HorizontalFlip")
+	coin_combine_audio.play()
+	sparkle_effect.emitting = true
+
+
+func change_multiplier(value):
+	yield(animation_player, "animation_finished")
+	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
+	label.text = str(multiplier)
+
+
 func _on_SwitchCollision_body_entered(body):
-	moving = false
+	is_moving = false
 	orientation = body.get("orientation")
 	coin_land_audio.play()
 	emit_signal("check_moving_coins")
@@ -79,7 +79,7 @@ func _on_CoinCollision_combine(value):
 
 
 func _on_SwitchCollision_body_exited(_body):
-	moving = true
+	is_moving = true
 
 
 func _on_Coin_tree_exited():

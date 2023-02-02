@@ -17,7 +17,7 @@ radius = 6.0
 height = 6.0
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 6, 3 )
+extents = Vector2( 2, 1 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "HorizontalFlip"
@@ -78,10 +78,12 @@ texture = ExtResource( 7 )
 hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 1.5708
 shape = SubResource( 11 )
 
 [node name="CoinCollision" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 4 )
@@ -90,15 +92,16 @@ script = ExtResource( 4 )
 shape = SubResource( 9 )
 
 [node name="SwitchCollision" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchCollision"]
-position = Vector2( 0, 5 )
+position = Vector2( 0, 6 )
 shape = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
+playback_speed = 2.5
 anims/HorizontalFlip = SubResource( 6 )
 anims/IdleShine = SubResource( 8 )
 anims/RESET = SubResource( 7 )
