@@ -15,6 +15,7 @@ var target_position
 var velocity = Vector2.ZERO
 
 onready var animation_player = $AnimationPlayer
+onready var coin_collision = $CoinCollision
 onready var coin_combine_audio = $CoinCombineAudio
 onready var coin_land_audio = $CoinLandAudio
 onready var label = $Label
@@ -39,6 +40,7 @@ func process_movement(delta):
 		Globals.DOWN:
 			velocity = velocity.move_toward(Vector2.DOWN * MAX_SPEED, ACCELERATION * delta)
 		Globals.LEFT, Globals.RIGHT:
+			is_moving = true
 			global_position = global_position.move_toward(target_position, ACCELERATION / 2.0 * delta)
 
 	if global_position == target_position:
@@ -52,7 +54,14 @@ func play_idle_animation():
 		can_shine = false
 
 
-func combine_coin():
+func combine(coins):
+	if coins[0].is_moving && coins[1].is_moving:
+		play_combine_effects()
+		change_multiplier(coins[0].multiplier + coins[1].multiplier)
+		coins[0].queue_free()
+
+
+func play_combine_effects():
 	animation_player.stop()
 	animation_player.play("HorizontalFlip")
 	coin_combine_audio.play()
@@ -65,17 +74,21 @@ func change_multiplier(value):
 	label.text = str(multiplier)
 
 
+func _on_CoinCollision_body_entered(_body):
+	if !is_moving:
+		direction = orientation
+
+	var bodies = coin_collision.get_overlapping_bodies()
+	if bodies.size() > 1:
+		combine(bodies)
+
+
 func _on_SwitchCollision_body_entered(body):
 	is_moving = false
 	orientation = body.get("orientation")
 	coin_land_audio.play()
 	emit_signal("check_moving_coins")
 	set_target_position()
-
-
-func _on_CoinCollision_combine(value):
-	combine_coin()
-	change_multiplier(value)
 
 
 func _on_SwitchCollision_body_exited(_body):

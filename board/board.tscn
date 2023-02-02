@@ -1,15 +1,19 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
+[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/slots.gd" type="Script" id=2]
 [ext_resource path="res://board/interactive_parts/slot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://board/ui/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://board/fixed_parts/score_slot.tscn" type="PackedScene" id=6]
-[ext_resource path="res://board/board.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/game/slots.png" type="Texture" id=9]
 [ext_resource path="res://board/ui/turn_system.gd" type="Script" id=10]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/game/trasnsition_background.png" type="Texture" id=12]
+[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=13]
+[ext_resource path="res://board/ui/round_transition.gd" type="Script" id=14]
+[ext_resource path="res://board/moving_parts/coins.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Highlight"
@@ -43,8 +47,117 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="DynamicFont" id=17]
+resource_local_to_scene = true
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 180, 320 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "RoundChange"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.5, 2.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 540, 320 ), Vector2( 180, 320 ), Vector2( 180, 320 ), Vector2( -180, 320 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.6, 0.9, 2.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 360.0, 360.0, 56.0, -21.0002, -360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 0.6, 0.9, 2.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 720.0, 720.0, 416.0, 339.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Board" type="Node2D"]
-script = ExtResource( 7 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 180, 320 )
@@ -268,6 +381,33 @@ scores = [ 2, 21, 8, 49 ]
 position = Vector2( 300, 0 )
 scores = [ 2, 34, 9, 64 ]
 
+[node name="Coins" type="Node2D" parent="."]
+script = ExtResource( 15 )
+
+[node name="RoundTransition" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 14 )
+
+[node name="Sprite" type="Sprite" parent="RoundTransition"]
+position = Vector2( 180, 320 )
+scale = Vector2( 22.5, 3 )
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="RoundTransition"]
+material = ExtResource( 1 )
+margin_top = 303.0
+margin_right = 360.0
+margin_bottom = 343.0
+custom_fonts/font = SubResource( 17 )
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RoundTransition"]
+anims/RESET = SubResource( 18 )
+anims/RoundChange = SubResource( 19 )
+
 [node name="TurnSystem" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -291,7 +431,8 @@ player_name = "PLAYER TWO"
 margin_left = 32.0
 margin_right = 48.0
 
-[connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]
+[connection signal="no_moving_coins" from="Coins" to="TurnSystem" method="_on_Coins_no_moving_coins"]
+[connection signal="round_ended" from="TurnSystem" to="RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player1" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player2" method="_on_TurnSystem_round_ended"]
 [connection signal="turn_ready" from="TurnSystem" to="Slots" method="_on_TurnSystem_turn_ready"]

@@ -5,6 +5,7 @@ const Coin = preload("res://board/moving_parts/coin.tscn")
 var clickable = true
 
 onready var coin_sprite = $CoinSprite
+onready var coins = $"../../Coins"
 
 signal coin_dropped
 
@@ -33,7 +34,7 @@ func spawn_coin():
 	yield(coin_sprite, "animation_finished")
 	var coin = Coin.instance()
 	coin.position = global_position
-	get_tree().current_scene.add_child(coin)
+	coins.add_child(coin)
 
 
 func _on_Slot_mouse_entered():
