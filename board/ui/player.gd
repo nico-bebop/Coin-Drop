@@ -3,7 +3,7 @@ extends Control
 export(String) var player_name
 
 const ROUND_SCORE = "ROUND SCORE:\n"
-const TOTAL_SCORE = "\nTOTAL SCORE:\n "
+const TOTAL_SCORE = "\nTOTAL SCORE:\n"
 
 var active setget set_active
 var total_score = 0
@@ -18,8 +18,11 @@ onready var turn_system = $".."
 
 func _ready():
 	$PlayerName.text = player_name
-	set_label_text()
 	set_max_coin_meter()
+
+
+func _on_Board_board_ready():
+	set_label_text()
 
 
 func update_score(value):

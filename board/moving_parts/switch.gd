@@ -10,20 +10,19 @@ export(String) var orientation
 
 func set_random_position():
 	randomize()
-
 	if randi() % 2 == 0:
-		animation_player.play(Globals.FLIP_TO_LEFT, -1, 0.8)
+		animation_player.play(FLIP_TO_LEFT)
 	else:
-		animation_player.play(Globals.FLIP_TO_RIGHT, -1, 0.8)
+		animation_player.play(FLIP_TO_RIGHT)
 	animation_player.seek(0.2)
 
 
 func flip_contrary():
 	match orientation:
 		Globals.LEFT:
-			animation_player.play(Globals.FLIP_TO_RIGHT)
+			animation_player.play(FLIP_TO_RIGHT)
 		Globals.RIGHT:
-			animation_player.play(Globals.FLIP_TO_LEFT)
+			animation_player.play(FLIP_TO_LEFT)
 
 
 func _on_Bottom_body_entered(_body):

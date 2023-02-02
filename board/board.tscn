@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/slots.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=13]
 [ext_resource path="res://board/ui/round_transition.gd" type="Script" id=14]
 [ext_resource path="res://board/moving_parts/coins.gd" type="Script" id=15]
+[ext_resource path="res://board/fixed_parts/bottom_slots.gd" type="Script" id=16]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Highlight"
@@ -319,6 +320,7 @@ position = Vector2( 280, 0 )
 
 [node name="BottomSlots" type="Node2D" parent="."]
 position = Vector2( 30, 547 )
+script = ExtResource( 16 )
 
 [node name="ScoreSlot1" parent="BottomSlots" instance=ExtResource( 6 )]
 scores = [ 2, 34, 9, 64 ]
@@ -434,9 +436,15 @@ margin_left = 32.0
 margin_right = 48.0
 
 [connection signal="board_ready" from="." to="Slots" method="_on_Board_board_ready"]
+[connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="RoundTransition" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
+[connection signal="board_ready" from="." to="TurnSystem/Player1" method="_on_Board_board_ready"]
+[connection signal="board_ready" from="." to="TurnSystem/Player2" method="_on_Board_board_ready"]
 [connection signal="no_moving_coins" from="Coins" to="TurnSystem" method="_on_Coins_no_moving_coins"]
+[connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]
+[connection signal="game_over" from="TurnSystem" to="Slots" method="_on_TurnSystem_game_over"]
+[connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player1" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="TurnSystem/Player2" method="_on_TurnSystem_round_ended"]
