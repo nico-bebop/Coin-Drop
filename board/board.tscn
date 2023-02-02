@@ -167,19 +167,11 @@ position = Vector2( 180, 320 )
 texture = ExtResource( 11 )
 
 [node name="Board" type="Sprite" parent="."]
-position = Vector2( 180, 320 )
+position = Vector2( 180, 360 )
 texture = ExtResource( 8 )
 
-[node name="OuterBorders" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OuterBorders"]
-visible = false
-position = Vector2( -140, 168 )
-build_mode = 1
-polygon = PoolVector2Array( 240, -68, 400, -68, 400, 14, 419, 50, 419, 92, 439, 130, 439, 172, 459, 210, 459, 252, 480, 292, 480, 392, 160, 392, 160, 290, 180, 252, 180, 210, 200, 172, 200, 130, 220, 92, 220, 50, 240, 12 )
-
 [node name="Slots" type="Node2D" parent="."]
-position = Vector2( 180, 112 )
+position = Vector2( 180, 152 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Slots"]
@@ -216,7 +208,7 @@ position = Vector2( 50, 0 )
 position = Vector2( 70, 0 )
 
 [node name="Switches" type="Node2D" parent="."]
-position = Vector2( 20, 160 )
+position = Vector2( 20, 200 )
 
 [node name="Row1" type="Node2D" parent="Switches"]
 position = Vector2( 100, 19 )
@@ -319,7 +311,7 @@ position = Vector2( 240, 0 )
 position = Vector2( 280, 0 )
 
 [node name="BottomSlots" type="Node2D" parent="."]
-position = Vector2( 30, 547 )
+position = Vector2( 30, 587 )
 script = ExtResource( 16 )
 
 [node name="ScoreSlot1" parent="BottomSlots" instance=ExtResource( 6 )]
@@ -424,6 +416,25 @@ margin_right = 88.0
 margin_bottom = 88.0
 player_name = "PLAYER ONE"
 
+[node name="Scoreboard" parent="TurnSystem/Player1" index="0"]
+position = Vector2( 28, 56 )
+
+[node name="PlayerName" parent="TurnSystem/Player1" index="2"]
+margin_left = -2.0
+margin_top = 26.0
+margin_right = 58.0
+margin_bottom = 40.0
+
+[node name="Score" parent="TurnSystem/Player1" index="3"]
+margin_left = -2.0
+margin_top = 40.0
+margin_right = 58.0
+margin_bottom = 86.0
+
+[node name="CoinMeter" parent="TurnSystem/Player1" index="4"]
+margin_top = 115.0
+margin_bottom = 219.0
+
 [node name="Player2" parent="TurnSystem" instance=ExtResource( 4 )]
 margin_left = 272.0
 margin_top = 24.0
@@ -431,9 +442,26 @@ margin_right = 336.0
 margin_bottom = 88.0
 player_name = "PLAYER TWO"
 
+[node name="Scoreboard" parent="TurnSystem/Player2" index="0"]
+position = Vector2( 36, 56 )
+
+[node name="PlayerName" parent="TurnSystem/Player2" index="2"]
+margin_left = 6.0
+margin_top = 26.0
+margin_right = 66.0
+margin_bottom = 40.0
+
+[node name="Score" parent="TurnSystem/Player2" index="3"]
+margin_left = 6.0
+margin_top = 40.0
+margin_right = 66.0
+margin_bottom = 86.0
+
 [node name="CoinMeter" parent="TurnSystem/Player2" index="4"]
-margin_left = 32.0
+margin_left = 28.0
+margin_top = 115.0
 margin_right = 48.0
+margin_bottom = 219.0
 
 [connection signal="board_ready" from="." to="Slots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]

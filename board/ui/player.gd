@@ -53,7 +53,7 @@ func update_coin_meter():
 
 func set_max_coin_meter():
 	coin_meter.max_value = required_score[turn_system.current_round]
-	coin_meter.step = coin_meter.max_value / 10
+	coin_meter.step = coin_meter.max_value / 20
 
 
 func set_active(value):
