@@ -58,8 +58,8 @@ func set_active(value):
 	highlight_active_player()
 
 
-func _on_TurnSystem_round_ended():
+func _on_TurnSystem_round_ended(current_round):
 	set_label_text()
-	if turn_system.current_round != Globals.FINAL_ROUND:
+	if current_round != Globals.FINAL_ROUND:
 		update_coin_meter()
 		set_max_coin_meter()

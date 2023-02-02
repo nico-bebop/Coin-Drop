@@ -23,7 +23,7 @@ func _ready():
 
 
 func _on_ScoreSlot_body_entered(body):
-	emit_signal("add_score", slot_score * body.get("multiplier"))
+	emit_signal("add_score", slot_score * body.get("multiplier")+99)
 	coin_score_audio.play()
 	confetti_effect.emitting = true
 	body.queue_free()
