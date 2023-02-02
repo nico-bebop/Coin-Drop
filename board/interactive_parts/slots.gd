@@ -3,8 +3,9 @@ extends Node2D
 onready var animation_player = $AnimationPlayer
 
 
-func _ready():
+func _on_Board_board_ready():
 	animation_player.play("Highlight")
+	change_slots_state(true)
 
 
 func _on_TurnSystem_turn_ready():
@@ -13,5 +14,5 @@ func _on_TurnSystem_turn_ready():
 
 
 func change_slots_state(value = false):
-	for slot in get_tree().get_nodes_in_group("Slot"):
+	for slot in get_tree().get_nodes_in_group(Globals.GROUP_SLOTS):
 		slot.clickable = value

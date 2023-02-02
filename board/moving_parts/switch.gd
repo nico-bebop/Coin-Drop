@@ -1,25 +1,29 @@
 extends Node2D
 
+const FLIP_TO_LEFT = "FlipToLeft"
+const FLIP_TO_RIGHT = "FlipToRight"
+
 onready var animation_player = $AnimationPlayer
 
 export(String) var orientation
 
 
-func _ready():
+func set_random_position():
 	randomize()
+
 	if randi() % 2 == 0:
-		animation_player.play("FlipToLeft")
+		animation_player.play(Globals.FLIP_TO_LEFT, -1, 0.8)
 	else:
-		animation_player.play("FlipToRight")
-	animation_player.seek(0.6)
+		animation_player.play(Globals.FLIP_TO_RIGHT, -1, 0.8)
+	animation_player.seek(0.2)
 
 
 func flip_contrary():
 	match orientation:
 		Globals.LEFT:
-			animation_player.play("FlipToRight")
+			animation_player.play(Globals.FLIP_TO_RIGHT)
 		Globals.RIGHT:
-			animation_player.play("FlipToLeft")
+			animation_player.play(Globals.FLIP_TO_LEFT)
 
 
 func _on_Bottom_body_entered(_body):

@@ -11,12 +11,11 @@ onready var slots = $"../Slots"
 onready var player1 = $Player1
 onready var player2 = $Player2
 
-
 signal turn_ready
 signal round_ended(current_round)
 
 
-func _ready():
+func _on_Board_board_ready():
 	change_active_player(player1, player2)
 
 
