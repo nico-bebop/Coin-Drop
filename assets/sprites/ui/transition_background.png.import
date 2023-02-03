@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ui.png-45016ef068572b75226dc28a142cab84.stex"
+path="res://.import/transition_background.png-cc76a549dcd94ba2406073ddeca1d05d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/ui.png"
-dest_files=[ "res://.import/ui.png-45016ef068572b75226dc28a142cab84.stex" ]
+source_file="res://assets/sprites/ui/transition_background.png"
+dest_files=[ "res://.import/transition_background.png-cc76a549dcd94ba2406073ddeca1d05d.stex" ]
 
 [params]
 

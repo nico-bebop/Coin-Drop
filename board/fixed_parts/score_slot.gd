@@ -20,7 +20,6 @@ func _ready():
 	var _err
 	_err = connect("add_score", player1, "update_score")
 	_err = connect("add_score", player2, "update_score")
-	set_score(scores[0])
 
 
 func _on_ScoreSlot_body_entered(coin):

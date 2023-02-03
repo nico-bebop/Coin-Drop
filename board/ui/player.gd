@@ -14,15 +14,18 @@ onready var animation_player = $AnimationPlayer
 onready var coin_meter = $CoinMeter
 onready var score = $Score
 onready var turn_system = $".."
+onready var tween = $Tween
 
 
 func _ready():
 	$PlayerName.text = player_name
-	set_max_coin_meter()
 
 
 func _on_Board_board_ready():
 	set_label_text()
+	empty_coin_meter()
+	yield(tween, "tween_completed")
+	set_max_coin_meter()
 
 
 func update_score(value):
@@ -53,7 +56,12 @@ func update_coin_meter():
 
 func set_max_coin_meter():
 	coin_meter.max_value = required_score[turn_system.current_round]
-	coin_meter.step = coin_meter.max_value / 10
+	coin_meter.step = coin_meter.max_value / 20
+
+
+func empty_coin_meter():
+	tween.interpolate_property($CoinMeter, "value", null, 0, 1)
+	tween.start()
 
 
 func set_active(value):
@@ -63,6 +71,9 @@ func set_active(value):
 
 func _on_TurnSystem_round_ended(current_round):
 	set_label_text()
+	empty_coin_meter()
+	yield(tween, "tween_completed")
+
 	if current_round != Globals.FINAL_ROUND:
 		update_coin_meter()
 		set_max_coin_meter()
