@@ -9,7 +9,6 @@ export(String) var orientation
 
 
 func set_random_position():
-	randomize()
 	if randi() % 2 == 0:
 		animation_player.play(FLIP_TO_LEFT)
 	else:

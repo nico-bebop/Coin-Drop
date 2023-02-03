@@ -11,7 +11,7 @@ signal coin_dropped
 
 
 func _ready():
-	var _err = connect("coin_dropped", get_parent(), "change_slots_state")
+	var _err = connect("coin_dropped", get_parent(), "disable_slots")
 
 
 func _on_Slot_input_event(_viewport, _event, _shape_idx):
@@ -19,19 +19,14 @@ func _on_Slot_input_event(_viewport, _event, _shape_idx):
 		if !coin_sprite.visible:
 			coin_sprite.visible = true
 			return
-		get_parent().animation_player.play("RESET")
-		wait_for_coin()
+
+		emit_signal("coin_dropped")
+		yield(coin_sprite, "animation_finished")
+		coin_sprite.visible = false
 		spawn_coin()
 
 
-func wait_for_coin():
-	emit_signal("coin_dropped")
-	yield(coin_sprite, "animation_finished")
-	coin_sprite.visible = false
-
-
 func spawn_coin():
-	yield(coin_sprite, "animation_finished")
 	var coin = Coin.instance()
 	coin.position = global_position
 	coins.add_child(coin)

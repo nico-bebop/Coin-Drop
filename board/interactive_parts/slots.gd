@@ -12,7 +12,7 @@ func _on_TurnSystem_turn_ready():
 
 
 func _on_TurnSystem_game_over(_players):
-	change_slots_state(false)
+	disable_slots()
 
 
 func enable_slots():
@@ -20,6 +20,11 @@ func enable_slots():
 	change_slots_state(true)
 
 
-func change_slots_state(value = false):
+func disable_slots():
+	animation_player.play("RESET")
+	change_slots_state(false)
+
+
+func change_slots_state(value):
 	for slot in get_tree().get_nodes_in_group(Globals.GROUP_SLOTS):
 		slot.clickable = value
