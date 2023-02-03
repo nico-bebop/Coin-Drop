@@ -86,7 +86,10 @@ margin_top = 128.0
 margin_right = 36.0
 margin_bottom = 232.0
 max_value = 20.0
+value = 20.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 texture_progress_offset = Vector2( 2, 2 )
 fill_mode = 3
+
+[node name="Tween" type="Tween" parent="."]
