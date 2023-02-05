@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://board/fixed_parts/score_slot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://board/fixed_parts/bottom_slots.gd" type="Script" id=3]
+
+[node name="BottomSlots" type="Node2D"]
+position = Vector2( 30, 587 )
+script = ExtResource( 3 )
+
+[node name="ScoreSlot1" parent="." instance=ExtResource( 1 )]
+scores = [ 2, 34, 9, 64 ]
+
+[node name="ScoreSlot2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, 0 )
+scores = [ 2, 21, 8, 49 ]
+
+[node name="ScoreSlot3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 40, 0 )
+scores = [ 2, 13, 7, 36 ]
+
+[node name="ScoreSlot4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 61, 0 )
+scores = [ 2, 8, 6, 25 ]
+
+[node name="ScoreSlot5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, 0 )
+scores = [ 2, 5, 5, 16 ]
+
+[node name="ScoreSlot6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 100, 0 )
+scores = [ 2, 3, 4, 9 ]
+
+[node name="ScoreSlot7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, 0 )
+scores = [ 2, 2, 3, 4 ]
+
+[node name="ScoreSlot8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, 0 )
+scores = [ 2, 1, 2, 1 ]
+
+[node name="ScoreSlot9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 0 )
+scores = [ 2, 1, 2, 1 ]
+
+[node name="ScoreSlot10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 180, 0 )
+scores = [ 2, 2, 3, 4 ]
+
+[node name="ScoreSlot11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, 0 )
+scores = [ 2, 3, 4, 9 ]
+
+[node name="ScoreSlot12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 220, 0 )
+scores = [ 2, 5, 5, 16 ]
+
+[node name="ScoreSlot13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, 0 )
+scores = [ 2, 8, 6, 25 ]
+
+[node name="ScoreSlot14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 260, 0 )
+scores = [ 2, 13, 7, 36 ]
+
+[node name="ScoreSlot15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 280, 0 )
+scores = [ 2, 21, 8, 49 ]
+
+[node name="ScoreSlot16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 300, 0 )
+scores = [ 2, 34, 9, 64 ]
+
+[connection signal="add_score" from="ScoreSlot1" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot2" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot3" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot4" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot5" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot6" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot7" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot8" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot9" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot10" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot11" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot12" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot13" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot14" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot15" to="." method="_on_ScoreSlot_add_score"]
+[connection signal="add_score" from="ScoreSlot16" to="." method="_on_ScoreSlot_add_score"]

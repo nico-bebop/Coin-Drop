@@ -10,16 +10,8 @@ onready var animation_player = $AnimationPlayer
 onready var label = $Label
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
-onready var player1 = $"../../TurnSystem/Player1"
-onready var player2 = $"../../TurnSystem/Player2"
 
 signal add_score(value)
-
-
-func _ready():
-	var _err
-	_err = connect("add_score", player1, "update_score")
-	_err = connect("add_score", player2, "update_score")
 
 
 func _on_ScoreSlot_body_entered(coin):

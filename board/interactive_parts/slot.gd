@@ -10,10 +10,6 @@ onready var coins = $"../../Coins"
 signal coin_dropped
 
 
-func _ready():
-	var _err = connect("coin_dropped", get_parent(), "disable_slots")
-
-
 func _on_Slot_input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("click") && clickable:
 		if !coin_sprite.visible:

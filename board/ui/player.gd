@@ -28,14 +28,6 @@ func _on_Board_board_ready():
 	set_max_coin_meter()
 
 
-func update_score(value):
-	if turn_system.current_turn == self:
-		total_score += value
-		round_score[turn_system.current_round] += value
-		set_label_text()
-		update_coin_meter()
-
-
 func set_label_text():
 	var r = turn_system.current_round
 	score.text = ROUND_SCORE + str(round_score[r]) + "/" + str(required_score[r]) + TOTAL_SCORE + str(total_score)
@@ -77,3 +69,11 @@ func _on_TurnSystem_round_ended(current_round):
 	if current_round != Globals.FINAL_ROUND:
 		update_coin_meter()
 		set_max_coin_meter()
+
+
+func _on_BottomSlots_update_score(value):
+	if turn_system.current_turn == self:
+		total_score += value
+		round_score[turn_system.current_round] += value
+		set_label_text()
+		update_coin_meter()
