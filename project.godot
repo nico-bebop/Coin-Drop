@@ -25,8 +25,10 @@ window/size/always_on_top=true
 window/size/test_width=720
 window/size/test_height=1280
 window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
+window/size/test_height.release=0
+window/size/test_width.release=0
 
 [global]
 

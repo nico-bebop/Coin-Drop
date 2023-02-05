@@ -28,7 +28,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 6 )
+extents = Vector2( 8.5, 10 )
 
 [node name="Slot" type="Area2D" groups=["Slots"]]
 collision_mask = 0
@@ -42,7 +42,7 @@ frame = 0
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 
 [connection signal="input_event" from="." to="." method="_on_Slot_input_event"]
