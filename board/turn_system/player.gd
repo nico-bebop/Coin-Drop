@@ -5,11 +5,12 @@ export(String) var player_name
 const COINS_LEFT = "COINS LEFT:\n"
 const ROUND_SCORE = "ROUND SCORE:\n"
 const TOTAL_SCORE = "\nTOTAL SCORE:\n"
+const NO_SCORE = " - "
 
 var coins_left = 5
 var total_score = 0
 var round_score = 0
-var required_score = [10, 40, 20, 80, Globals.NO_SCORE]
+var required_score = [10, 40, 20, 80, NO_SCORE]
 
 onready var animation_player = $AnimationPlayer
 onready var coin_meter = $CoinMeter
@@ -34,7 +35,7 @@ func reset_scoreboard():
 
 func set_label_text():
 	if turn_system.current_round == Globals.FINAL_ROUND:
-		round_score = Globals.NO_SCORE
+		round_score = NO_SCORE
 
 	match Globals.game_mode:
 		Globals.GameModes.SINGLE_PLAYER:
