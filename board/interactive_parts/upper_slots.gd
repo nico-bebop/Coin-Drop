@@ -15,6 +15,10 @@ func _on_TurnSystem_game_over(_players):
 	disable_slots()
 
 
+func _on_Slot_coin_dropped():
+	disable_slots()
+
+
 func enable_slots():
 	animation_player.play("Highlight")
 	change_slots_state(true)

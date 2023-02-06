@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://board/interactive_parts/slot.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=2]
@@ -19,16 +19,20 @@ region = Rect2( 32, 0, 16, 16 )
 atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 11 ), SubResource( 10 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 12 ), SubResource( 11 ), SubResource( 10 ) ],
 "loop": true,
 "name": "HorizontalFlip",
-"speed": 15.0
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 6 )
+extents = Vector2( 8.5, 10 )
 
 [node name="Slot" type="Area2D" groups=["Slots"]]
 collision_mask = 0
@@ -43,6 +47,7 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 
 [connection signal="input_event" from="." to="." method="_on_Slot_input_event"]

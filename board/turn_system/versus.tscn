@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://board/turn_system/versus.gd" type="Script" id=2]
+[ext_resource path="res://board/turn_system/player.tscn" type="PackedScene" id=3]
+
+[node name="Versus" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Player1" parent="." instance=ExtResource( 3 )]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 88.0
+margin_bottom = 88.0
+player_name = "PLAYER ONE"
+
+[node name="Player2" parent="." instance=ExtResource( 3 )]
+margin_left = 272.0
+margin_top = 24.0
+margin_right = 336.0
+margin_bottom = 88.0
+player_name = "PLAYER TWO"
