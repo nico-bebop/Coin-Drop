@@ -2,13 +2,15 @@ extends Control
 
 export(String) var player_name
 
+const COINS_LEFT = "COINS LEFT:\n"
 const ROUND_SCORE = "ROUND SCORE:\n"
 const TOTAL_SCORE = "\nTOTAL SCORE:\n"
+const NO_SCORE = " - "
 
-var active setget set_active
+var coins_left = 5
 var total_score = 0
-var round_score = [0, 0, 0, 0, Globals.NO_SCORE]
-var required_score = [10, 40, 20, 80, Globals.NO_SCORE]
+var round_score = 0
+var required_score = [10, 40, 20, 80, NO_SCORE]
 
 onready var animation_player = $AnimationPlayer
 onready var coin_meter = $CoinMeter
@@ -22,31 +24,38 @@ func _ready():
 
 
 func reset_scoreboard():
-	set_label_text()
 	empty_coin_meter()
+	set_label_text()
 	yield(tween, "tween_completed")
-	
+
 	if turn_system.current_round != Globals.FINAL_ROUND:
 		update_coin_meter()
 		set_max_coin_meter()
 
 
 func set_label_text():
-	var r = turn_system.current_round
-	score.text = ROUND_SCORE + str(round_score[r]) + "/" + str(required_score[r]) + TOTAL_SCORE + str(total_score)
+	if turn_system.current_round == Globals.FINAL_ROUND:
+		round_score = NO_SCORE
+
+	match Globals.game_mode:
+		Globals.GameModes.SINGLE_PLAYER:
+			score.text = COINS_LEFT + str(coins_left)
+		Globals.GameModes.VERSUS:
+			score.text = ROUND_SCORE + str(round_score) + "/" + str(required_score[turn_system.current_round])
+
+	score.text += TOTAL_SCORE + str(total_score)
 
 
 func required_score_met():
-	return round_score[turn_system.current_round] >= required_score[turn_system.current_round]
+	return round_score >= required_score[turn_system.current_round]
 
 
-func highlight_active_player():
-	# warning-ignore:standalone_ternary
-	animation_player.play("Highlight") if active else animation_player.play("RESET")
+func highlight(active):
+	var _err = animation_player.play("Highlight") if active else animation_player.play("RESET")
 
 
 func update_coin_meter():
-	coin_meter.value = round_score[turn_system.current_round]
+	coin_meter.value = round_score
 
 
 func set_max_coin_meter():
@@ -55,17 +64,13 @@ func set_max_coin_meter():
 
 
 func empty_coin_meter():
+	round_score = 0
 	tween.interpolate_property($CoinMeter, "value", null, 0, 1)
 	tween.start()
 
 
 func update_score(value):
 	total_score += value
-	round_score[turn_system.current_round] += value
+	round_score += value
 	set_label_text()
 	update_coin_meter()
-
-
-func set_active(value):
-	active = value
-	highlight_active_player()

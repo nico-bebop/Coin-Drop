@@ -277,6 +277,7 @@ script = ExtResource( 10 )
 [connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="RoundTransition" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
+[connection signal="subtract_coin" from="UpperSlots" to="TurnSystem" method="_on_UpperSlots_subtract_coin"]
 [connection signal="update_score" from="BottomSlots" to="TurnSystem" method="_on_BottomSlots_update_score"]
 [connection signal="no_moving_coins" from="Coins" to="TurnSystem" method="_on_Coins_no_moving_coins"]
 [connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]
