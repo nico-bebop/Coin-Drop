@@ -1,21 +1,35 @@
 extends Node2D
 
 const GameOver = preload("res://board/ui/game_over.tscn")
+const SinglePlayer = preload("res://board/turn_system/single_player.tscn")
+const Versus = preload("res://board/turn_system/versus.tscn")
 
 onready var coins = $Coins
+onready var turn_system = $TurnSystem
 
 signal board_ready
 
 
 func _ready():
+	set_game_mode()
 	randomize()
+
 	for switch in get_tree().get_nodes_in_group(Globals.GROUP_SWITCHES):
 		switch.set_random_position()
 		yield(switch.get("animation_player"), "animation_finished")
-	
+
 	throw_random_coins()
 	yield(coins, "no_moving_coins")
 	emit_signal("board_ready")
+
+
+func set_game_mode():
+	match Globals.game_mode:
+		Globals.GameModes.SINGLE_PLAYER:
+			turn_system.current_system = SinglePlayer.instance()
+		Globals.GameModes.VERSUS:
+			turn_system.current_system = Versus.instance()
+	turn_system.add_child(turn_system.current_system)
 
 
 func throw_random_coins():
@@ -26,8 +40,8 @@ func throw_random_coins():
 		yield(get_tree().create_timer(0.2), "timeout")
 
 
-func _on_TurnSystem_game_over(players):
+func _on_TurnSystem_game_over(message):
 	var game_over = GameOver.instance()
 	add_child(game_over)
-	game_over.check_winner(players[0], players[1])
+	game_over.dialog_text = message
 	game_over.popup_centered()

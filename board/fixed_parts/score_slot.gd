@@ -11,11 +11,11 @@ onready var label = $Label
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
 
-signal add_score(value)
+signal coin_scored(score)
 
 
 func _on_ScoreSlot_body_entered(coin):
-	emit_signal("add_score", slot_score * coin.get("multiplier"))
+	emit_signal("coin_scored", slot_score * coin.get("multiplier"))
 	coin_score_audio.play()
 	confetti_effect.emitting = true
 	coin.queue_free()

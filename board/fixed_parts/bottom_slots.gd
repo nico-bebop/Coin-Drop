@@ -1,6 +1,6 @@
 extends Node2D
 
-signal update_score
+signal update_score(value)
 
 
 func _on_Board_board_ready():
@@ -11,7 +11,7 @@ func _on_TurnSystem_round_ended(current_round):
 	update_slots_score(current_round)
 
 
-func _on_ScoreSlot_add_score(value):
+func _on_ScoreSlot_coin_scored(value):
 	emit_signal("update_score", value)
 
 
