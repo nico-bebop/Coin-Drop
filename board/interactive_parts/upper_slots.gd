@@ -2,6 +2,8 @@ extends Node2D
 
 onready var animation_player = $AnimationPlayer
 
+signal subtract_coin
+
 
 func _on_Board_board_ready():
 	enable_slots()
@@ -17,6 +19,7 @@ func _on_TurnSystem_game_over(_players):
 
 func _on_Slot_coin_dropped():
 	disable_slots()
+	emit_signal("subtract_coin")
 
 
 func enable_slots():

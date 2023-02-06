@@ -28,6 +28,13 @@ func _on_BottomSlots_update_score(value):
 			player.update_score(value)
 
 
+func _on_UpperSlots_subtract_coin():
+	for player in get_tree().get_nodes_in_group(Globals.GROUP_PLAYERS):
+		if current_system.current_turn == player:
+			player.coins_left -= 1
+			player.set_label_text()
+
+
 func check_change_round():
 	if current_system.should_change_round():
 		current_system.set_round(current_system.current_round + 1)

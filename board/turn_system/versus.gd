@@ -23,8 +23,8 @@ func should_change_round():
 
 func change_active_player(active_player, inactive_player):
 	set_turn(active_player)
-	active_player.set_active(true)
-	inactive_player.set_active(false)
+	active_player.highlight(true)
+	inactive_player.highlight(false)
 
 
 func start_round():
