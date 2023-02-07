@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/ui/title.png" type="Texture" id=4]
 [ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://board/board.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
@@ -133,6 +134,10 @@ texture = ExtResource( 11 )
 [node name="Board" type="Sprite" parent="."]
 position = Vector2( 180, 360 )
 texture = ExtResource( 8 )
+
+[node name="Title" type="Sprite" parent="."]
+position = Vector2( 180, 65 )
+texture = ExtResource( 4 )
 
 [node name="UpperSlots" parent="." instance=ExtResource( 2 )]
 
