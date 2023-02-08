@@ -17,9 +17,9 @@ texture = ExtResource( 2 )
 
 [node name="SinglePlayer" type="TextureButton" parent="."]
 margin_left = 64.0
-margin_top = 192.0
+margin_top = 64.0
 margin_right = 296.0
-margin_bottom = 256.0
+margin_bottom = 128.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
@@ -36,9 +36,9 @@ valign = 1
 
 [node name="Versus" type="TextureButton" parent="."]
 margin_left = 64.0
-margin_top = 320.0
+margin_top = 192.0
 margin_right = 295.0
-margin_bottom = 384.0
+margin_bottom = 256.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
