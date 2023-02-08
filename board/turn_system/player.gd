@@ -2,9 +2,9 @@ extends Control
 
 export(String) var player_name
 
-const COINS_LEFT = "COINS LEFT:\n"
-const ROUND_SCORE = "ROUND SCORE:\n"
-const TOTAL_SCORE = "\nTOTAL SCORE:\n"
+const COINS_LEFT = "COINS LEFT\n"
+const ROUND_SCORE = "ROUND SCORE\n"
+const TOTAL_SCORE = "\nTOTAL SCORE\n"
 const NO_SCORE = " - "
 
 var coins_left = 5
@@ -55,7 +55,8 @@ func highlight(active):
 
 
 func update_coin_meter():
-	coin_meter.value = round_score
+	tween.interpolate_property($CoinMeter, "value", null, round_score, 0.5)
+	tween.start()
 
 
 func set_max_coin_meter():

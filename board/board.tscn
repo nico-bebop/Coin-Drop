@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/ui/title.png" type="Texture" id=4]
 [ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://board/board.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
@@ -13,17 +14,10 @@
 [ext_resource path="res://board/ui/round_transition.gd" type="Script" id=14]
 [ext_resource path="res://board/moving_parts/coins.gd" type="Script" id=15]
 
-[sub_resource type="DynamicFont" id=17]
-resource_local_to_scene = true
-size = 35
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 13 )
-
 [sub_resource type="Animation" id=18]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("RoundSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -70,12 +64,24 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Title:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 180, 65 ) ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "RoundChange"
 length = 2.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("RoundSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -123,21 +129,73 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=20]
+resource_name = "SignAppear"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 180, -65 ), Vector2( 180, 65 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "SignIdle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 180, 65 ), Vector2( 181, 65 ) ]
+}
+
+[sub_resource type="DynamicFont" id=17]
+resource_local_to_scene = true
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
 [node name="Board" type="Node2D"]
 script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RoundTransition")
+anims/RESET = SubResource( 18 )
+anims/RoundChange = SubResource( 19 )
+anims/SignAppear = SubResource( 20 )
+anims/SignIdle = SubResource( 21 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 180, 320 )
 texture = ExtResource( 11 )
 
 [node name="Board" type="Sprite" parent="."]
-position = Vector2( 180, 360 )
+position = Vector2( 180, 380 )
 texture = ExtResource( 8 )
 
+[node name="Title" type="Sprite" parent="."]
+position = Vector2( 180, 65 )
+texture = ExtResource( 4 )
+
 [node name="UpperSlots" parent="." instance=ExtResource( 2 )]
+position = Vector2( 180, 172 )
 
 [node name="Switches" type="Node2D" parent="."]
-position = Vector2( 20, 200 )
+position = Vector2( 20, 220 )
 
 [node name="Row1" type="Node2D" parent="Switches"]
 position = Vector2( 100, 19 )
@@ -240,6 +298,7 @@ position = Vector2( 240, 0 )
 position = Vector2( 280, 0 )
 
 [node name="BottomSlots" parent="." instance=ExtResource( 3 )]
+position = Vector2( 30, 607 )
 
 [node name="Coins" type="Node2D" parent="."]
 script = ExtResource( 15 )
@@ -250,7 +309,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 14 )
 
-[node name="Sprite" type="Sprite" parent="RoundTransition"]
+[node name="RoundSprite" type="Sprite" parent="RoundTransition"]
 position = Vector2( 180, 320 )
 scale = Vector2( 22.5, 3 )
 texture = ExtResource( 12 )
@@ -263,10 +322,6 @@ margin_bottom = 343.0
 custom_fonts/font = SubResource( 17 )
 align = 1
 valign = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RoundTransition"]
-anims/RESET = SubResource( 18 )
-anims/RoundChange = SubResource( 19 )
 
 [node name="TurnSystem" type="Control" parent="."]
 margin_right = 40.0

@@ -6,18 +6,19 @@
 [node name="Versus" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+rect_pivot_offset = Vector2( -352, -93 )
 script = ExtResource( 2 )
 
 [node name="Player1" parent="." instance=ExtResource( 3 )]
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 88.0
-margin_bottom = 88.0
 player_name = "PLAYER ONE"
 
 [node name="Player2" parent="." instance=ExtResource( 3 )]
-margin_left = 272.0
-margin_top = 24.0
-margin_right = 336.0
-margin_bottom = 88.0
+margin_left = 230.0
+margin_right = 294.0
 player_name = "PLAYER TWO"
+
+[node name="CoinMeter" parent="Player2" index="5"]
+margin_left = 45.0
+margin_right = 103.0
+
+[editable path="Player2"]
