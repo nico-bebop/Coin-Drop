@@ -55,7 +55,8 @@ func highlight(active):
 
 
 func update_coin_meter():
-	coin_meter.value = round_score
+	tween.interpolate_property($CoinMeter, "value", null, round_score, 1)
+	tween.start()
 
 
 func set_max_coin_meter():
