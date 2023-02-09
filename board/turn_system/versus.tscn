@@ -10,15 +10,15 @@ rect_pivot_offset = Vector2( -352, -93 )
 script = ExtResource( 2 )
 
 [node name="Player1" parent="." instance=ExtResource( 3 )]
-player_name = "PLAYER ONE"
+player_name = "Player 1"
 
 [node name="Player2" parent="." instance=ExtResource( 3 )]
 margin_left = 230.0
 margin_right = 294.0
-player_name = "PLAYER TWO"
+player_name = "Player 2"
 
-[node name="CoinMeter" parent="Player2" index="5"]
+[node name="CoinMeter" parent="Player2" index="4"]
 margin_left = 45.0
-margin_right = 103.0
+margin_right = 101.0
 
 [editable path="Player2"]

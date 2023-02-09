@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://assets/sprites/ui/coin_meter.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/sprites/ui/coin_meter_full.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=5]
 [ext_resource path="res://board/turn_system/player.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/alkhemikal.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Highlight"
@@ -39,6 +40,9 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 7 )
+
 [node name="Player" type="Control" groups=["Players"]]
 margin_right = 64.0
 margin_bottom = 64.0
@@ -57,12 +61,13 @@ anims/RESET = SubResource( 5 )
 
 [node name="PlayerName" type="Label" parent="."]
 material = ExtResource( 1 )
-margin_left = 35.0
-margin_top = 61.0
-margin_right = 95.0
-margin_bottom = 69.0
-custom_fonts/font = ExtResource( 5 )
-text = "PLAYER NAME"
+margin_left = 33.0
+margin_top = 59.0
+margin_right = 97.0
+margin_bottom = 75.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Player N"
 align = 1
 valign = 1
 
@@ -81,10 +86,10 @@ align = 1
 valign = 1
 
 [node name="CoinMeter" type="TextureProgress" parent="."]
-margin_left = 25.0
-margin_top = 179.0
-margin_right = 81.0
-margin_bottom = 245.0
+margin_left = 29.0
+margin_top = 175.0
+margin_right = 85.0
+margin_bottom = 241.0
 max_value = 20.0
 value = 20.0
 texture_under = ExtResource( 2 )
