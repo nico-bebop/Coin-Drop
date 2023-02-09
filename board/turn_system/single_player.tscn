@@ -9,7 +9,7 @@ margin_bottom = 64.0
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-player_name = "PLAYER ONE"
+player_name = "Player 1"
 
 [node name="Score" parent="Player" index="3"]
 text = "COINS LEFT:

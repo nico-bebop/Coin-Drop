@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/title.png-ff0464a039853a9fcf658341cd2fbcb8.stex"
+path="res://.import/accept_button.png-ec1149c5396cfdbecae5fe5a19b10f8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/title.png"
-dest_files=[ "res://.import/title.png-ff0464a039853a9fcf658341cd2fbcb8.stex" ]
+source_file="res://assets/sprites/ui/in_game_buttons/accept_button.png"
+dest_files=[ "res://.import/accept_button.png-ec1149c5396cfdbecae5fe5a19b10f8a.stex" ]
 
 [params]
 

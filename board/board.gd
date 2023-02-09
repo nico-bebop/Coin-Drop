@@ -4,7 +4,6 @@ const GameOver = preload("res://board/ui/game_over.tscn")
 const SinglePlayer = preload("res://board/turn_system/single_player.tscn")
 const Versus = preload("res://board/turn_system/versus.tscn")
 
-onready var animation_player = $AnimationPlayer
 onready var coins = $Coins
 onready var turn_system = $TurnSystem
 
@@ -15,9 +14,6 @@ func _ready():
 	set_game_mode()
 	randomize()
 
-	animation_player.play("SignAppear")
-	yield(animation_player, "animation_finished")
-	
 	for switch in get_tree().get_nodes_in_group(Globals.GROUP_SWITCHES):
 		switch.set_random_position()
 		yield(switch.get("animation_player"), "animation_finished")
