@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://board/turn_system/single_player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/shelf.png" type="Texture" id=2]
 [ext_resource path="res://board/turn_system/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/sprites/ui/portrait.png" type="Texture" id=4]
 
 [node name="SinglePlayer" type="Control"]
 margin_right = 64.0
@@ -24,24 +23,12 @@ TOTAL SCORE
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Scoreboard" type="Sprite" parent="MaxScores"]
+[node name="Portrait" type="Sprite" parent="MaxScores"]
 position = Vector2( 295, 81 )
 texture = ExtResource( 4 )
-hframes = 2
 
 [node name="CoinMeter" type="Sprite" parent="MaxScores"]
 position = Vector2( 303, 208 )
 texture = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="MaxScores"]
-margin_left = 263.0
-margin_top = 59.0
-margin_right = 327.0
-margin_bottom = 75.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "Hi Scores"
-align = 1
-valign = 1
 
 [editable path="Player"]
