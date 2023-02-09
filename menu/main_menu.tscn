@@ -3,7 +3,7 @@
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/ui/button.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/default21px.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/sprites/ui/button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/ui/button_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=7]
@@ -29,8 +29,9 @@ expand = true
 material = ExtResource( 7 )
 margin_right = 232.0
 margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "SINGLE PLAYER"
+text = "Single Player"
 align = 1
 valign = 1
 
@@ -48,8 +49,9 @@ expand = true
 material = ExtResource( 7 )
 margin_right = 232.0
 margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "2 PLAYER VERSUS"
+text = "2 Player Versus"
 align = 1
 valign = 1
 
