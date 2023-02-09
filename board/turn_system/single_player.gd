@@ -23,5 +23,5 @@ func start_round():
 	player.reset_scoreboard()
 
 
-func game_over_message():
+func game_over():
 	return GAME_OVER

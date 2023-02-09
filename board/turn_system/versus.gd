@@ -35,6 +35,12 @@ func start_round():
 	player2.reset_scoreboard()
 
 
+func game_over():
+	player1.highlight(false)
+	player2.highlight(false)
+	return game_over_message()
+
+
 func game_over_message():
 	if player1.total_score > player2.total_score:
 		return [player1.player_name, WINS]
