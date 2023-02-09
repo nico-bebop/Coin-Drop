@@ -12,9 +12,9 @@ script = ExtResource( 1 )
 player_name = "Player 1"
 
 [node name="Score" parent="Player" index="3"]
-text = "COINS LEFT:
+text = "COINS LEFT
 5
-TOTAL SCORE:
+TOTAL SCORE
 0"
 
 [node name="CoinMeter" parent="Player" index="4"]

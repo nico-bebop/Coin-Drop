@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxTexture" id=25]
+
+[sub_resource type="StyleBoxTexture" id=26]
+
+[sub_resource type="StyleBoxTexture" id=27]
+
+[sub_resource type="StyleBoxTexture" id=28]
+
+[sub_resource type="StyleBoxTexture" id=29]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 1, 0.92549, 0.152941, 1 )
+Button/styles/disabled = SubResource( 25 )
+Button/styles/focus = SubResource( 26 )
+Button/styles/hover = SubResource( 27 )
+Button/styles/normal = SubResource( 28 )
+Button/styles/pressed = SubResource( 29 )
