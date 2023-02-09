@@ -1,14 +1,14 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sprites/ui/title.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/ui/sign.png" type="Texture" id=4]
 [ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sprites/ui/restart_button.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/restart_button.png" type="Texture" id=6]
 [ext_resource path="res://board/board.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/ui/pause_button.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/pause_button.png" type="Texture" id=9]
 [ext_resource path="res://board/turn_system/turn_system.gd" type="Script" id=10]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/ui/transition_background.png" type="Texture" id=12]
@@ -16,6 +16,13 @@
 [ext_resource path="res://board/ui/round_transition.gd" type="Script" id=14]
 [ext_resource path="res://board/moving_parts/coins.gd" type="Script" id=15]
 [ext_resource path="res://board/ui/user_interface.gd" type="Script" id=16]
+[ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=17]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/cancel_button.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/accept_button.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/accept_button_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/cancel_button_hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/quit_button_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/ui/in_game_buttons/quit_button.png" type="Texture" id=23]
 
 [sub_resource type="Animation" id=18]
 length = 0.001
@@ -77,7 +84,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 180, 65 ) ]
+"values": [ Vector2( 180, 76 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("../PauseButton:rect_position")
@@ -212,6 +219,12 @@ tracks/0/keys = {
 "values": [ Vector2( 180, 65 ), Vector2( 181, 65 ) ]
 }
 
+[sub_resource type="InputEventAction" id=23]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=24]
+shortcut = SubResource( 23 )
+
 [sub_resource type="DynamicFont" id=17]
 resource_local_to_scene = true
 size = 35
@@ -343,6 +356,7 @@ position = Vector2( 30, 607 )
 script = ExtResource( 15 )
 
 [node name="UserInterface" type="Control" parent="."]
+pause_mode = 2
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 16 )
@@ -355,22 +369,66 @@ anims/SignAppear = SubResource( 20 )
 anims/SignIdle = SubResource( 21 )
 
 [node name="Sign" type="Sprite" parent="UserInterface"]
-position = Vector2( 180, 65 )
+position = Vector2( 180, 76 )
 texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="UserInterface/Sign"]
+material = ExtResource( 1 )
+margin_left = -61.0
+margin_top = -16.0
+margin_right = 61.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 17 )
+text = "Coin
+Drop"
+align = 1
+valign = 1
 
 [node name="PauseButton" type="TextureButton" parent="UserInterface"]
 margin_left = 153.0
 margin_top = 25.0
 margin_right = 177.0
 margin_bottom = 49.0
+shortcut = SubResource( 24 )
 texture_normal = ExtResource( 9 )
 
 [node name="RestartButton" type="TextureButton" parent="UserInterface"]
+pause_mode = 1
 margin_left = 183.0
 margin_top = 25.0
 margin_right = 207.0
 margin_bottom = 49.0
 texture_normal = ExtResource( 6 )
+
+[node name="AcceptButton" type="TextureButton" parent="UserInterface"]
+pause_mode = 1
+visible = false
+margin_left = 150.0
+margin_top = 108.0
+margin_right = 174.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
+
+[node name="CancelButton" type="TextureButton" parent="UserInterface"]
+pause_mode = 1
+visible = false
+margin_left = 186.0
+margin_top = 108.0
+margin_right = 210.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 18 )
+texture_hover = ExtResource( 21 )
+
+[node name="QuitButton" type="TextureButton" parent="UserInterface"]
+visible = false
+margin_left = 162.0
+margin_top = 107.0
+margin_right = 194.0
+margin_bottom = 131.0
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
 
 [node name="RoundTransition" type="Control" parent="UserInterface"]
 visible = false
@@ -406,6 +464,9 @@ script = ExtResource( 10 )
 [connection signal="no_moving_coins" from="Coins" to="TurnSystem" method="_on_Coins_no_moving_coins"]
 [connection signal="pressed" from="UserInterface/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="UserInterface/RestartButton" to="UserInterface" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="UserInterface/AcceptButton" to="UserInterface" method="_on_AcceptButton_pressed"]
+[connection signal="pressed" from="UserInterface/CancelButton" to="UserInterface" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="UserInterface/QuitButton" to="UserInterface" method="_on_QuitButton_pressed"]
 [connection signal="game_over" from="TurnSystem" to="." method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_game_over"]
 [connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]

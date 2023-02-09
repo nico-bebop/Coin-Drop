@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://assets/sprites/ui/coin_meter.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/sprites/ui/coin_meter_full.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=5]
 [ext_resource path="res://board/turn_system/player.gd" type="Script" id=6]
-[ext_resource path="res://assets/fonts/alkhemikal.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=7]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Highlight"
@@ -40,9 +40,6 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 7 )
-
 [node name="Player" type="Control" groups=["Players"]]
 margin_right = 64.0
 margin_bottom = 64.0
@@ -66,7 +63,7 @@ margin_top = 59.0
 margin_right = 97.0
 margin_bottom = 75.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Player N"
 align = 1
 valign = 1
