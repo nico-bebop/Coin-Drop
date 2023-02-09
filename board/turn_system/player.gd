@@ -31,6 +31,7 @@ func reset_scoreboard():
 
 	if turn_system.current_round != Globals.FINAL_ROUND:
 		update_coin_meter()
+		yield(tween, "tween_completed")
 		set_max_coin_meter()
 
 
@@ -67,7 +68,7 @@ func set_max_coin_meter():
 
 func empty_coin_meter():
 	round_score = 0
-	tween.interpolate_property($CoinMeter, "value", null, 0, 1)
+	tween.interpolate_property($CoinMeter, "value", null, round_score, 1)
 	tween.start()
 
 
