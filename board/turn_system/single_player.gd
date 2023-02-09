@@ -19,7 +19,7 @@ func should_change_round():
 
 
 func start_round():
-	player.coins_left = 5
+	player.coins_left = player.coins_per_round
 	player.reset_scoreboard()
 
 

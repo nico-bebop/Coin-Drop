@@ -12,7 +12,7 @@
 [ext_resource path="res://board/turn_system/turn_system.gd" type="Script" id=10]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/ui/transition_background.png" type="Texture" id=12]
-[ext_resource path="res://assets/fonts/tinypixel.otf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/fonts/alkhemikal.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://board/ui/round_transition.gd" type="Script" id=14]
 [ext_resource path="res://board/moving_parts/coins.gd" type="Script" id=15]
 [ext_resource path="res://board/ui/user_interface.gd" type="Script" id=16]
@@ -220,11 +220,9 @@ action = "ui_cancel"
 [sub_resource type="ShortCut" id=24]
 shortcut = SubResource( 23 )
 
-[sub_resource type="DynamicFont" id=17]
-resource_local_to_scene = true
-size = 35
+[sub_resource type="DynamicFont" id=25]
+size = 32
 outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 13 )
 
 [node name="Board" type="Node2D"]
@@ -452,7 +450,8 @@ material = ExtResource( 1 )
 margin_top = 303.0
 margin_right = 360.0
 margin_bottom = 343.0
-custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 25 )
 align = 1
 valign = 1
 
@@ -461,7 +460,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 10 )
 
-[connection signal="board_ready" from="." to="UpperSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="UserInterface/RoundTransition" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]

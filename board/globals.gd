@@ -6,7 +6,7 @@ const RIGHT = "RIGHT"
 
 const FINAL_ROUND = 4
 
-const ROUNDS = ["ROUND ONE", "ROUND TWO", "ROUND THREE", "FINAL ROUND"]
+const ROUNDS = ["Round One", "Round Two", "Round Three", "Final Round!"]
 
 const GROUP_SWITCHES = "Switches"
 const GROUP_SLOTS = "Slots"
