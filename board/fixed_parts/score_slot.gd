@@ -14,13 +14,22 @@ onready var confetti_effect = $Confetti
 signal coin_scored(score)
 
 
-func _on_ScoreSlot_body_entered(coin):
-	emit_signal("coin_scored", slot_score * coin.get("multiplier"))
-	coin_score_audio.play()
-	confetti_effect.emitting = true
-	coin.queue_free()
+func _on_ScoreSlot_body_entered(ball):
+	if ball.is_in_group(Globals.GROUP_COINS):
+		emit_signal("coin_scored", slot_score * ball.get("multiplier"))
+		coin_score_audio.play()
+		confetti_effect.emitting = true
+	elif ball.is_in_group(Globals.GROUP_BOMBS):
+		destroy_slot()
+
+	ball.queue_free()
 
 
 func set_score(value):
 	slot_score = value
 	label.text = str(slot_score)
+
+
+func destroy_slot():
+	#play explode animation
+	queue_free()

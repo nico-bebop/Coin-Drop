@@ -54,7 +54,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[node name="Coin" instance=ExtResource( 1 )]
+[node name="Coin" groups=["Coins"] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
 [node name="Sparkle" parent="." index="0" instance=ExtResource( 5 )]

@@ -24,6 +24,14 @@ func play_idle_animation():
 		can_shine = false
 
 
+func _on_BallCollision_body_entered(_body):
+	._on_BallCollision_body_entered(_body)
+
+	var coins = get_only_coins(ball_collision.get_overlapping_bodies())
+	if coins.size() > 1:
+		combine(coins)
+
+
 func combine(coins):
 	if coins[0].is_moving && coins[1].is_moving:
 		play_combine_effects()
@@ -38,23 +46,23 @@ func play_combine_effects():
 	sparkle_effect.emitting = true
 
 
+func get_only_coins(bodies):
+	var coins = []
+	for body in bodies:
+		if body.is_in_group(Globals.GROUP_COINS):
+			coins.append(body)
+	return coins
+
+
 func change_multiplier(value):
 	yield(animation_player, "animation_finished")
 	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
 	label.text = str(multiplier)
 
 
-func _on_BallCollision_body_entered(_body):
-	._on_BallCollision_body_entered(_body)
-
-	var bodies = ball_collision.get_overlapping_bodies()
-	if bodies.size() > 1:
-		combine(bodies)
+func set_multiplier(value):
+	multiplier = value
 
 
 func _on_ShineTimer_timeout():
 	can_shine = true
-
-
-func set_multiplier(value):
-	multiplier = value

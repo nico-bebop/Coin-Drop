@@ -8,7 +8,7 @@ const FINAL_ROUND = 4
 
 const ROUNDS = ["Round One", "Round Two", "Round Three", "Final Round!"]
 
-const GROUP_BALLS = "Balls"
+const GROUP_BOMBS = "Bombs"
 const GROUP_COINS = "Coins"
 const GROUP_PLAYERS = "Players"
 const GROUP_SWITCHES = "Switches"
