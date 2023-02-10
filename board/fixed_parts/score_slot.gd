@@ -11,7 +11,13 @@ onready var label = $Label
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
 
+signal ball_exited
 signal coin_scored(score)
+
+
+func _ready():
+	var _err = connect("ball_exited", get_parent(), "ball_entered_slot")
+	_err = connect("coin_scored", get_parent(), "coin_entered_slot")
 
 
 func _on_ScoreSlot_body_entered(ball):
@@ -22,7 +28,8 @@ func _on_ScoreSlot_body_entered(ball):
 	elif ball.is_in_group(Globals.GROUP_BOMBS):
 		destroy_slot()
 
-	ball.queue_free()
+	ball.free()
+	emit_signal("ball_exited")
 
 
 func set_score(value):

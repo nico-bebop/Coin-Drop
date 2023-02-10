@@ -465,6 +465,7 @@ script = ExtResource( 10 )
 [connection signal="board_ready" from="." to="UserInterface/RoundTransition" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
 [connection signal="subtract_coin" from="UpperSlots" to="TurnSystem" method="_on_UpperSlots_subtract_coin"]
+[connection signal="check_moving_balls" from="BottomSlots" to="Balls" method="check_active_balls"]
 [connection signal="update_score" from="BottomSlots" to="TurnSystem" method="_on_BottomSlots_update_score"]
 [connection signal="no_moving_balls" from="Balls" to="TurnSystem" method="_on_Balls_no_moving_balls"]
 [connection signal="pressed" from="UserInterface/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
@@ -477,3 +478,4 @@ script = ExtResource( 10 )
 [connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="UserInterface/RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="turn_ready" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_turn_ready"]
+[connection signal="turn_ready" from="TurnSystem" to="Balls" method="_on_TurnSystem_turn_ready"]

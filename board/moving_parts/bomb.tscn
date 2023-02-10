@@ -6,7 +6,12 @@
 
 [node name="Bomb" groups=["Bombs"] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+ticks_left = 4
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 position = Vector2( 0, -1 )
 texture = ExtResource( 3 )
+
+[node name="Label" parent="." index="4"]
+margin_top = -8.0
+margin_bottom = 8.0

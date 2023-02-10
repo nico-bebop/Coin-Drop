@@ -8,3 +8,9 @@ func check_active_balls():
 		if ball.is_moving:
 			return
 	emit_signal("no_moving_balls")
+
+
+func _on_TurnSystem_turn_ready():
+	var bombs = get_tree().get_nodes_in_group(Globals.GROUP_BOMBS)
+	for bomb in bombs:
+		bomb.tick()

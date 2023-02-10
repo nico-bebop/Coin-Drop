@@ -24,5 +24,10 @@ func flip_contrary():
 			animation_player.play(FLIP_TO_LEFT)
 
 
+func destroy_switch():
+	#play explode animation
+	queue_free()
+
+
 func _on_Bottom_body_entered(_body):
 	flip_contrary()

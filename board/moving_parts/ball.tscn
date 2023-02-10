@@ -51,7 +51,6 @@ valign = 1
 
 [node name="LandAudio" type="AudioStreamPlayer" parent="."]
 
-[connection signal="tree_exited" from="." to="." method="_on_Ball_tree_exited"]
 [connection signal="body_entered" from="BallCollision" to="." method="_on_BallCollision_body_entered"]
 [connection signal="body_entered" from="SwitchCollision" to="." method="_on_SwitchCollision_body_entered"]
 [connection signal="body_exited" from="SwitchCollision" to="." method="_on_SwitchCollision_body_exited"]

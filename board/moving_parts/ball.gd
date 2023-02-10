@@ -54,10 +54,6 @@ func _on_SwitchCollision_body_exited(_body):
 	is_moving = true
 
 
-func _on_Ball_tree_exited():
-	emit_signal("check_moving_balls")
-
-
 func set_target_position():
 	match orientation:
 		Globals.LEFT:
