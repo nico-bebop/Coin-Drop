@@ -394,6 +394,7 @@ margin_left = 153.0
 margin_top = 25.0
 margin_right = 177.0
 margin_bottom = 49.0
+shortcut_in_tooltip = false
 shortcut = SubResource( 24 )
 texture_normal = ExtResource( 9 )
 
