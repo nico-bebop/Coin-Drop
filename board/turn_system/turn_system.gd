@@ -16,7 +16,7 @@ func _on_Board_board_ready():
 func _on_Coins_no_moving_coins():
 	check_change_round()
 	if current_system.current_round == Globals.FINAL_ROUND:
-		emit_signal("game_over", current_system.game_over_message())
+		emit_signal("game_over", current_system.game_over())
 		return
 	current_system.next_turn()
 	emit_signal("turn_ready")

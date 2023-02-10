@@ -1,8 +1,7 @@
 extends "res://board/turn_system/turn_system.gd"
 
-const WINS = " WINS!"
-const TIE = "TIE!"
-
+const WINS = "wins!"
+const TIE = ["Tie!", ""]
 
 onready var player1 = $Player1
 onready var player2 = $Player2
@@ -36,10 +35,16 @@ func start_round():
 	player2.reset_scoreboard()
 
 
+func game_over():
+	player1.highlight(false)
+	player2.highlight(false)
+	return game_over_message()
+
+
 func game_over_message():
 	if player1.total_score > player2.total_score:
-		return player1.player_name + WINS
+		return [player1.player_name, WINS]
 	elif player2.total_score > player1.total_score:
-		return player2.player_name + WINS
+		return [player2.player_name, WINS]
 	else:
 		return TIE

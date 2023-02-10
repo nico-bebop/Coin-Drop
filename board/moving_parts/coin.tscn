@@ -12,8 +12,8 @@
 radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id=9]
-radius = 6.0
-height = 6.0
+radius = 8.0
+height = 2.0
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 2, 1 )
@@ -77,12 +77,10 @@ texture = ExtResource( 7 )
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = 1.5708
 shape = SubResource( 11 )
 
 [node name="CoinCollision" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 8
 
@@ -90,7 +88,6 @@ collision_mask = 8
 shape = SubResource( 9 )
 
 [node name="SwitchCollision" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 2
 

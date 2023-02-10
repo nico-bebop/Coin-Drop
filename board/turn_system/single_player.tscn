@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://board/turn_system/single_player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/ui/shelf.png" type="Texture" id=2]
 [ext_resource path="res://board/turn_system/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/ui/portrait.png" type="Texture" id=4]
 
 [node name="SinglePlayer" type="Control"]
 margin_right = 64.0
@@ -12,12 +14,21 @@ script = ExtResource( 1 )
 player_name = "Player 1"
 
 [node name="Score" parent="Player" index="3"]
-text = "COINS LEFT:
+text = "COINS LEFT
 5
-TOTAL SCORE:
+TOTAL SCORE
 0"
 
-[node name="CoinMeter" parent="Player" index="4"]
-visible = false
+[node name="MaxScores" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Portrait" type="Sprite" parent="MaxScores"]
+position = Vector2( 295, 81 )
+texture = ExtResource( 4 )
+
+[node name="CoinMeter" type="Sprite" parent="MaxScores"]
+position = Vector2( 303, 208 )
+texture = ExtResource( 2 )
 
 [editable path="Player"]

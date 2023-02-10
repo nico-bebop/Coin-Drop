@@ -1,6 +1,6 @@
 extends "res://board/turn_system/turn_system.gd"
 
-const GAME_OVER = "GAME OVER!\nSCORE: "
+const GAME_OVER = ["Game", "Over!"]
 
 onready var player = $Player
 
@@ -19,9 +19,9 @@ func should_change_round():
 
 
 func start_round():
-	player.coins_left = 5
+	player.coins_left = player.coins_per_round
 	player.reset_scoreboard()
 
 
-func game_over_message():
-	return GAME_OVER + str(player.total_score)
+func game_over():
+	return GAME_OVER

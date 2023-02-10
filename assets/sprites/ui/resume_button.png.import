@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quit_button_hover.png-987fd19a868ac5db0d059e8fc2b708f7.stex"
+path="res://.import/resume_button.png-4f99c71b4da1f09a6ddfd2af8f921c8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/in_game_buttons/quit_button_hover.png"
-dest_files=[ "res://.import/quit_button_hover.png-987fd19a868ac5db0d059e8fc2b708f7.stex" ]
+source_file="res://assets/sprites/ui/resume_button.png"
+dest_files=[ "res://.import/resume_button.png-4f99c71b4da1f09a6ddfd2af8f921c8a.stex" ]
 
 [params]
 

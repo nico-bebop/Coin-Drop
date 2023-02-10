@@ -5,15 +5,11 @@ onready var animation_player = $AnimationPlayer
 signal subtract_coin
 
 
-func _on_Board_board_ready():
-	enable_slots()
-
-
 func _on_TurnSystem_turn_ready():
 	enable_slots()
 
 
-func _on_TurnSystem_game_over(_players):
+func _on_TurnSystem_game_over(_message):
 	disable_slots()
 
 

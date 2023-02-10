@@ -1,13 +1,14 @@
 extends Control
 
 export(String) var player_name
+export(int) var coins_per_round = 5
 
 const COINS_LEFT = "COINS LEFT\n"
 const ROUND_SCORE = "ROUND SCORE\n"
 const TOTAL_SCORE = "\nTOTAL SCORE\n"
 const NO_SCORE = " - "
 
-var coins_left = 5
+var coins_left = coins_per_round
 var total_score = 0
 var round_score = 0
 var required_score = [10, 40, 20, 80, NO_SCORE]
@@ -30,6 +31,7 @@ func reset_scoreboard():
 
 	if turn_system.current_round != Globals.FINAL_ROUND:
 		update_coin_meter()
+		yield(tween, "tween_completed")
 		set_max_coin_meter()
 
 
@@ -66,7 +68,7 @@ func set_max_coin_meter():
 
 func empty_coin_meter():
 	round_score = 0
-	tween.interpolate_property($CoinMeter, "value", null, 0, 1)
+	tween.interpolate_property($CoinMeter, "value", null, round_score, 1)
 	tween.start()
 
 

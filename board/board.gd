@@ -1,6 +1,5 @@
 extends Node2D
 
-const GameOver = preload("res://board/ui/game_over.tscn")
 const SinglePlayer = preload("res://board/turn_system/single_player.tscn")
 const Versus = preload("res://board/turn_system/versus.tscn")
 
@@ -38,10 +37,3 @@ func throw_random_coins():
 	for slot in slots.slice(0, slots.size(), 2):
 		slot.spawn_coin()
 		yield(get_tree().create_timer(0.2), "timeout")
-
-
-func _on_TurnSystem_game_over(message):
-	var game_over = GameOver.instance()
-	add_child(game_over)
-	game_over.dialog_text = message
-	game_over.popup_centered()
