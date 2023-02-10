@@ -3,7 +3,7 @@ extends Node2D
 const SinglePlayer = preload("res://board/turn_system/single_player.tscn")
 const Versus = preload("res://board/turn_system/versus.tscn")
 
-onready var coins = $Coins
+onready var balls = $Balls
 onready var turn_system = $TurnSystem
 
 signal board_ready
@@ -18,7 +18,7 @@ func _ready():
 		yield(switch.get("animation_player"), "animation_finished")
 
 	throw_random_coins()
-	yield(coins, "no_moving_coins")
+	yield(balls, "no_moving_balls")
 	emit_signal("board_ready")
 
 

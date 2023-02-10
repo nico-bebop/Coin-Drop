@@ -5,7 +5,7 @@ const Coin = preload("res://board/moving_parts/coin.tscn")
 var clickable = false
 
 onready var coin_sprite = $CoinSprite
-onready var coins = $"../../Coins"
+onready var balls = $"../../Balls"
 
 signal coin_dropped
 
@@ -25,7 +25,7 @@ func _on_Slot_input_event(_viewport, _event, _shape_idx):
 func spawn_coin():
 	var coin = Coin.instance()
 	coin.position = global_position
-	coins.add_child(coin)
+	balls.add_child(coin)
 
 
 func _on_Slot_mouse_entered():

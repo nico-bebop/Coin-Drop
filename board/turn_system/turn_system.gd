@@ -13,7 +13,7 @@ func _on_Board_board_ready():
 	current_system.start()
 
 
-func _on_Coins_no_moving_coins():
+func _on_Balls_no_moving_balls():
 	check_change_round()
 	if current_system.current_round == Globals.FINAL_ROUND:
 		emit_signal("game_over", current_system.game_over())

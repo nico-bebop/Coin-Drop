@@ -4,7 +4,7 @@
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/ui/sign.png" type="Texture" id=4]
-[ext_resource path="res://board/moving_parts/switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://board/interactive_parts/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/ui/restart_button.png" type="Texture" id=6]
 [ext_resource path="res://board/board.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/game/board.png" type="Texture" id=8]
@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/sprites/ui/transition_background.png" type="Texture" id=12]
 [ext_resource path="res://assets/fonts/alkhemikal.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://board/ui/round_transition.gd" type="Script" id=14]
-[ext_resource path="res://board/moving_parts/coins.gd" type="Script" id=15]
+[ext_resource path="res://board/moving_parts/balls.gd" type="Script" id=15]
 [ext_resource path="res://board/ui/user_interface.gd" type="Script" id=16]
 [ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=17]
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=18]
@@ -345,7 +345,7 @@ position = Vector2( 280, 0 )
 [node name="BottomSlots" parent="." instance=ExtResource( 3 )]
 position = Vector2( 30, 607 )
 
-[node name="Coins" type="Node2D" parent="."]
+[node name="Balls" type="Node2D" parent="."]
 script = ExtResource( 15 )
 
 [node name="UserInterface" type="Control" parent="."]
@@ -466,7 +466,7 @@ script = ExtResource( 10 )
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
 [connection signal="subtract_coin" from="UpperSlots" to="TurnSystem" method="_on_UpperSlots_subtract_coin"]
 [connection signal="update_score" from="BottomSlots" to="TurnSystem" method="_on_BottomSlots_update_score"]
-[connection signal="no_moving_coins" from="Coins" to="TurnSystem" method="_on_Coins_no_moving_coins"]
+[connection signal="no_moving_balls" from="Balls" to="TurnSystem" method="_on_Balls_no_moving_balls"]
 [connection signal="pressed" from="UserInterface/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="UserInterface/RestartButton" to="UserInterface" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="UserInterface/AcceptButton" to="UserInterface" method="_on_AcceptButton_pressed"]
