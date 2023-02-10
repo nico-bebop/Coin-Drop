@@ -32,11 +32,22 @@ func _on_ScoreSlot_body_entered(ball):
 	emit_signal("ball_exited")
 
 
+func destroy_slot():
+	disable_score_signal()
+	clear_label()
+	#play explode animation
+
+
+func disable_score_signal():
+	if is_connected("coin_scored", get_parent(), "coin_entered_slot"):
+		disconnect("coin_scored", get_parent(), "coin_entered_slot")
+
+
+func clear_label():
+	label.text = ""
+	scores = ["", "", "", ""]
+
+
 func set_score(value):
 	slot_score = value
 	label.text = str(slot_score)
-
-
-func destroy_slot():
-	#play explode animation
-	queue_free()
