@@ -1,17 +1,75 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://board/moving_parts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/game/bomb.png" type="Texture" id=3]
+[ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 18 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 18 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 18 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 18 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "RedGlow",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 3
+emission_point_count = 1
+flag_disable_z = true
+direction = Vector3( 1, -1, 0 )
+spread = 60.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 35.0
+angular_velocity = 45.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0.639216, 0, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
 
 [node name="Bomb" groups=["Bombs"] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-ticks_left = 4
+ticks_left = 3
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 position = Vector2( 0, -1 )
-texture = ExtResource( 3 )
+frames = SubResource( 6 )
 
-[node name="Label" parent="." index="4"]
-margin_top = -8.0
-margin_bottom = 8.0
+[node name="Spark" parent="." index="1" instance=ExtResource( 4 )]
+position = Vector2( 8, -6 )
+amount = 4
+lifetime = 0.2
+explosiveness = 0.3
+process_material = SubResource( 7 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" parent="BallCollision" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="SwitchCollision" index="0"]
+visible = false
