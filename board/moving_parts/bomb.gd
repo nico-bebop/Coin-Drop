@@ -1,5 +1,7 @@
 extends "res://board/moving_parts/ball.gd"
 
+enum { EXPLODE, RED_GLOW, HALF_TIME, IGNITED }
+
 export(int) var ticks_left = 3
 export(bool) var ignited = false
 
@@ -17,11 +19,11 @@ func tick():
 	if ignited:
 		ticks_left -= 1
 
-	if ticks_left == 0:
-		explode()
-
 	update_label()
 	update_animation()
+
+	if ticks_left == 0:
+		explode()
 
 
 func update_label():
@@ -30,16 +32,19 @@ func update_label():
 
 func update_animation():
 	match ticks_left:
-		3:
+		IGNITED:
 			animation_player.play("Ignited")
-		2:
+		HALF_TIME:
 			animation_player.play("HalfTime")
-		1:
+		RED_GLOW:
 			animation_player.play("RedGlow")
+		EXPLODE:
+			animation_player.play("Blink")
+		_:
+			animation_player.play("RESET")
 
 
 func explode():
-	animation_player.play("Blink")
 	yield(animation_player, "animation_finished")
 	get_colliding_switch().destroy_switch()
 	queue_free()
