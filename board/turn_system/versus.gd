@@ -16,7 +16,7 @@ func next_turn():
 	match current_turn:
 		player1:
 			change_active_player(player2, player1)
-		player2:
+		player2, _:
 			change_active_player(player1, player2)
 
 
@@ -31,6 +31,9 @@ func change_active_player(active_player, inactive_player):
 
 
 func start_round():
+	set_turn(null)
+	player1.highlight(false)
+	player2.highlight(false)
 	player1.reset_scoreboard()
 	player2.reset_scoreboard()
 
