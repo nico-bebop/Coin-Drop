@@ -25,7 +25,8 @@ func flip_contrary():
 
 
 func destroy_switch():
-	#play explode animation
+	animation_player.play("Blink")
+	yield(animation_player, "animation_finished")
 	queue_free()
 
 

@@ -1,14 +1,11 @@
 extends "res://board/moving_parts/ball.gd"
 
-const SPARK_POSITIONS = [Vector2(8, -6), Vector2(5, -6), Vector2(2, -8)]
-
 export(int) var ticks_left = 3
+export(bool) var ignited = false
 
-var ignited = false
-
-onready var animated_sprite = $AnimatedSprite
 onready var label = $Label
 onready var spark = $Spark
+onready var animation_player = $AnimationPlayer
 onready var switch_collision = $SwitchCollision
 
 
@@ -19,13 +16,12 @@ func _ready():
 func tick():
 	if ignited:
 		ticks_left -= 1
-		update_label()
-		update_animation()
-	else:
-		ignite()
 
 	if ticks_left == 0:
 		explode()
+
+	update_label()
+	update_animation()
 
 
 func update_label():
@@ -35,22 +31,16 @@ func update_label():
 func update_animation():
 	match ticks_left:
 		3:
-			animated_sprite.frame = 0
-			spark.position = SPARK_POSITIONS[0]
+			animation_player.play("Ignited")
 		2:
-			animated_sprite.frame = 1
-			spark.position = SPARK_POSITIONS[1]
+			animation_player.play("HalfTime")
 		1:
-			animated_sprite.play("RedGlow")
-			spark.position = SPARK_POSITIONS[2]
-
-
-func ignite():
-	ignited = true
-	spark.emitting = true
+			animation_player.play("RedGlow")
 
 
 func explode():
+	animation_player.play("Blink")
+	yield(animation_player, "animation_finished")
 	get_colliding_switch().destroy_switch()
 	queue_free()
 
