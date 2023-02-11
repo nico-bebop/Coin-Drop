@@ -475,6 +475,7 @@ script = ExtResource( 10 )
 [connection signal="pressed" from="UserInterface/QuitButton" to="UserInterface" method="_on_QuitButton_pressed"]
 [connection signal="game_over" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="UserInterface" method="_on_TurnSystem_game_over"]
+[connection signal="round_ended" from="TurnSystem" to="." method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="UserInterface/RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="turn_ready" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_turn_ready"]

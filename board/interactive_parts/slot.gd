@@ -26,13 +26,13 @@ func _on_Slot_input_event(_viewport, _event, _shape_idx):
 func spawn_coin():
 	var coin = Coin.instance()
 	coin.position = global_position
-	balls.add_child(coin)
+	balls.call_deferred("add_child", coin)
 
 
 func spawn_bomb():
 	var bomb = Bomb.instance()
 	bomb.position = global_position
-	balls.add_child(bomb)
+	balls.call_deferred("add_child", bomb)
 
 
 func _on_Slot_mouse_entered():

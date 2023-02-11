@@ -44,8 +44,8 @@ func disable_score_signal():
 
 
 func clear_label():
-	label.text = ""
-	scores = ["", "", "", ""]
+	label.text = str(0)
+	scores = [0, 0, 0, 0]
 
 
 func set_score(value):

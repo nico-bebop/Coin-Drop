@@ -37,3 +37,17 @@ func throw_random_coins():
 	for slot in slots.slice(0, slots.size(), 2):
 		slot.spawn_coin()
 		yield(get_tree().create_timer(0.2), "timeout")
+
+
+func throw_random_bombs(quantity):
+	var slots = get_tree().get_nodes_in_group(Globals.GROUP_SLOTS)
+	slots.shuffle()
+	slots.resize(quantity)
+	for slot in slots:
+		slot.spawn_bomb()
+		yield(get_tree().create_timer(0.2), "timeout")
+
+
+func _on_TurnSystem_round_ended(current_round):
+	if current_round > 0 && current_round < Globals.FINAL_ROUND:
+		throw_random_bombs(current_round)
