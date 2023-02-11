@@ -80,7 +80,7 @@ click={
 2d_physics/layer_1="Board"
 2d_physics/layer_2="Switch Head"
 2d_physics/layer_3="Switch Bottom"
-2d_physics/layer_4="Coin"
+2d_physics/layer_4="Ball"
 
 [physics]
 

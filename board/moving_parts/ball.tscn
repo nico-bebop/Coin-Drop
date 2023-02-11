@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://board/moving_parts/ball.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=8]
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 8.0
+height = 2.0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 2, 1 )
+
+[node name="Ball" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 11 )
+
+[node name="BallCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallCollision"]
+shape = SubResource( 9 )
+
+[node name="SwitchCollision" type="Area2D" parent="." groups=["Balls"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchCollision"]
+position = Vector2( 0, 6 )
+shape = SubResource( 10 )
+
+[node name="Label" type="Label" parent="."]
+material = ExtResource( 8 )
+margin_left = -4.0
+margin_top = -7.0
+margin_right = 6.0
+margin_bottom = 9.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+align = 1
+valign = 1
+
+[node name="LandAudio" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="BallCollision" to="." method="_on_BallCollision_body_entered"]
+[connection signal="body_entered" from="SwitchCollision" to="." method="_on_SwitchCollision_body_entered"]
+[connection signal="body_exited" from="SwitchCollision" to="." method="_on_SwitchCollision_body_exited"]

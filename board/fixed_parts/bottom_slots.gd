@@ -1,6 +1,7 @@
 extends Node2D
 
 signal update_score(value)
+signal check_moving_balls
 
 
 func _on_Board_board_ready():
@@ -11,8 +12,12 @@ func _on_TurnSystem_round_ended(current_round):
 	update_slots_score(current_round)
 
 
-func _on_ScoreSlot_coin_scored(value):
+func coin_entered_slot(value):
 	emit_signal("update_score", value)
+
+
+func ball_entered_slot():
+	emit_signal("check_moving_balls")
 
 
 func update_slots_score(this_round):

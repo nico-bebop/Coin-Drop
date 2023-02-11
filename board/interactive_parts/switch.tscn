@@ -1,10 +1,33 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://board/moving_parts/switch.gd" type="Script" id=1]
+[ext_resource path="res://board/interactive_parts/switch.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/game/switch.png" type="Texture" id=2]
+[ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=3]
+[ext_resource path="res://assets/sprites/game/notch.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = false
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 6, 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Blink"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "FlipToRight 2"
@@ -196,6 +219,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:material:shader_param/active")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 3 )
@@ -208,9 +243,14 @@ script = ExtResource( 1 )
 orientation = "LEFT"
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 7 )
 texture = ExtResource( 2 )
 hframes = 5
 frame = 2
+
+[node name="Notch" type="Sprite" parent="."]
+position = Vector2( 0, 9 )
+texture = ExtResource( 4 )
 
 [node name="Head" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -18 )
@@ -219,6 +259,7 @@ one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.5
+anims/Blink = SubResource( 8 )
 anims/FlipToLeft = SubResource( 3 )
 anims/FlipToRight = SubResource( 4 )
 anims/RESET = SubResource( 5 )
