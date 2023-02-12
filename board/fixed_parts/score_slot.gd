@@ -25,10 +25,13 @@ func _on_ScoreSlot_body_entered(ball):
 		emit_signal("coin_scored", slot_score * ball.get("multiplier"))
 		coin_score_audio.play()
 		confetti_effect.emitting = true
-	elif ball.is_in_group(Globals.GROUP_BOMBS):
-		destroy_slot()
+		ball.free()
 
-	ball.free()
+	elif ball.is_in_group(Globals.GROUP_BOMBS):
+		ball.explode()
+		destroy_slot()
+		yield(ball.animation_player, "animation_finished")
+
 	emit_signal("ball_exited")
 
 

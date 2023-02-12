@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://board/moving_parts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/game/bomb.png" type="Texture" id=3]
 [ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=6]
 
 [sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/active = false
 
@@ -267,3 +269,6 @@ anims/HalfTime = SubResource( 11 )
 anims/Ignited = SubResource( 10 )
 anims/RESET = SubResource( 9 )
 anims/RedGlow = SubResource( 8 )
+
+[node name="ExplosionAudio" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource( 6 )
