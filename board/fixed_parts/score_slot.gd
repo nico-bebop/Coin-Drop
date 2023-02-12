@@ -47,10 +47,10 @@ func disable_score_signal():
 
 
 func clear_label():
-	label.text = str(0)
+	label.text = ""
 	scores = [0, 0, 0, 0]
 
 
 func set_score(value):
 	slot_score = value
-	label.text = str(slot_score)
+	label.text = str(slot_score) if slot_score != 0 else ""
