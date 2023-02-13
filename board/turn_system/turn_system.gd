@@ -14,10 +14,12 @@ func _on_Board_board_ready():
 
 
 func _on_Balls_no_moving_balls():
-	check_change_round()
-	if current_system.current_round == Globals.FINAL_ROUND:
-		emit_signal("game_over", current_system.game_over())
+	if current_system.should_change_round():
+		change_round()
+		if current_system.current_round == Globals.FINAL_ROUND:
+			emit_signal("game_over", current_system.game_over())
 		return
+
 	current_system.next_turn()
 	emit_signal("turn_ready")
 
@@ -35,11 +37,10 @@ func _on_UpperSlots_subtract_coin():
 			player.set_label_text()
 
 
-func check_change_round():
-	if current_system.should_change_round():
-		current_system.set_round(current_system.current_round + 1)
-		emit_signal("round_ended", current_system.current_round)
-		current_system.start_round()
+func change_round():
+	current_system.set_round(current_system.current_round + 1)
+	emit_signal("round_ended", current_system.current_round)
+	current_system.start_round()
 
 
 func set_turn(value):

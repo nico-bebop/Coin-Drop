@@ -28,6 +28,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ true, false, true, false, true, false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bottom/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "FlipToRight 2"
@@ -92,6 +116,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("CoinSpawnPosition:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, -40 ), Vector2( -10, -40 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "FlipToRight"
@@ -155,6 +191,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CoinSpawnPosition:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, -40 ), Vector2( 10, -40 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -231,6 +279,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bottom/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CoinSpawnPosition:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -32 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 3 )
@@ -271,5 +343,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 position = Vector2( 0, 15 )
 shape = SubResource( 2 )
+
+[node name="CoinSpawnPosition" type="Position2D" parent="."]
+position = Vector2( 0, -32 )
 
 [connection signal="body_entered" from="Bottom" to="." method="_on_Bottom_body_entered"]

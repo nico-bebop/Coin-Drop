@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -225,6 +225,9 @@ size = 32
 outline_size = 2
 font_data = ExtResource( 13 )
 
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 161, 2.5 )
+
 [node name="Board" type="Node2D"]
 script = ExtResource( 7 )
 
@@ -232,7 +235,10 @@ script = ExtResource( 7 )
 position = Vector2( 180, 320 )
 texture = ExtResource( 11 )
 
-[node name="Board" type="Sprite" parent="."]
+[node name="Holes" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Board" type="Sprite" parent="Holes"]
 position = Vector2( 180, 380 )
 texture = ExtResource( 8 )
 
@@ -460,6 +466,13 @@ valign = 1
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 10 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 20, 617 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 160, 1.5 )
+shape = SubResource( 26 )
 
 [connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="UserInterface/RoundTransition" method="_on_Board_board_ready"]

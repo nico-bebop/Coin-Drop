@@ -5,11 +5,12 @@ const ACCELERATION = 200
 const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
 
-var direction = Globals.DOWN
-var is_moving = true
-var orientation = null
+export(bool) var is_moving = true
+export(String) var orientation = null
+export(String) var direction = Globals.DOWN
+export(Vector2) var velocity = Vector2.ZERO
+
 var target_position
-var velocity = Vector2.ZERO
 
 onready var land_audio = $LandAudio
 

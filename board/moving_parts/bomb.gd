@@ -1,12 +1,18 @@
 extends "res://board/moving_parts/ball.gd"
 
+const Hole = preload("res://board/moving_parts/hole.tscn")
+
+enum { EXPLODE, RED_GLOW, HALF_TIME, IGNITED }
+
 export(int) var ticks_left = 3
 export(bool) var ignited = false
 
+onready var explosion_audio = $ExplosionAudio
 onready var label = $Label
 onready var spark = $Spark
 onready var animation_player = $AnimationPlayer
 onready var switch_collision = $SwitchCollision
+onready var holes = $"../../Holes"
 
 
 func _ready():
@@ -16,9 +22,6 @@ func _ready():
 func tick():
 	if ignited:
 		ticks_left -= 1
-
-	if ticks_left == 0:
-		explode()
 
 	update_label()
 	update_animation()
@@ -30,22 +33,29 @@ func update_label():
 
 func update_animation():
 	match ticks_left:
-		3:
+		IGNITED:
 			animation_player.play("Ignited")
-		2:
+		HALF_TIME:
 			animation_player.play("HalfTime")
-		1:
+		RED_GLOW:
 			animation_player.play("RedGlow")
+		EXPLODE:
+			animation_player.play("BlinkAndExplode")
+		_:
+			animation_player.play("RESET")
 
 
 func explode():
-	animation_player.play("Blink")
-	yield(animation_player, "animation_finished")
-	get_colliding_switch().destroy_switch()
-	queue_free()
+	animation_player.play("BlinkAndExplode")
 
 
-func get_colliding_switch():
-	for body in switch_collision.get_overlapping_bodies():
-		if body.is_in_group(Globals.GROUP_SWITCHES):
-			return body
+func destroy_colliding_switch():
+	for switch in switch_collision.get_overlapping_bodies():
+		if switch.is_in_group(Globals.GROUP_SWITCHES):
+			switch.destroy_switch()
+
+
+func create_hole():
+	var hole = Hole.instance()
+	hole.global_position = global_position
+	holes.add_child(hole)
