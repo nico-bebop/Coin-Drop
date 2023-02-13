@@ -14,3 +14,5 @@ func _on_TurnSystem_turn_ready():
 	var bombs = get_tree().get_nodes_in_group(Globals.GROUP_BOMBS)
 	for bomb in bombs:
 		bomb.tick()
+		if bomb.ticks_left == 0:
+			bomb.explode()

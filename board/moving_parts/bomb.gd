@@ -26,9 +26,6 @@ func tick():
 	update_label()
 	update_animation()
 
-	if ticks_left == 0:
-		explode()
-
 
 func update_label():
 	label.text = str(ticks_left)
@@ -43,14 +40,13 @@ func update_animation():
 		RED_GLOW:
 			animation_player.play("RedGlow")
 		EXPLODE:
-			animation_player.play("Blink")
+			animation_player.play("BlinkAndExplode")
 		_:
 			animation_player.play("RESET")
 
 
 func explode():
-	is_moving = false
-	animation_player.play("Blink")
+	animation_player.play("BlinkAndExplode")
 	explosion_audio.play()
 	yield(animation_player, "animation_finished")
 	create_hole()
