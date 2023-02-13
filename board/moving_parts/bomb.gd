@@ -14,6 +14,8 @@ onready var animation_player = $AnimationPlayer
 onready var switch_collision = $SwitchCollision
 onready var holes = $"../../Holes"
 
+onready var camera = $"../../Camera2D"
+
 
 func _ready():
 	update_label()
@@ -59,3 +61,7 @@ func create_hole():
 	var hole = Hole.instance()
 	hole.global_position = global_position
 	holes.add_child(hole)
+
+
+func shake_camera():
+	camera.shake(0.3, 50, 7) 
