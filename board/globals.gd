@@ -6,6 +6,8 @@ const RIGHT = "RIGHT"
 
 const FINAL_ROUND = 4
 
+const NO_SCORE = " - "
+
 const ROUNDS = ["Round One", "Round Two", "Round Three", "Final Round!"]
 
 const GROUP_BOMBS = "Bombs"

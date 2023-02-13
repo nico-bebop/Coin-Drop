@@ -15,7 +15,7 @@ func next_turn():
 
 
 func should_change_round():
-	return player.coins_left == 0
+	return player.coins_left == 0 || str(player.coins_left) == Globals.NO_SCORE
 
 
 func start_round():
