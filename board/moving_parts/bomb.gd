@@ -1,6 +1,6 @@
 extends "res://board/moving_parts/ball.gd"
 
-const Hole = preload("res://board/moving_parts/hole.tscn")
+const Hole = preload("res://board/broken_parts/hole.tscn")
 
 enum { EXPLODE, RED_GLOW, HALF_TIME, IGNITED }
 

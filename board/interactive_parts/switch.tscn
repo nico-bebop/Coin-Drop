@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://board/interactive_parts/switch.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/game/switch.png" type="Texture" id=2]
 [ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=3]
 [ext_resource path="res://assets/sprites/game/notch.png" type="Texture" id=4]
+[ext_resource path="res://assets/effects/explosion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/switch_destroy.wav" type="AudioStream" id=6]
 
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
@@ -14,8 +16,8 @@ shader_param/active = false
 extents = Vector2( 6, 1 )
 
 [sub_resource type="Animation" id=8]
-resource_name = "Blink"
-length = 1.5
+resource_name = "BlinkAndDestroy"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/active")
 tracks/0/interp = 1
@@ -23,10 +25,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true, false, true, false ]
+"values": [ true, false, true, false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Head:disabled")
@@ -47,6 +49,47 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "create_hole"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Explosion:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DestroyAudio:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -303,6 +346,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Vector2( 0, -32 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Explosion:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("DestroyAudio:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 3 )
@@ -331,7 +398,7 @@ one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.5
-anims/Blink = SubResource( 8 )
+anims/BlinkAndDestroy = SubResource( 8 )
 anims/FlipToLeft = SubResource( 3 )
 anims/FlipToRight = SubResource( 4 )
 anims/RESET = SubResource( 5 )
@@ -346,5 +413,11 @@ shape = SubResource( 2 )
 
 [node name="CoinSpawnPosition" type="Position2D" parent="."]
 position = Vector2( 0, -32 )
+
+[node name="Explosion" parent="." instance=ExtResource( 5 )]
+amount = 8
+
+[node name="DestroyAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="body_entered" from="Bottom" to="." method="_on_Bottom_body_entered"]

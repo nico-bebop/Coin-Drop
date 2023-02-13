@@ -1,6 +1,6 @@
 extends Area2D
 
-const BrokenSlot = preload("res://board/fixed_parts/broken_slot.tscn")
+const BrokenSlot = preload("res://board/broken_parts/broken_slot.tscn")
 
 var current_player
 var current_round
