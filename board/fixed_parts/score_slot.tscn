@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=1]
 [ext_resource path="res://board/fixed_parts/score_slot.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/coin_score.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/effects/confetti.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=5]
+[ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 3.75 )
@@ -63,8 +64,11 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="CoinScoreAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="CoinScoreAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="CoinMissAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [node name="Confetti" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 6 )

@@ -127,6 +127,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:orientation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "" ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "HalfTime"
@@ -330,6 +342,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [ 3 ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath(".:orientation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "RedGlow"
@@ -363,6 +387,7 @@ tracks/1/keys = {
 
 [node name="Bomb" groups=["Bombs"] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+orientation = ""
 ticks_left = 3
 ignited = false
 

@@ -6,10 +6,10 @@ const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
 
 export(bool) var is_moving = true
+export(String) var orientation = null
 export(String) var direction = Globals.DOWN
 export(Vector2) var velocity = Vector2.ZERO
 
-var orientation = null
 var target_position
 
 onready var land_audio = $LandAudio
