@@ -1,8 +1,5 @@
 extends Area2D
 
-const Coin = preload("res://board/moving_parts/coin.tscn")
-const Bomb = preload("res://board/moving_parts/bomb.tscn")
-
 var clickable = false
 
 onready var animated_sprite = $AnimatedSprite
@@ -20,21 +17,7 @@ func _on_Slot_input_event(_viewport, _event, _shape_idx):
 		emit_signal("coin_dropped")
 		yield(animated_sprite, "animation_finished")
 		animated_sprite.visible = false
-		spawn_coin()
-
-
-func spawn_coin():
-	var coin = Coin.instance()
-	coin.position = global_position
-	balls.call_deferred("add_child", coin)
-
-
-func spawn_bomb():
-	var bomb = Bomb.instance()
-	bomb.position = global_position
-	bomb_alert()
-	yield(animated_sprite, "animation_finished")
-	balls.call_deferred("add_child", bomb)
+		balls.spawn_coin(global_position)
 
 
 func bomb_alert():

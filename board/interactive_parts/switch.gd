@@ -4,6 +4,7 @@ const FLIP_TO_LEFT = "FlipToLeft"
 const FLIP_TO_RIGHT = "FlipToRight"
 
 onready var animation_player = $AnimationPlayer
+onready var coin_spawn_position = $CoinSpawnPosition
 
 export(String) var orientation
 

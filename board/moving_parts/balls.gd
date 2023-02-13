@@ -1,6 +1,21 @@
 extends Node2D
 
+const Coin = preload("res://board/moving_parts/coin.tscn")
+const Bomb = preload("res://board/moving_parts/bomb.tscn")
+
 signal no_moving_balls
+
+
+func spawn_coin(here):
+	var coin = Coin.instance()
+	coin.position = here
+	call_deferred("add_child", coin)
+
+
+func spawn_bomb(here):
+	var bomb = Bomb.instance()
+	bomb.position = here
+	call_deferred("add_child", bomb)
 
 
 func check_active_balls():

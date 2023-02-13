@@ -37,7 +37,7 @@ animations = [ {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "BombAlert",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 12 ), SubResource( 11 ), SubResource( 10 ) ],
 "loop": true,
@@ -59,7 +59,6 @@ animation = "HorizontalFlip"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 
