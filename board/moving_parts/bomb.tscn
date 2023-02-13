@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://board/moving_parts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/game/bomb.png" type="Texture" id=3]
-[ext_resource path="res://assets/effects/sparkle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/effects/spark.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=5]
 [ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=6]
 
@@ -11,22 +11,6 @@
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/active = false
-
-[sub_resource type="ParticlesMaterial" id=7]
-emission_shape = 3
-emission_point_count = 1
-flag_disable_z = true
-direction = Vector3( 1, -1, 0 )
-spread = 60.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 35.0
-angular_velocity = 45.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-color = Color( 1, 0.639216, 0, 1 )
-hue_variation = 0.1
-hue_variation_random = 1.0
 
 [sub_resource type="Animation" id=13]
 resource_name = "BlinkAndExplode"
@@ -399,11 +383,6 @@ hframes = 5
 
 [node name="Spark" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 8, -7 )
-emitting = true
-amount = 4
-lifetime = 0.2
-explosiveness = 0.3
-process_material = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 anims/BlinkAndExplode = SubResource( 13 )

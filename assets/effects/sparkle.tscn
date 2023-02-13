@@ -1,7 +1,4 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://assets/sprites/game/particle.png" type="Texture" id=1]
-
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 3
@@ -10,7 +7,7 @@ flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 35.0
+initial_velocity = 20.0
 angular_velocity = 45.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
@@ -20,6 +17,7 @@ hue_variation = 0.3
 hue_variation_random = 0.5
 
 [node name="Sparkle" type="Particles2D"]
+scale = Vector2( 2, 2 )
 emitting = false
 amount = 5
 lifetime = 0.3
@@ -27,4 +25,3 @@ explosiveness = 0.5
 randomness = 1.0
 visibility_rect = Rect2( -25, -25, 50, 50 )
 process_material = SubResource( 1 )
-texture = ExtResource( 1 )
