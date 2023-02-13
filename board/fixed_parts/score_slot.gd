@@ -32,26 +32,17 @@ func _on_ScoreSlot_body_entered(ball):
 		ball.free()
 
 	elif ball.is_in_group(Globals.GROUP_BOMBS):
-		ball.explode()
 		destroy_slot()
+		ball.explode()
 		yield(ball.animation_player, "animation_finished")
 
 	emit_signal("ball_exited")
 
 
 func destroy_slot():
-	disable_score_signal()
-	clear_label()
 	#play explode animation
-
-
-func disable_score_signal():
-	if is_connected("coin_scored", get_parent(), "coin_entered_slot"):
-		disconnect("coin_scored", get_parent(), "coin_entered_slot")
-
-
-func clear_label():
 	label.text = ""
+	slot_score = 0
 	scores = [0, 0, 0, 0]
 
 
