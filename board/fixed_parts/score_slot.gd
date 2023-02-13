@@ -1,5 +1,7 @@
 extends Area2D
 
+const BrokenSlot = preload("res://board/fixed_parts/broken_slot.tscn")
+
 var current_player
 var current_round
 var slot_score = 0 setget set_score
@@ -11,6 +13,7 @@ onready var label = $Label
 onready var coin_miss_audio = $CoinMissAudio
 onready var coin_score_audio = $CoinScoreAudio
 onready var confetti_effect = $Confetti
+onready var holes = $"../../Holes"
 
 signal ball_exited
 signal coin_scored(score)
@@ -23,7 +26,7 @@ func _ready():
 
 func _on_ScoreSlot_body_entered(ball):
 	if ball.is_in_group(Globals.GROUP_COINS):
-		if(slot_score != 0):
+		if slot_score != 0:
 			emit_signal("coin_scored", slot_score * ball.get("multiplier"))
 			coin_score_audio.play()
 			confetti_effect.emitting = true
@@ -32,18 +35,24 @@ func _on_ScoreSlot_body_entered(ball):
 		ball.free()
 
 	elif ball.is_in_group(Globals.GROUP_BOMBS):
-		destroy_slot()
 		ball.explode()
 		yield(ball.animation_player, "animation_finished")
+		destroy_slot()
 
 	emit_signal("ball_exited")
 
 
 func destroy_slot():
-	#play explode animation
+	add_hole()
 	label.text = ""
 	slot_score = 0
 	scores = [0, 0, 0, 0]
+
+
+func add_hole():
+	var hole = BrokenSlot.instance()
+	hole.global_position = global_position
+	holes.add_child(hole)
 
 
 func set_score(value):
