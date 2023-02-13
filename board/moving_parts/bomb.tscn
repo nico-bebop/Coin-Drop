@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://board/moving_parts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/effects/spark.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=5]
 [ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/effects/explosion.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
@@ -14,7 +15,6 @@ shader_param/active = false
 
 [sub_resource type="Animation" id=13]
 resource_name = "BlinkAndExplode"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/active")
 tracks/0/interp = 1
@@ -22,10 +22,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true, false, true, false ]
+"values": [ true, false, true, false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
@@ -122,6 +122,74 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Explosion:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("ExplosionAudio:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Sprite:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Spark:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "create_hole"
+}, {
+"args": [  ],
+"method": "destroy_colliding_switch"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -338,6 +406,42 @@ tracks/10/keys = {
 "update": 0,
 "values": [ "" ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Explosion:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ExplosionAudio:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Sprite:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "RedGlow"
@@ -384,12 +488,14 @@ hframes = 5
 [node name="Spark" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 8, -7 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="Explosion" parent="." index="2" instance=ExtResource( 7 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 anims/BlinkAndExplode = SubResource( 13 )
 anims/HalfTime = SubResource( 11 )
 anims/Ignited = SubResource( 10 )
 anims/RESET = SubResource( 9 )
 anims/RedGlow = SubResource( 8 )
 
-[node name="ExplosionAudio" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="ExplosionAudio" type="AudioStreamPlayer2D" parent="." index="9"]
 stream = ExtResource( 6 )

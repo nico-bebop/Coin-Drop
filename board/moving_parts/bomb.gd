@@ -47,11 +47,6 @@ func update_animation():
 
 func explode():
 	animation_player.play("BlinkAndExplode")
-	explosion_audio.play()
-	yield(animation_player, "animation_finished")
-	create_hole()
-	destroy_colliding_switch()
-	queue_free()
 
 
 func destroy_colliding_switch():
