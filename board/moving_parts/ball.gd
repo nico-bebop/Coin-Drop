@@ -45,14 +45,16 @@ func process_movement(delta):
 
 func _on_SwitchCollision_body_entered(body):
 	is_moving = false
+	body.has_ball = true
 	orientation = body.get("orientation")
 	land_audio.play()
 	emit_signal("check_moving_balls")
 	set_target_position()
 
 
-func _on_SwitchCollision_body_exited(_body):
+func _on_SwitchCollision_body_exited(body):
 	is_moving = true
+	body.has_ball = false
 
 
 func set_target_position():
