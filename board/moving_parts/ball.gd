@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const MAX_SPEED = 250
-const ACCELERATION = 200
+const ACCELERATION = 250
 const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
 
@@ -37,7 +37,7 @@ func process_movement(delta):
 		Globals.DOWN:
 			velocity = velocity.move_toward(Vector2.DOWN * MAX_SPEED, ACCELERATION * delta)
 		Globals.LEFT, Globals.RIGHT:
-			global_position = global_position.move_toward(target_position, ACCELERATION / 2.0 * delta)
+			global_position = global_position.move_toward(target_position, ACCELERATION / 1.5 * delta)
 
 	if global_position == target_position:
 		direction = Globals.DOWN
