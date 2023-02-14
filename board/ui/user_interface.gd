@@ -12,11 +12,11 @@ onready var animation_player = $AnimationPlayer
 onready var line1 = $Sign/Line1
 onready var line2 = $Sign/Line2
 
-onready var pause_button = $PauseButton
-onready var restart_button = $RestartButton
-onready var accept_button = $AcceptButton
-onready var cancel_button = $CancelButton
-onready var quit_button = $QuitButton
+onready var pause_button = $Buttons/PauseButton
+onready var restart_button = $Buttons/RestartButton
+onready var accept_button = $Buttons/AcceptButton
+onready var cancel_button = $Buttons/CancelButton
+onready var quit_button = $Buttons/QuitButton
 
 
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -20,6 +20,59 @@
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=18]
 [ext_resource path="res://board/camera_shake.gd" type="Script" id=19]
 [ext_resource path="res://board/power_ups/power_ups.gd" type="Script" id=20]
+[ext_resource path="res://assets/sprites/ui/arrow.png" type="Texture" id=21]
+
+[sub_resource type="Animation" id=27]
+resource_name = "ArrowsHint"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../LeftArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../RightArrow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../RightArrow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../LeftArrow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=18]
 length = 0.001
@@ -84,7 +137,7 @@ tracks/4/keys = {
 "values": [ Vector2( 180, 76 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../PauseButton:rect_position")
+tracks/5/path = NodePath("../Buttons/PauseButton:rect_position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -96,7 +149,7 @@ tracks/5/keys = {
 "values": [ Vector2( 153, 25 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../RestartButton:rect_position")
+tracks/6/path = NodePath("../Buttons/RestartButton:rect_position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -106,6 +159,54 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 183, 25 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../LeftArrow:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 88, 172 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../RightArrow:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 272, 172 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../LeftArrow:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../RightArrow:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -162,6 +263,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=20]
 resource_name = "SignAppear"
+length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Sign:position")
 tracks/0/interp = 1
@@ -175,45 +277,28 @@ tracks/0/keys = {
 "values": [ Vector2( 180, -65 ), Vector2( 180, 76 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../PauseButton:rect_position")
+tracks/1/path = NodePath("../Buttons/PauseButton:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
+"times": PoolRealArray( 0, 1, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 153, -25 ), Vector2( 153, -25 ), Vector2( 153, 25 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../RestartButton:rect_position")
+tracks/2/path = NodePath("../Buttons/RestartButton:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.8, 1 ),
+"times": PoolRealArray( 0, 1.3, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 183, -25 ), Vector2( 183, -25 ), Vector2( 183, 25 ) ]
-}
-
-[sub_resource type="Animation" id=21]
-resource_name = "SignIdle"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Sign:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 180, 76 ), Vector2( 181, 76 ) ]
 }
 
 [sub_resource type="InputEventAction" id=23]
@@ -367,10 +452,21 @@ script = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface"]
 root_node = NodePath("../RoundTransition")
+anims/ArrowsHint = SubResource( 27 )
 anims/RESET = SubResource( 18 )
 anims/RoundChange = SubResource( 19 )
 anims/SignAppear = SubResource( 20 )
-anims/SignIdle = SubResource( 21 )
+
+[node name="LeftArrow" type="Sprite" parent="UserInterface"]
+visible = false
+position = Vector2( 88, 172 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 21 )
+
+[node name="RightArrow" type="Sprite" parent="UserInterface"]
+visible = false
+position = Vector2( 272, 172 )
+texture = ExtResource( 21 )
 
 [node name="Sign" type="Sprite" parent="UserInterface"]
 position = Vector2( 180, 76 )
@@ -400,7 +496,11 @@ text = "Drop"
 align = 1
 valign = 1
 
-[node name="PauseButton" type="TextureButton" parent="UserInterface"]
+[node name="Buttons" type="Control" parent="UserInterface"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PauseButton" type="TextureButton" parent="UserInterface/Buttons"]
 margin_left = 153.0
 margin_top = 25.0
 margin_right = 177.0
@@ -409,7 +509,7 @@ shortcut_in_tooltip = false
 shortcut = SubResource( 24 )
 texture_normal = ExtResource( 9 )
 
-[node name="RestartButton" type="TextureButton" parent="UserInterface"]
+[node name="RestartButton" type="TextureButton" parent="UserInterface/Buttons"]
 pause_mode = 1
 margin_left = 183.0
 margin_top = 25.0
@@ -417,7 +517,7 @@ margin_right = 207.0
 margin_bottom = 49.0
 texture_normal = ExtResource( 6 )
 
-[node name="AcceptButton" type="Button" parent="UserInterface"]
+[node name="AcceptButton" type="Button" parent="UserInterface/Buttons"]
 pause_mode = 1
 visible = false
 margin_left = 150.0
@@ -427,7 +527,7 @@ margin_bottom = 136.0
 theme = ExtResource( 18 )
 text = "Yes"
 
-[node name="CancelButton" type="Button" parent="UserInterface"]
+[node name="CancelButton" type="Button" parent="UserInterface/Buttons"]
 pause_mode = 1
 visible = false
 margin_left = 186.0
@@ -437,11 +537,11 @@ margin_bottom = 136.0
 theme = ExtResource( 18 )
 text = "No"
 
-[node name="QuitButton" type="Button" parent="UserInterface"]
+[node name="QuitButton" type="Button" parent="UserInterface/Buttons"]
 visible = false
 margin_left = 162.0
 margin_top = 112.0
-margin_right = 194.0
+margin_right = 195.0
 margin_bottom = 136.0
 theme = ExtResource( 18 )
 text = "Quit?"
@@ -491,11 +591,11 @@ script = ExtResource( 19 )
 [connection signal="check_moving_balls" from="BottomSlots" to="Balls" method="check_active_balls"]
 [connection signal="update_score" from="BottomSlots" to="TurnSystem" method="_on_BottomSlots_update_score"]
 [connection signal="no_moving_balls" from="Balls" to="TurnSystem" method="_on_Balls_no_moving_balls"]
-[connection signal="pressed" from="UserInterface/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
-[connection signal="pressed" from="UserInterface/RestartButton" to="UserInterface" method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="UserInterface/AcceptButton" to="UserInterface" method="_on_AcceptButton_pressed"]
-[connection signal="pressed" from="UserInterface/CancelButton" to="UserInterface" method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="UserInterface/QuitButton" to="UserInterface" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/RestartButton" to="UserInterface" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/AcceptButton" to="UserInterface" method="_on_AcceptButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/CancelButton" to="UserInterface" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/QuitButton" to="UserInterface" method="_on_QuitButton_pressed"]
 [connection signal="game_over" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="UserInterface" method="_on_TurnSystem_game_over"]
 [connection signal="round_ended" from="TurnSystem" to="." method="_on_TurnSystem_round_ended"]
