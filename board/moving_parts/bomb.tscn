@@ -472,6 +472,7 @@ position = Vector2( 8, -7 )
 
 [node name="LandAudio" parent="." index="7"]
 stream = ExtResource( 8 )
+volume_db = -25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 anims/BlinkAndExplode = SubResource( 13 )
@@ -482,3 +483,4 @@ anims/RedGlow = SubResource( 8 )
 
 [node name="ExplosionAudio" type="AudioStreamPlayer2D" parent="." index="9"]
 stream = ExtResource( 6 )
+volume_db = -10.0

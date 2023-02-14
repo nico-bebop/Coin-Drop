@@ -1,10 +1,41 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/sprites/ui/double_sign.png" type="Texture" id=8]
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Appear"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoubleSign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 180, -130 ), Vector2( 180, 141 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoubleSign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 180, -130 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 script = ExtResource( 1 )
@@ -14,7 +45,7 @@ position = Vector2( 180, 320 )
 texture = ExtResource( 2 )
 
 [node name="DoubleSign" type="Sprite" parent="."]
-position = Vector2( 180, 141 )
+position = Vector2( 180, -130 )
 texture = ExtResource( 8 )
 
 [node name="SinglePlayer" type="Button" parent="DoubleSign"]
@@ -34,6 +65,10 @@ margin_bottom = 110.0
 theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 text = "Versus"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 1 )
+anims/RESET = SubResource( 2 )
 
 [connection signal="pressed" from="DoubleSign/SinglePlayer" to="." method="_on_SinglePlayer_pressed"]
 [connection signal="pressed" from="DoubleSign/Versus" to="." method="_on_Versus_pressed"]

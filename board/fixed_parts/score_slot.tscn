@@ -66,9 +66,11 @@ valign = 1
 
 [node name="CoinScoreAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -20.0
 
 [node name="CoinMissAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -15.0
 
 [node name="Confetti" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 6 )

@@ -65,9 +65,11 @@ hframes = 10
 
 [node name="LandAudio" parent="." index="6"]
 stream = ExtResource( 2 )
+volume_db = -20.0
 
 [node name="CoinCombineAudio" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource( 4 )
+volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 playback_speed = 2.5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=17]
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=18]
 [ext_resource path="res://board/camera_shake.gd" type="Script" id=19]
+[ext_resource path="res://board/power_ups/power_ups.gd" type="Script" id=20]
 
 [sub_resource type="Animation" id=18]
 length = 0.001
@@ -354,6 +355,9 @@ position = Vector2( 30, 607 )
 
 [node name="Balls" type="Node2D" parent="."]
 script = ExtResource( 15 )
+
+[node name="PowerUps" type="Node2D" parent="."]
+script = ExtResource( 20 )
 
 [node name="UserInterface" type="Control" parent="."]
 pause_mode = 2

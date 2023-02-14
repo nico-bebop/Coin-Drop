@@ -11,6 +11,8 @@ onready var holes = $"../../../Holes"
 
 export(String) var orientation
 
+var has_ball = false
+
 
 func set_random_position():
 	if randi() % 2 == 0:

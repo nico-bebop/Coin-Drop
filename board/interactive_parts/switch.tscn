@@ -420,5 +420,6 @@ amount = 8
 
 [node name="DestroyAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -20.0
 
 [connection signal="body_entered" from="Bottom" to="." method="_on_Bottom_body_entered"]

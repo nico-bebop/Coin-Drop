@@ -1,6 +1,11 @@
 extends Control
 
 
+func _ready():
+	yield(SceneTransition.animation_player, "animation_finished")
+	$AnimationPlayer.play("Appear")
+
+
 func _on_SinglePlayer_pressed():
 	start_game(Globals.GameModes.SINGLE_PLAYER)
 
