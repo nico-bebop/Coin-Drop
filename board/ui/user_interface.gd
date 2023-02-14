@@ -40,12 +40,12 @@ func _on_CancelButton_pressed():
 
 
 func _on_AcceptButton_pressed():
-	var _err = get_parent().get_tree().reload_current_scene()
+	SceneTransition.restart_scene()
 
 
 func _on_QuitButton_pressed():
 	get_tree().paused = false
-	var _err = get_tree().change_scene("res://menu/main_menu.tscn")
+	SceneTransition.change_scene("res://menu/main_menu.tscn")
 
 
 func _on_TurnSystem_game_over(message):

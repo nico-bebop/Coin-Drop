@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://assets/sprites/ui/coin_meter.png" type="Texture" id=2]
@@ -8,32 +8,83 @@
 [ext_resource path="res://board/turn_system/player.gd" type="Script" id=6]
 [ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=7]
 
-[sub_resource type="Animation" id=4]
-resource_name = "Highlight"
-length = 0.2
-loop = true
+[sub_resource type="Animation" id=6]
+resource_name = "Appear"
+length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Scoreboard:frame")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -36, -110 ), Vector2( -36, -110 ), Vector2( 65, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 30.0, 30.0, -15.0, 15.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Highlight"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 0, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Scoreboard:frame")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 65, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -46,34 +97,29 @@ margin_bottom = 64.0
 script = ExtResource( 6 )
 
 [node name="Scoreboard" type="Sprite" parent="."]
-position = Vector2( 65, 81 )
+position = Vector2( 65, 33 )
 texture = ExtResource( 3 )
+offset = Vector2( 0, 48 )
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../PlayerName")
-playback_speed = 0.2
-anims/Highlight = SubResource( 4 )
-anims/RESET = SubResource( 5 )
-
-[node name="PlayerName" type="Label" parent="."]
+[node name="PlayerName" type="Label" parent="Scoreboard"]
 material = ExtResource( 1 )
-margin_left = 33.0
-margin_top = 59.0
-margin_right = 97.0
-margin_bottom = 75.0
+margin_left = -32.0
+margin_top = 26.0
+margin_right = 32.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "Player N"
 align = 1
 valign = 1
 
-[node name="Score" type="Label" parent="."]
+[node name="Score" type="Label" parent="Scoreboard"]
 material = ExtResource( 1 )
-margin_left = 35.0
-margin_top = 79.0
-margin_right = 95.0
-margin_bottom = 120.0
+margin_left = -30.0
+margin_top = 46.0
+margin_right = 30.0
+margin_bottom = 87.0
 custom_fonts/font = ExtResource( 5 )
 text = "ROUND SCORE
 -/-
@@ -81,6 +127,12 @@ TOTAL SCORE
 0"
 align = 1
 valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Scoreboard/PlayerName")
+anims/Appear = SubResource( 6 )
+anims/Highlight = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [node name="CoinMeter" type="TextureProgress" parent="."]
 margin_left = 29.0
