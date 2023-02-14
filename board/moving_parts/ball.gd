@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MAX_SPEED = 500
+const MAX_SPEED = 250
 const ACCELERATION = 200
 const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
@@ -13,6 +13,7 @@ export(Vector2) var velocity = Vector2.ZERO
 var target_position
 
 onready var land_audio = $LandAudio
+onready var ball_collision = $BallCollision
 
 signal check_moving_balls
 
@@ -24,6 +25,11 @@ func _ready():
 func _physics_process(delta):
 	process_movement(delta)
 	velocity = move_and_slide(velocity)
+	
+	if ball_collision.is_colliding():
+		var colliding_ball = ball_collision.get_collider()
+		if !colliding_ball.is_moving:
+			colliding_ball.direction = colliding_ball.orientation
 
 
 func process_movement(delta):
@@ -31,16 +37,10 @@ func process_movement(delta):
 		Globals.DOWN:
 			velocity = velocity.move_toward(Vector2.DOWN * MAX_SPEED, ACCELERATION * delta)
 		Globals.LEFT, Globals.RIGHT:
-			is_moving = true
 			global_position = global_position.move_toward(target_position, ACCELERATION / 2.0 * delta)
 
 	if global_position == target_position:
 		direction = Globals.DOWN
-
-
-func _on_BallCollision_body_entered(_body):
-	if !is_moving:
-		direction = orientation
 
 
 func _on_SwitchCollision_body_entered(body):

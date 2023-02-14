@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://board/moving_parts/ball.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=6]
@@ -7,14 +7,10 @@
 [sub_resource type="CircleShape2D" id=11]
 radius = 6.0
 
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 8.0
-height = 2.0
-
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 2, 1 )
 
-[node name="Ball" type="KinematicBody2D"]
+[node name="Ball" type="KinematicBody2D" groups=["Balls"]]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource( 3 )
@@ -23,12 +19,10 @@ script = ExtResource( 3 )
 rotation = 1.5708
 shape = SubResource( 11 )
 
-[node name="BallCollision" type="Area2D" parent="."]
-collision_layer = 8
+[node name="BallCollision" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 15 )
 collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BallCollision"]
-shape = SubResource( 9 )
 
 [node name="SwitchCollision" type="Area2D" parent="." groups=["Balls"]]
 collision_layer = 8
@@ -51,6 +45,5 @@ valign = 1
 
 [node name="LandAudio" type="AudioStreamPlayer" parent="."]
 
-[connection signal="body_entered" from="BallCollision" to="." method="_on_BallCollision_body_entered"]
 [connection signal="body_entered" from="SwitchCollision" to="." method="_on_SwitchCollision_body_entered"]
 [connection signal="body_exited" from="SwitchCollision" to="." method="_on_SwitchCollision_body_exited"]

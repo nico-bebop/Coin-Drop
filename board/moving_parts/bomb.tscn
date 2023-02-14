@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://board/moving_parts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=5]
 [ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/effects/explosion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/bomb_land.wav" type="AudioStream" id=8]
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
@@ -70,7 +71,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -118,7 +119,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -130,7 +131,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -166,14 +167,17 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.5, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "create_hole"
+"method": "shake_camera"
 }, {
 "args": [  ],
 "method": "destroy_colliding_switch"
+}, {
+"args": [  ],
+"method": "create_hole"
 }, {
 "args": [  ],
 "method": "queue_free"
@@ -465,6 +469,9 @@ hframes = 5
 position = Vector2( 8, -7 )
 
 [node name="Explosion" parent="." index="2" instance=ExtResource( 7 )]
+
+[node name="LandAudio" parent="." index="7"]
+stream = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 anims/BlinkAndExplode = SubResource( 13 )
