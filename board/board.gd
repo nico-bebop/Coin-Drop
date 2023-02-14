@@ -49,6 +49,7 @@ func spawn_random_coin_bag():
 	for switch in switches:
 		if !switch.has_ball:
 			power_ups.spawn_coin_bag(switch.coin_spawn_position.global_position + Vector2(0, 16))
+			switch.has_ball = true
 			return
 
 
