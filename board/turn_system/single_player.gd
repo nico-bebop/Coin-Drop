@@ -3,6 +3,10 @@ extends "res://board/turn_system/turn_system.gd"
 const GAME_OVER = ["Game", "Over!"]
 
 onready var player = $Player
+onready var decoration = $Decoration/AnimationPlayer
+
+func _ready():
+	decoration.play("Appear")
 
 
 func start():

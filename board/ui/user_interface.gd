@@ -40,7 +40,7 @@ func _on_CancelButton_pressed():
 
 
 func _on_AcceptButton_pressed():
-	var _err = get_parent().get_tree().reload_current_scene()
+	SceneTransition.restart_scene()
 
 
 func _on_QuitButton_pressed():

@@ -14,14 +14,14 @@ var required_score = [10, 40, 20, 80, Globals.NO_SCORE]
 
 onready var animation_player = $AnimationPlayer
 onready var coin_meter = $CoinMeter
-onready var score = $Score
+onready var score = $Scoreboard/Score
 onready var turn_system = get_parent()
 onready var tween = $Tween
 
 
 func _ready():
-	$PlayerName.text = player_name
-
+	$Scoreboard/PlayerName.text = player_name
+	animation_player.play("Appear")
 
 func reset_scoreboard():
 	empty_coin_meter()
