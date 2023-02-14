@@ -45,7 +45,7 @@ func _on_AcceptButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().paused = false
-	var _err = get_tree().change_scene("res://menu/main_menu.tscn")
+	SceneTransition.change_scene("res://menu/main_menu.tscn")
 
 
 func _on_TurnSystem_game_over(message):

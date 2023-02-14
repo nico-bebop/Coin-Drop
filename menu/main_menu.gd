@@ -11,4 +11,4 @@ func _on_Versus_pressed():
 
 func start_game(game_mode):
 	Globals.game_mode = game_mode
-	var _err = get_tree().change_scene("res://board/board.tscn")
+	SceneTransition.change_scene("res://board/board.tscn")
