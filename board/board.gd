@@ -6,7 +6,6 @@ const Versus = preload("res://board/turn_system/versus.tscn")
 const INITIAL_COINS = 10
 
 onready var balls = $Balls
-onready var power_ups = $PowerUps
 onready var turn_system = $TurnSystem
 
 signal board_ready
@@ -42,17 +41,6 @@ func spawn_random_coins():
 		yield(get_tree().create_timer(0.2), "timeout")
 
 
-func spawn_random_coin_bag():
-	yield(get_tree().create_timer(0.5), "timeout")
-	var switches = get_tree().get_nodes_in_group(Globals.GROUP_SWITCHES)
-	switches.shuffle()
-	for switch in switches:
-		if !switch.has_ball:
-			power_ups.spawn_coin_bag(switch.coin_spawn_position.global_position + Vector2(0, 16))
-			switch.has_ball = true
-			return
-
-
 func throw_random_bombs(quantity):
 	var slots = get_tree().get_nodes_in_group(Globals.GROUP_SLOTS)
 	slots.shuffle()
@@ -73,7 +61,6 @@ func throw_random_coins(quantity):
 
 
 func _on_TurnSystem_round_ended(current_round):
-	if current_round > 0 && current_round < Globals.FINAL_ROUND:
-		throw_random_bombs(current_round)
-		yield(balls, "no_moving_balls")
-		spawn_random_coin_bag()
+	match current_round:
+		1, 2, 3:
+			throw_random_bombs(current_round)
