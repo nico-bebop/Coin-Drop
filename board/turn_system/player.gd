@@ -37,10 +37,6 @@ func reset_scoreboard():
 
 
 func set_label_text():
-	if turn_system.current_round == Globals.FINAL_ROUND:
-		round_score = Globals.NO_SCORE
-		coins_left = Globals.NO_SCORE
-
 	match Globals.game_mode:
 		Globals.GameModes.SINGLE_PLAYER:
 			score.text = COINS_LEFT + str(coins_left)

@@ -5,11 +5,25 @@ const TIE = ["Tie!", ""]
 
 onready var player1 = $Player1
 onready var player2 = $Player2
+onready var turn_system = get_parent()
 
 
 func start():
 	start_round()
 	change_active_player(player1, player2)
+
+
+func change_turn():
+	if should_change_round():
+		turn_system.change_round()
+		if current_round != Globals.FINAL_ROUND:
+			start_round()
+		else:
+			turn_system.signal_game_over()
+		return
+
+	next_turn()
+	turn_system.signal_turn_ready()
 
 
 func next_turn():
