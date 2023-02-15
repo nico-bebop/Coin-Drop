@@ -118,10 +118,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 10, -12 ), Vector2( 7, -15 ), Vector2( 0, -18 ), Vector2( -7, -15 ), Vector2( -10, -12 ) ]
+"values": [ Vector2( 10, -13 ), Vector2( -10, -13 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Bottom/CollisionShape2D:position")
@@ -130,10 +130,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( -10, 11 ), Vector2( -5, 13 ), Vector2( 0, 15 ), Vector2( 5, 13 ), Vector2( 10, 11 ) ]
+"values": [ Vector2( -10, 11 ), Vector2( 10, 11 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:orientation")
@@ -197,7 +197,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -10, -12 ), Vector2( -7, -15 ), Vector2( 0, -18 ), Vector2( 7, -15 ), Vector2( 10, -12 ) ]
+"values": [ Vector2( -10, -13 ), Vector2( -7, -15 ), Vector2( 0, -18 ), Vector2( 7, -15 ), Vector2( 10, -13 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Bottom/CollisionShape2D:position")
@@ -272,7 +272,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -17 ) ]
+"values": [ Vector2( 0, -18 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Bottom/CollisionShape2D:position")
@@ -392,8 +392,7 @@ position = Vector2( 0, 9 )
 texture = ExtResource( 4 )
 
 [node name="Head" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -17 )
+position = Vector2( 0, -18 )
 shape = SubResource( 6 )
 one_way_collision = true
 
