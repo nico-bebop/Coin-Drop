@@ -36,3 +36,4 @@ func disappear():
 	$BallCollision.queue_free()
 	$CollisionShape2D.queue_free()
 	$Sprite.visible = false
+	$Sparkle.emitting = false
