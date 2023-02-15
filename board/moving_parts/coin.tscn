@@ -65,7 +65,7 @@ hframes = 10
 
 [node name="LandAudio" parent="." index="6"]
 stream = ExtResource( 2 )
-volume_db = -20.0
+volume_db = -15.0
 
 [node name="CoinCombineAudio" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource( 4 )

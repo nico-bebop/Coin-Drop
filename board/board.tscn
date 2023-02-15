@@ -549,6 +549,7 @@ text = "Quit?"
 
 [node name="ButtonClickAudio" type="AudioStreamPlayer" parent="UserInterface/Buttons"]
 stream = ExtResource( 23 )
+volume_db = -10.0
 
 [node name="RoundTransition" type="Control" parent="UserInterface"]
 visible = false
@@ -607,3 +608,4 @@ script = ExtResource( 19 )
 [connection signal="round_ended" from="TurnSystem" to="UserInterface/RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="turn_ready" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_turn_ready"]
 [connection signal="turn_ready" from="TurnSystem" to="Balls" method="_on_TurnSystem_turn_ready"]
+[connection signal="turn_ready" from="TurnSystem" to="PowerUps" method="_on_TurnSystem_turn_ready"]

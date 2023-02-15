@@ -73,6 +73,7 @@ anims/RESET = SubResource( 2 )
 
 [node name="ButtonClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -10.0
 
 [connection signal="pressed" from="DoubleSign/SinglePlayer" to="." method="_on_SinglePlayer_pressed"]
 [connection signal="pressed" from="DoubleSign/Versus" to="." method="_on_Versus_pressed"]
