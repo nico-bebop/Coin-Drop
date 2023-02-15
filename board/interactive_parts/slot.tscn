@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://board/interactive_parts/slot.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/game/alert.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/bomb_blip.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 3 )
@@ -62,6 +63,11 @@ playing = true
 position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 
+[node name="BombAlertSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
 [connection signal="input_event" from="." to="." method="_on_Slot_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Slot_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Slot_mouse_exited"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

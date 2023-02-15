@@ -36,3 +36,9 @@ func _on_Slot_mouse_entered():
 func _on_Slot_mouse_exited():
 	if clickable:
 		animated_sprite.visible = false
+
+
+func _on_AnimatedSprite_frame_changed():
+	if animated_sprite.animation == "BombAlert":
+		if animated_sprite.frame % 2 == 0:
+			$BombAlertSound.play()

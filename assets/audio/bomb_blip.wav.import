@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pause.wav-a167df2a7e28c25a316ac799ce7aa1d8.sample"
+path="res://.import/bomb_blip.wav-f2354515fcddbdba4fd0c450f7336ba4.sample"
 
 [deps]
 
-source_file="res://assets/audio/pause.wav"
-dest_files=[ "res://.import/pause.wav-a167df2a7e28c25a316ac799ce7aa1d8.sample" ]
+source_file="res://assets/audio/bomb_blip.wav"
+dest_files=[ "res://.import/bomb_blip.wav-f2354515fcddbdba4fd0c450f7336ba4.sample" ]
 
 [params]
 
