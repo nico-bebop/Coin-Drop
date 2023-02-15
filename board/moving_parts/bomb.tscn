@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://board/moving_parts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
@@ -8,11 +8,76 @@
 [ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/effects/explosion.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/bomb_land.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/bomb_blip.wav" type="AudioStream" id=9]
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/active = false
+
+[sub_resource type="Animation" id=14]
+resource_name = "Alert"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spark:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 5, 6, 5, 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BlipAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:direction")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "", "DOWN" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "BlinkAndExplode"
@@ -463,7 +528,7 @@ ignited = false
 material = SubResource( 12 )
 position = Vector2( 0, -2 )
 texture = ExtResource( 3 )
-hframes = 5
+hframes = 7
 
 [node name="Spark" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 8, -7 )
@@ -475,12 +540,17 @@ stream = ExtResource( 8 )
 volume_db = -20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+anims/Alert = SubResource( 14 )
 anims/BlinkAndExplode = SubResource( 13 )
 anims/HalfTime = SubResource( 11 )
 anims/Ignited = SubResource( 10 )
 anims/RESET = SubResource( 9 )
 anims/RedGlow = SubResource( 8 )
 
-[node name="ExplosionAudio" type="AudioStreamPlayer2D" parent="." index="9"]
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource( 6 )
 volume_db = -10.0
+
+[node name="BlipAudio" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource( 9 )
+volume_db = -15.0
