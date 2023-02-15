@@ -6,6 +6,7 @@ onready var label = $Label
 
 func _on_Board_board_ready():
 	round_start_animation(0)
+	yield(animation_player, "animation_finished")
 	animation_player.play("ArrowsHint")
 
 
