@@ -1,30 +1,39 @@
 extends Node2D
 
 const CoinBag = preload("res://board/power_ups/coin_bag.tscn")
+const ExtraCoins = preload("res://board/power_ups/extra_coins.tscn")
 
-const COIN_BAG_TURN = 7
+const COIN_BAG_TURN = 9
+const EXTRA_COINS_TURN = 5
 
-var round_counter = 0
-
-
-func spawn_coin_bag(here):
-	var bag = CoinBag.instance()
-	bag.position = here
-	call_deferred("add_child", bag)
+var bag_counter = 0
+var extra_counter = 0
 
 
-func spawn_random_coin_bag():
+func instance_power_up(power_up, here):
+	var power = power_up.instance()
+	power.position = here
+	call_deferred("add_child", power)
+
+
+func spawn_power_up(power_up):
 	var switches = get_tree().get_nodes_in_group(Globals.GROUP_SWITCHES)
 	switches.shuffle()
 	for switch in switches:
 		if !switch.has_ball:
-			spawn_coin_bag(switch.coin_spawn_position.global_position + Vector2(0, 16))
+			instance_power_up(power_up, switch.coin_spawn_position.global_position + Vector2(0, 16))
 			switch.has_ball = true
 			return
 
 
 func _on_TurnSystem_turn_ready():
-	round_counter += 1
-	if round_counter == COIN_BAG_TURN:
-		spawn_random_coin_bag()
-		round_counter = 0
+	bag_counter += 1
+	if bag_counter == COIN_BAG_TURN:
+		spawn_power_up(CoinBag)
+		bag_counter = 0
+
+	if Globals.game_mode == Globals.GameModes.SINGLE_PLAYER:
+		extra_counter += 1
+		if extra_counter == EXTRA_COINS_TURN:
+			spawn_power_up(ExtraCoins)
+			extra_counter = 0

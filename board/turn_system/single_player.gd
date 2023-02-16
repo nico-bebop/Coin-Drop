@@ -19,6 +19,8 @@ func _ready():
 
 func change_turn():
 	if objective_failed():
+		objective.text = FAILED + ROUND_SCORE
+		update_round_score()
 		turn_system.signal_game_over()
 		return
 	
@@ -57,8 +59,6 @@ func set_objective_text():
 
 
 func objective_failed():
-	objective.text = FAILED + ROUND_SCORE
-	update_round_score()
 	return player.coins_left == 0 && !player.required_score_met()
 
 
