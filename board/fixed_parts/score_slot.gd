@@ -10,9 +10,6 @@ export(Array, int) var scores = [0, 0, 0, 0]
 
 onready var animation_player = $AnimationPlayer
 onready var label = $Label
-onready var coin_miss_audio = $CoinMissAudio
-onready var coin_score_audio = $CoinScoreAudio
-onready var confetti_effect = $Confetti
 onready var holes = $"../../Holes"
 
 signal ball_exited
@@ -28,10 +25,10 @@ func _on_ScoreSlot_body_entered(ball):
 	if ball.is_in_group(Globals.GROUP_COINS):
 		if slot_score != 0:
 			emit_signal("coin_scored", slot_score * ball.get("multiplier"))
-			coin_score_audio.play()
-			confetti_effect.emitting = true
+			$CoinScoreAudio.play()
+			$Confetti.emitting = true
 		else:
-			coin_miss_audio.play()
+			$CoinMissAudio.play()
 		ball.free()
 
 	elif ball.is_in_group(Globals.GROUP_BOMBS):

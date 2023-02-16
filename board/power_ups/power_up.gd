@@ -1,8 +1,6 @@
 extends RigidBody2D
 
 onready var animation_player = $AnimationPlayer
-onready var destroy_audio = $DestroyAudio
-onready var power_up_audio = $PowerUpAudio
 
 
 func _ready():

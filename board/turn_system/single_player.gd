@@ -9,12 +9,11 @@ const FAILED = "FAILED!\n"
 
 onready var player = $Player
 onready var objective = $Player/Objective/Scoreboard/Score
-onready var objective_animation = $Player/Objective/AnimationPlayer
 onready var turn_system = get_parent()
 
 
 func _ready():
-	objective_animation.play("Appear")
+	$Player/Objective/AnimationPlayer.play("Appear")
 
 
 func change_turn():

@@ -6,10 +6,7 @@ var can_shine = true
 var multiplier = 1 setget set_multiplier
 
 onready var animation_player = $AnimationPlayer
-onready var coin_combine_audio = $CoinCombineAudio
-onready var label = $Label
 onready var shine_timer = $ShineTimer
-onready var sparkle_effect = $Sparkle
 
 
 func _physics_process(_delta):
@@ -37,14 +34,14 @@ func combine_with(colliding_coin):
 
 func play_combine_effects():
 	animation_player.play("HorizontalFlip")
-	coin_combine_audio.play()
-	sparkle_effect.emitting = true
+	$CoinCombineAudio.play()
+	$Sparkle.emitting = true
 
 
 func change_multiplier(value):
 	yield(animation_player, "animation_finished")
 	multiplier = clamp(value, multiplier, MAX_MULTIPLIER)
-	label.text = str(multiplier)
+	$Label.text = str(multiplier)
 
 
 func set_multiplier(value):

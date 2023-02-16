@@ -24,5 +24,5 @@ func update_slots_score(this_round):
 	if this_round < Globals.FINAL_ROUND:
 		for slot in get_children():
 			slot.set_score(slot.scores[this_round])
-			slot.get("animation_player").play("ScoreChange")
-			yield(slot.get("animation_player"), "animation_finished")
+			slot.animation_player.play("ScoreChange")
+			yield(slot.animation_player, "animation_finished")
