@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const MAX_SPEED = 250
-const ACCELERATION = 250
+const ACCELERATION = 200
 const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
 
