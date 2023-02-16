@@ -37,7 +37,7 @@ func process_movement(delta):
 		Globals.DOWN:
 			velocity = velocity.move_toward(Vector2.DOWN * MAX_SPEED, ACCELERATION * delta)
 		Globals.LEFT, Globals.RIGHT:
-			global_position = global_position.move_toward(target_position, ACCELERATION / 1.5 * delta)
+			global_position = global_position.move_toward(target_position, ACCELERATION * delta)
 
 	if global_position == target_position:
 		direction = Globals.DOWN
