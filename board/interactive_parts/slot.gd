@@ -9,7 +9,7 @@ signal coin_dropped
 
 
 func _on_Slot_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_just_pressed("click") && clickable:
+	if Input.is_action_just_released("click") && clickable:
 		if !animated_sprite.visible:
 			animated_sprite.visible = true
 			return
