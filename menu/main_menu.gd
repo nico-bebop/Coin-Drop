@@ -7,10 +7,12 @@ func _ready():
 
 
 func _on_SinglePlayer_pressed():
+	$ButtonClickAudio.play()
 	start_game(Globals.GameModes.SINGLE_PLAYER)
 
 
 func _on_Versus_pressed():
+	$ButtonClickAudio.play()
 	start_game(Globals.GameModes.VERSUS)
 
 

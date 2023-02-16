@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://board/moving_parts/ball.gd" type="Script" id=3]
-[ext_resource path="res://assets/fonts/default7px.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=8]
 
 [sub_resource type="CircleShape2D" id=11]

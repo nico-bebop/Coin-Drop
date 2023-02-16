@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alert.png-db4e395f365e066ff34e0db8be87ca27.stex"
+path="res://.import/extra_coins.png-9d8e14b6e0775a7a381aa97d0943039b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/game/alert.png"
-dest_files=[ "res://.import/alert.png-db4e395f365e066ff34e0db8be87ca27.stex" ]
+source_file="res://assets/sprites/game/extra_coins.png"
+dest_files=[ "res://.import/extra_coins.png-9d8e14b6e0775a7a381aa97d0943039b.stex" ]
 
 [params]
 

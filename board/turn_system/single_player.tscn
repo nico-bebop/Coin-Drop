@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://board/turn_system/single_player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/shelf.png" type="Texture" id=2]
 [ext_resource path="res://board/turn_system/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sprites/ui/portrait.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=6]
+[ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Portrait:position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -18,10 +21,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 180, -110 ), Vector2( 180, -110 ), Vector2( 295, 33 ) ]
+"values": [ Vector2( -36, -110 ), Vector2( -36, -110 ), Vector2( 65, 33 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Portrait:rotation_degrees")
+tracks/1/path = NodePath("..:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -36,7 +39,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Portrait:position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -45,10 +48,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 295, 33 ) ]
+"values": [ Vector2( 65, 33 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Portrait:rotation_degrees")
+tracks/1/path = NodePath("..:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -58,6 +61,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
 }
 
 [node name="SinglePlayer" type="Control"]
@@ -74,21 +89,45 @@ text = "COINS LEFT
 TOTAL SCORE
 0"
 
-[node name="Decoration" type="Control" parent="."]
-margin_right = 40.0
+[node name="Objective" type="Control" parent="Player"]
+margin_left = 230.0
+margin_right = 270.0
 margin_bottom = 40.0
 
-[node name="Portrait" type="Sprite" parent="Decoration"]
-position = Vector2( 295, 33 )
-texture = ExtResource( 4 )
+[node name="Scoreboard" type="Sprite" parent="Player/Objective"]
+position = Vector2( 65, 33 )
+texture = ExtResource( 7 )
 offset = Vector2( 0, 48 )
+hframes = 2
 
-[node name="CoinMeter" type="Sprite" parent="Decoration"]
-position = Vector2( 303, 208 )
-texture = ExtResource( 2 )
+[node name="PlayerName" type="Label" parent="Player/Objective/Scoreboard"]
+margin_left = -32.0
+margin_top = 26.0
+margin_right = 32.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Objective"
+align = 1
+valign = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Decoration"]
+[node name="Score" type="Label" parent="Player/Objective/Scoreboard"]
+material = ExtResource( 6 )
+margin_left = -30.0
+margin_top = 46.0
+margin_right = 30.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Objective"]
+root_node = NodePath("../Scoreboard/PlayerName")
 anims/Appear = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="Decoration" type="Sprite" parent="Player/Objective"]
+position = Vector2( 73, 208 )
+texture = ExtResource( 2 )
 
 [editable path="Player"]

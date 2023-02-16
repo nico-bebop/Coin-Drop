@@ -1,19 +1,12 @@
-extends RigidBody2D
+extends "res://board/power_ups/power_up.gd"
 
 const COINS_IN_BAG = 5
-
-onready var animation_player = $AnimationPlayer
-onready var destroy_audio = $DestroyAudio
-onready var power_up_audio = $PowerUpAudio
 
 signal throw_coins(quantity)
 
 
 func _ready():
 	var _err = connect("throw_coins", get_tree().current_scene, "throw_random_coins")
-	animation_player.play("Appear")
-	yield(animation_player, "animation_finished")
-	animation_player.play("Idle")
 
 
 func _on_BallCollision_body_entered(body):
@@ -30,9 +23,3 @@ func _on_BallCollision_body_entered(body):
 		yield(destroy_audio, "finished")
 
 	queue_free()
-
-
-func disappear():
-	$BallCollision.queue_free()
-	$CollisionShape2D.queue_free()
-	$Sprite.visible = false

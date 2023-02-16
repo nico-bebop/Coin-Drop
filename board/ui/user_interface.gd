@@ -12,11 +12,12 @@ onready var animation_player = $AnimationPlayer
 onready var line1 = $Sign/Line1
 onready var line2 = $Sign/Line2
 
-onready var pause_button = $PauseButton
-onready var restart_button = $RestartButton
-onready var accept_button = $AcceptButton
-onready var cancel_button = $CancelButton
-onready var quit_button = $QuitButton
+onready var pause_button = $Buttons/PauseButton
+onready var restart_button = $Buttons/RestartButton
+onready var accept_button = $Buttons/AcceptButton
+onready var cancel_button = $Buttons/CancelButton
+onready var quit_button = $Buttons/QuitButton
+onready var button_click_audio = $Buttons/ButtonClickAudio
 
 
 func _ready():
@@ -26,24 +27,30 @@ func _ready():
 
 func _on_PauseButton_pressed():
 	if !get_tree().paused:
+		button_click_audio.play()
 		pause(true, PAUSED, ResumeButton)
 	else:
+		button_click_audio.play()
 		pause(false, TITLE, PauseButton)
 
 
 func _on_RestartButton_pressed():
+	button_click_audio.play()
 	restart(true, RESTART)
 
 
 func _on_CancelButton_pressed():
+	button_click_audio.play()
 	restart(false, TITLE)
 
 
 func _on_AcceptButton_pressed():
+	button_click_audio.play()
 	SceneTransition.restart_scene()
 
 
 func _on_QuitButton_pressed():
+	button_click_audio.play()
 	get_tree().paused = false
 	SceneTransition.change_scene("res://menu/main_menu.tscn")
 

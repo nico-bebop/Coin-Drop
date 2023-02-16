@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/game/extra_coins.png" type="Texture" id=1]
+[ext_resource path="res://board/power_ups/power_up.tscn" type="PackedScene" id=2]
+[ext_resource path="res://board/power_ups/extra_coins.gd" type="Script" id=3]
+
+[node name="ExtraCoins" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 1 )

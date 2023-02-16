@@ -18,7 +18,8 @@ onready var camera = $"../../Camera2D"
 
 
 func _ready():
-	update_label()
+	animation_player.play("Alert")
+	yield(animation_player, "animation_finished")
 
 
 func tick():

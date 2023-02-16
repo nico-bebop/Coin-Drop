@@ -9,7 +9,7 @@ signal coin_dropped
 
 
 func _on_Slot_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_just_pressed("click") && clickable:
+	if Input.is_action_just_released("click") && clickable:
 		if !animated_sprite.visible:
 			animated_sprite.visible = true
 			return
@@ -18,14 +18,6 @@ func _on_Slot_input_event(_viewport, _event, _shape_idx):
 		yield(animated_sprite, "animation_finished")
 		animated_sprite.visible = false
 		balls.spawn_coin(global_position)
-
-
-func bomb_alert():
-	animated_sprite.visible = true
-	animated_sprite.play("BombAlert")
-	yield(animated_sprite, "animation_finished")
-	animated_sprite.visible = false
-	animated_sprite.animation = "HorizontalFlip"
 
 
 func _on_Slot_mouse_entered():

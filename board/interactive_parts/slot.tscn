@@ -1,16 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://board/interactive_parts/slot.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/game/alert.png" type="Texture" id=3]
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
@@ -34,11 +25,6 @@ region = Rect2( 64, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "BombAlert",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 12 ), SubResource( 11 ), SubResource( 10 ) ],
 "loop": true,
 "name": "HorizontalFlip",
