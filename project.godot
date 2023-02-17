@@ -23,6 +23,7 @@ config/icon="res://assets/sprites/icon.png"
 
 Globals="*res://board/globals.gd"
 SceneTransition="*res://board/ui/scene_transition.tscn"
+Settings="*res://board/ui/settings.gd"
 
 [display]
 

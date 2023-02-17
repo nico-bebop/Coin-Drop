@@ -123,10 +123,10 @@ anims/SplashLogo = SubResource( 3 )
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+bus = "Music"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.0
+bus = "Music"
 
 [connection signal="finished" from="MusicIntro" to="." method="_on_MusicIntro_finished"]

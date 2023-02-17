@@ -1,11 +1,14 @@
 extends CanvasLayer
 
 onready var animation_player = $AnimationPlayer
+onready var music_intro = $MusicIntro
+onready var music_loop = $MusicLoop
 
 
 func _ready():
 	animation_player.play("SplashLogo")
-	$MusicIntro.play()
+	yield(animation_player, "animation_finished")
+	music_intro.play()
 
 func change_scene(target):
 	animation_player.play("Disolve")
@@ -22,4 +25,4 @@ func restart_scene():
 
 
 func _on_MusicIntro_finished():
-	$MusicLoop.play()
+	music_loop.play()

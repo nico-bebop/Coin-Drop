@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/sprites/ui/grabber.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/ui/slider.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/ui/grabber_disabled.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=25]
 
@@ -12,6 +15,15 @@
 
 [sub_resource type="StyleBoxTexture" id=29]
 
+[sub_resource type="StyleBoxTexture" id=30]
+
+[sub_resource type="StyleBoxTexture" id=31]
+
+[sub_resource type="StyleBoxTexture" id=32]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 16 )
+axis_stretch_vertical = 1
+
 [resource]
 default_font = ExtResource( 1 )
 Button/colors/font_color = Color( 0, 0, 0, 1 )
@@ -21,3 +33,9 @@ Button/styles/focus = SubResource( 26 )
 Button/styles/hover = SubResource( 27 )
 Button/styles/normal = SubResource( 28 )
 Button/styles/pressed = SubResource( 29 )
+HSlider/icons/grabber = ExtResource( 2 )
+HSlider/icons/grabber_disabled = ExtResource( 4 )
+HSlider/icons/grabber_highlight = ExtResource( 2 )
+HSlider/styles/grabber_area = SubResource( 30 )
+HSlider/styles/grabber_area_highlight = SubResource( 31 )
+HSlider/styles/slider = SubResource( 32 )
