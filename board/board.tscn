@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
+[ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/ui/sign.png" type="Texture" id=4]
@@ -579,6 +580,10 @@ position = Vector2( 20, 617 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2( 160, 1.5 )
 shape = SubResource( 26 )
+
+[node name="CoinCombineAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 180, 320 )
