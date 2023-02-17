@@ -197,7 +197,7 @@ anims/RESET = SubResource( 4 )
 
 [node name="AppearAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="PowerUpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

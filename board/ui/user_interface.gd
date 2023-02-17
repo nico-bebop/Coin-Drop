@@ -8,12 +8,7 @@ const TITLE = ["Coin", "Drop"]
 const PAUSED = ["Paused", ""]
 const RESTART = ["Restart?", ""]
 
-onready var animation_player = $AnimationPlayer
-onready var line1 = $Sign/Line1
-onready var line2 = $Sign/Line2
-
 onready var pause_button = $Buttons/PauseButton
-onready var restart_button = $Buttons/RestartButton
 onready var accept_button = $Buttons/AcceptButton
 onready var cancel_button = $Buttons/CancelButton
 onready var quit_button = $Buttons/QuitButton
@@ -21,16 +16,15 @@ onready var button_click_audio = $Buttons/ButtonClickAudio
 
 
 func _ready():
-	animation_player.play("SignAppear")
-	yield(animation_player, "animation_finished")
+	$AnimationPlayer.play("SignAppear")
+	yield($AnimationPlayer, "animation_finished")
 
 
 func _on_PauseButton_pressed():
+	button_click_audio.play()
 	if !get_tree().paused:
-		button_click_audio.play()
 		pause(true, PAUSED, ResumeButton)
 	else:
-		button_click_audio.play()
 		pause(false, TITLE, PauseButton)
 
 
@@ -77,5 +71,5 @@ func restart(value, message):
 
 
 func set_sign_text(text):
-	line1.text = text[0]
-	line2.text = text[1]
+	$Sign/Line1.text = text[0]
+	$Sign/Line2.text = text[1]

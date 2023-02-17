@@ -1,17 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/sprites/ui/double_sign.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/ui/triple_sign.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/ui/sound_on.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/ui/music_on.png" type="Texture" id=7]
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("DoubleSign:position")
+tracks/0/path = NodePath("TripleSign:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,13 +22,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 180, -130 ), Vector2( 180, 141 ) ]
+"values": [ Vector2( 180, -150 ), Vector2( 180, 162 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("DoubleSign:position")
+tracks/0/path = NodePath("TripleSign:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,7 +37,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 180, -130 ) ]
+"values": [ Vector2( 180, -150 ) ]
 }
 
 [node name="MainMenu" type="Control"]
@@ -45,27 +47,65 @@ script = ExtResource( 1 )
 position = Vector2( 180, 320 )
 texture = ExtResource( 2 )
 
-[node name="DoubleSign" type="Sprite" parent="."]
-position = Vector2( 180, -130 )
-texture = ExtResource( 8 )
+[node name="TripleSign" type="Sprite" parent="."]
+position = Vector2( 180, -150 )
+texture = ExtResource( 5 )
 
-[node name="SinglePlayer" type="Button" parent="DoubleSign"]
+[node name="SinglePlayer" type="Button" parent="TripleSign"]
 margin_left = -58.0
-margin_top = -61.0
+margin_top = -104.0
 margin_right = 58.0
-margin_bottom = -20.0
+margin_bottom = -63.0
 theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 text = "Solo"
 
-[node name="Versus" type="Button" parent="DoubleSign"]
+[node name="Versus" type="Button" parent="TripleSign"]
 margin_left = -58.0
-margin_top = 69.0
+margin_top = -3.0
 margin_right = 58.0
-margin_bottom = 110.0
+margin_bottom = 38.0
 theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 text = "Versus"
+
+[node name="MuteSound" type="TextureButton" parent="TripleSign"]
+margin_left = -55.0
+margin_top = 101.0
+margin_right = -39.0
+margin_bottom = 117.0
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 6 )
+
+[node name="SoundVolumeSlider" type="HSlider" parent="TripleSign"]
+margin_left = -36.0
+margin_top = 99.0
+margin_right = 48.0
+margin_bottom = 122.0
+theme = ExtResource( 9 )
+min_value = -30.0
+max_value = 0.0
+step = 5.0
+
+[node name="MuteMusic" type="TextureButton" parent="TripleSign"]
+margin_left = -55.0
+margin_top = 126.0
+margin_right = -39.0
+margin_bottom = 142.0
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 7 )
+
+[node name="MusicVolumeSlider" type="HSlider" parent="TripleSign"]
+margin_left = -36.0
+margin_top = 124.0
+margin_right = 48.0
+margin_bottom = 147.0
+theme = ExtResource( 9 )
+min_value = -30.0
+max_value = 0.0
+step = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 1 )
@@ -75,5 +115,9 @@ anims/RESET = SubResource( 2 )
 stream = ExtResource( 3 )
 volume_db = -10.0
 
-[connection signal="pressed" from="DoubleSign/SinglePlayer" to="." method="_on_SinglePlayer_pressed"]
-[connection signal="pressed" from="DoubleSign/Versus" to="." method="_on_Versus_pressed"]
+[connection signal="pressed" from="TripleSign/SinglePlayer" to="." method="_on_SinglePlayer_pressed"]
+[connection signal="pressed" from="TripleSign/Versus" to="." method="_on_Versus_pressed"]
+[connection signal="toggled" from="TripleSign/MuteSound" to="." method="_on_MuteSound_toggled"]
+[connection signal="value_changed" from="TripleSign/SoundVolumeSlider" to="." method="_on_Volume_value_changed"]
+[connection signal="toggled" from="TripleSign/MuteMusic" to="." method="_on_MuteMusic_toggled"]
+[connection signal="value_changed" from="TripleSign/MusicVolumeSlider" to="." method="_on_Music_value_changed"]

@@ -11,11 +11,11 @@ func _on_BallCollision_body_entered(body):
 	if body.is_in_group(Globals.GROUP_COINS):
 		player.coins_left += EXTRA_COINS
 		player.set_label_text()
-		power_up_audio.play()
-		yield(power_up_audio, "finished")
+		$PowerUpAudio.play()
+		yield($PowerUpAudio, "finished")
 
 	elif body.is_in_group(Globals.GROUP_BOMBS):
-		destroy_audio.play()
-		yield(destroy_audio, "finished")
+		$DestroyAudio.play()
+		yield($DestroyAudio, "finished")
 
 	queue_free()

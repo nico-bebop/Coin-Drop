@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://board/ui/scene_transition.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/logo.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/intro.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/main_loop.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Disolve"
@@ -118,3 +120,13 @@ texture = ExtResource( 2 )
 anims/Disolve = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/SplashLogo = SubResource( 3 )
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Music"
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Music"
+
+[connection signal="finished" from="MusicIntro" to="." method="_on_MusicIntro_finished"]

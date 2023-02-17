@@ -7,13 +7,8 @@ enum { EXPLODE, RED_GLOW, HALF_TIME, IGNITED }
 export(int) var ticks_left = 3
 export(bool) var ignited = false
 
-onready var explosion_audio = $ExplosionAudio
-onready var label = $Label
-onready var spark = $Spark
 onready var animation_player = $AnimationPlayer
-onready var switch_collision = $SwitchCollision
 onready var holes = $"../../Holes"
-
 onready var camera = $"../../Camera2D"
 
 
@@ -31,7 +26,7 @@ func tick():
 
 
 func update_label():
-	label.text = str(ticks_left)
+	$Label.text = str(ticks_left)
 
 
 func update_animation():
@@ -53,7 +48,7 @@ func explode():
 
 
 func destroy_colliding_switch():
-	for switch in switch_collision.get_overlapping_bodies():
+	for switch in $SwitchCollision.get_overlapping_bodies():
 		if switch.is_in_group(Globals.GROUP_SWITCHES):
 			switch.destroy_switch()
 

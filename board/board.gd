@@ -7,7 +7,6 @@ const INITIAL_COINS = 10
 
 onready var balls = $Balls
 onready var turn_system = $TurnSystem
-onready var round_transition = $UserInterface/RoundTransition
 
 signal board_ready
 
@@ -65,7 +64,7 @@ func spawn_random_bombs(quantity):
 
 
 func _on_TurnSystem_round_ended(current_round):
-	yield(round_transition.animation_player, "animation_finished")
+	yield($UserInterface/RoundTransition.animation_player, "animation_finished")
 	match current_round:
 		1, 2, 3:
 			spawn_random_bombs(current_round)
