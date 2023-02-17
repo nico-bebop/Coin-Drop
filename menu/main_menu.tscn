@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/sprites/ui/triple_sign.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/ui/sound_on.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/ui/music_on.png" type="Texture" id=7]
+[ext_resource path="res://menu/volume_controls.gd" type="Script" id=8]
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=9]
 
 [sub_resource type="Animation" id=1]
@@ -69,39 +70,46 @@ theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 text = "Versus"
 
-[node name="MuteSound" type="TextureButton" parent="TripleSign"]
-margin_left = -55.0
-margin_top = 101.0
-margin_right = -39.0
-margin_bottom = 117.0
+[node name="VolumeControls" type="Control" parent="TripleSign"]
+margin_left = -54.0
+margin_top = 103.0
+margin_right = -14.0
+margin_bottom = 143.0
+script = ExtResource( 8 )
+
+[node name="MuteSound" type="TextureButton" parent="TripleSign/VolumeControls"]
+margin_left = -1.0
+margin_top = -2.0
+margin_right = 15.0
+margin_bottom = 14.0
 toggle_mode = true
 shortcut_in_tooltip = false
 texture_normal = ExtResource( 6 )
 
-[node name="SoundVolumeSlider" type="HSlider" parent="TripleSign"]
-margin_left = -36.0
-margin_top = 99.0
-margin_right = 48.0
-margin_bottom = 122.0
+[node name="SoundVolumeSlider" type="HSlider" parent="TripleSign/VolumeControls"]
+margin_left = 18.0
+margin_top = -4.0
+margin_right = 102.0
+margin_bottom = 19.0
 theme = ExtResource( 9 )
 min_value = -30.0
 max_value = 0.0
 step = 5.0
 
-[node name="MuteMusic" type="TextureButton" parent="TripleSign"]
-margin_left = -55.0
-margin_top = 126.0
-margin_right = -39.0
-margin_bottom = 142.0
+[node name="MuteMusic" type="TextureButton" parent="TripleSign/VolumeControls"]
+margin_left = -1.0
+margin_top = 23.0
+margin_right = 15.0
+margin_bottom = 39.0
 toggle_mode = true
 shortcut_in_tooltip = false
 texture_normal = ExtResource( 7 )
 
-[node name="MusicVolumeSlider" type="HSlider" parent="TripleSign"]
-margin_left = -36.0
-margin_top = 124.0
-margin_right = 48.0
-margin_bottom = 147.0
+[node name="MusicVolumeSlider" type="HSlider" parent="TripleSign/VolumeControls"]
+margin_left = 18.0
+margin_top = 21.0
+margin_right = 102.0
+margin_bottom = 44.0
 theme = ExtResource( 9 )
 min_value = -30.0
 max_value = 0.0
@@ -117,7 +125,7 @@ volume_db = -10.0
 
 [connection signal="pressed" from="TripleSign/SinglePlayer" to="." method="_on_SinglePlayer_pressed"]
 [connection signal="pressed" from="TripleSign/Versus" to="." method="_on_Versus_pressed"]
-[connection signal="toggled" from="TripleSign/MuteSound" to="." method="_on_MuteSound_toggled"]
-[connection signal="value_changed" from="TripleSign/SoundVolumeSlider" to="." method="_on_Volume_value_changed"]
-[connection signal="toggled" from="TripleSign/MuteMusic" to="." method="_on_MuteMusic_toggled"]
-[connection signal="value_changed" from="TripleSign/MusicVolumeSlider" to="." method="_on_Music_value_changed"]
+[connection signal="toggled" from="TripleSign/VolumeControls/MuteSound" to="TripleSign/VolumeControls" method="_on_MuteSound_toggled"]
+[connection signal="value_changed" from="TripleSign/VolumeControls/SoundVolumeSlider" to="TripleSign/VolumeControls" method="_on_SoundVolumeSlider_value_changed"]
+[connection signal="toggled" from="TripleSign/VolumeControls/MuteMusic" to="TripleSign/VolumeControls" method="_on_MuteMusic_toggled"]
+[connection signal="value_changed" from="TripleSign/VolumeControls/MusicVolumeSlider" to="TripleSign/VolumeControls" method="_on_MusicVolumeSlider_value_changed"]
