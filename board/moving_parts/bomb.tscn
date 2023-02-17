@@ -549,8 +549,8 @@ anims/RedGlow = SubResource( 8 )
 
 [node name="ExplosionAudio" type="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource( 6 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="BlipAudio" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource( 9 )
-volume_db = -15.0
+volume_db = -20.0
