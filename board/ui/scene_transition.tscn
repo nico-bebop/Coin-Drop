@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 0.945098, 0.909804, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 0.945098, 0.909804, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DissolveRect/Logo:visible")
@@ -85,7 +85,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 2.2, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 0.945098, 0.909804, 1 ), Color( 1, 0.945098, 0.909804, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("DissolveRect/Logo:modulate")
@@ -97,7 +97,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1.7, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 0.945098, 0.909804, 1 ), Color( 1, 0.945098, 0.909804, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
