@@ -44,6 +44,7 @@ func set_round(value):
 
 
 func signal_game_over():
+	SceneTransition.lower_music_volume()
 	emit_signal("game_over", current_system.game_over())
 
 

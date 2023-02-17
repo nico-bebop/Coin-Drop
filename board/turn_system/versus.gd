@@ -19,6 +19,7 @@ func change_turn():
 		if current_round != Globals.FINAL_ROUND:
 			start_round()
 		else:
+			$VictoryAudio.play()
 			turn_system.signal_game_over()
 		return
 

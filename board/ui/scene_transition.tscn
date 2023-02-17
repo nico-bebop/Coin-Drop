@@ -121,6 +121,8 @@ anims/Disolve = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/SplashLogo = SubResource( 3 )
 
+[node name="Tween" type="Tween" parent="."]
+
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Music"
