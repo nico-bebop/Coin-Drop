@@ -7,7 +7,8 @@ const INITIAL_COINS = 10
 
 onready var balls = $Balls
 onready var turn_system = $TurnSystem
-onready var coin_combine_audio = $CoinCombineAudio
+onready var coin_combine_audio = $AfterFreeAudios/CoinCombineAudio
+onready var coin_destroy_audio = $AfterFreeAudios/CoinDestroyAudio
 
 signal board_ready
 

@@ -27,6 +27,6 @@ func check_active_balls():
 
 func explode_bombs(_param):
 	for bomb in get_children():
-		if bomb.is_in_group(Globals.GROUP_BOMBS):
+		if is_instance_valid(bomb) && bomb.is_in_group(Globals.GROUP_BOMBS):
 			bomb.explode()
 			yield(get_tree().create_timer(0.2), "timeout")

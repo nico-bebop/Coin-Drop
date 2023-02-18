@@ -8,6 +8,7 @@ export(int) var ticks_left = 3
 export(bool) var ignited = false
 
 onready var animation_player = $AnimationPlayer
+onready var coin_destroy_audio =  get_tree().current_scene.coin_destroy_audio
 onready var holes = $"../../Holes"
 onready var camera = $"../../Camera2D"
 
@@ -17,6 +18,18 @@ var colliding_switch
 func _ready():
 	animation_player.play("Alert")
 	yield(animation_player, "animation_finished")
+
+
+func _physics_process(_delta):
+	if ball_collision.is_colliding():
+		var colliding_coin = ball_collision.get_collider()
+		if can_destroy_coin(colliding_coin):
+			colliding_coin.queue_free()
+			coin_destroy_audio.play()
+
+
+func can_destroy_coin(colliding_coin):
+	return colliding_coin.is_in_group(Globals.GROUP_COINS) && is_moving && colliding_coin.is_moving
 
 
 func tick():

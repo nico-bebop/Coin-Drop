@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://board/camera_shake.gd" type="Script" id=19]
 [ext_resource path="res://board/power_ups/power_ups.gd" type="Script" id=20]
 [ext_resource path="res://assets/sprites/ui/arrow.png" type="Texture" id=21]
+[ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=23]
 
 [sub_resource type="Animation" id=27]
@@ -581,9 +582,15 @@ position = Vector2( 20, 617 )
 position = Vector2( 160, 1.5 )
 shape = SubResource( 26 )
 
-[node name="CoinCombineAudio" type="AudioStreamPlayer" parent="."]
+[node name="AfterFreeAudios" type="Node2D" parent="."]
+
+[node name="CoinCombineAudio" type="AudioStreamPlayer" parent="AfterFreeAudios"]
 stream = ExtResource( 1 )
 volume_db = -10.0
+
+[node name="CoinDestroyAudio" type="AudioStreamPlayer" parent="AfterFreeAudios"]
+stream = ExtResource( 22 )
+volume_db = -15.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 180, 320 )
