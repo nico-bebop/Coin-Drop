@@ -2,6 +2,7 @@ extends Node2D
 
 const Coin = preload("res://board/moving_parts/coin.tscn")
 const Bomb = preload("res://board/moving_parts/bomb.tscn")
+const Pop = preload("res://assets/effects/pop.tscn")
 
 signal no_moving_balls
 
@@ -26,7 +27,21 @@ func check_active_balls():
 
 
 func explode_bombs(_param):
-	for bomb in get_children():
-		if is_instance_valid(bomb) && bomb.is_in_group(Globals.GROUP_BOMBS):
+	for bomb in get_tree().get_nodes_in_group(Globals.GROUP_BOMBS):
+		if is_instance_valid(bomb):
 			bomb.explode()
+			yield(get_tree().create_timer(0.2), "timeout")
+
+
+func explode_coin(here):
+	var explosion = Pop.instance()
+	explosion.position = here
+	call_deferred("add_child", explosion)
+
+
+func explode_coins(_param):
+	for coin in get_tree().get_nodes_in_group(Globals.GROUP_COINS):
+		if is_instance_valid(coin):
+			explode_coin(coin.global_position)
+			coin.queue_free()
 			yield(get_tree().create_timer(0.2), "timeout")

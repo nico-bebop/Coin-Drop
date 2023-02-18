@@ -14,6 +14,7 @@ const GROUP_BALLS = "Balls"
 const GROUP_BOMBS = "Bombs"
 const GROUP_COINS = "Coins"
 const GROUP_PLAYERS = "Players"
+const GROUP_POWER_UPS = "PowerUps"
 const GROUP_SWITCHES = "Switches"
 const GROUP_SLOTS = "Slots"
 

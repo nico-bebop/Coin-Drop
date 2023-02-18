@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/audio/pop.wav" type="AudioStream" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 50, 0 )
+initial_velocity = 50.0
+angular_velocity = 45.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0.92549, 0.152941, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
+
+[node name="Pop" type="Particles2D"]
+scale = Vector2( 2, 2 )
+amount = 20
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+visibility_rect = Rect2( -25, -25, 50, 50 )
+process_material = SubResource( 1 )
+
+[node name="PopAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
+autoplay = true
