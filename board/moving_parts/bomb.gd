@@ -11,6 +11,8 @@ onready var animation_player = $AnimationPlayer
 onready var holes = $"../../Holes"
 onready var camera = $"../../Camera2D"
 
+var colliding_switch
+
 
 func _ready():
 	animation_player.play("Alert")
@@ -19,7 +21,7 @@ func _ready():
 
 func tick():
 	if ignited:
-		ticks_left -= 1
+		ticks_left -= clamp(1, EXPLODE, IGNITED)
 
 	update_label()
 	update_animation()
@@ -47,10 +49,16 @@ func explode():
 	animation_player.play("BlinkAndExplode")
 
 
-func destroy_colliding_switch():
+func get_colliding_switch():
 	for switch in $SwitchCollision.get_overlapping_bodies():
 		if switch.is_in_group(Globals.GROUP_SWITCHES):
-			switch.destroy_switch()
+			switch.deactivate_switch()
+			colliding_switch = switch
+
+
+func destroy_colliding_switch():
+	if colliding_switch != null:
+		colliding_switch.destroy_switch()
 
 
 func create_hole():
@@ -60,4 +68,9 @@ func create_hole():
 
 
 func shake_camera():
-	camera.shake(0.3, 50, 7) 
+	camera.shake(0.3, 50, 7)
+
+
+func _on_SwitchCollision_body_entered(body):
+	._on_SwitchCollision_body_entered(body)
+	tick()

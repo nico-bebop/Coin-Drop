@@ -25,8 +25,8 @@ func check_active_balls():
 	emit_signal("no_moving_balls")
 
 
-func _on_TurnSystem_turn_ready():
-	var bombs = get_tree().get_nodes_in_group(Globals.GROUP_BOMBS)
-	for bomb in bombs:
-		if bomb.ticks_left > 0:
-			bomb.tick()
+func explode_bombs(_param):
+	for bomb in get_children():
+		if bomb.is_in_group(Globals.GROUP_BOMBS):
+			bomb.explode()
+			yield(get_tree().create_timer(0.2), "timeout")

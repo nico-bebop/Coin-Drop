@@ -38,6 +38,10 @@ func destroy_switch():
 	animation_player.play("BlinkAndDestroy")
 
 
+func deactivate_switch():
+	$Bottom.monitoring = false
+
+
 func create_hole():
 	var hole = BrokenSwitch.instance()
 	hole.frame = 1 if orientation == Globals.LEFT else 0
