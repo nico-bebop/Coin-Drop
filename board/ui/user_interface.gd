@@ -51,6 +51,7 @@ func _on_QuitButton_pressed():
 
 func _on_TurnSystem_game_over(message):
 	set_sign_text(message)
+	$Buttons/RestartButton/AnimatedSprite.play()
 	pause_button.disabled = true
 	accept_button.visible = false
 	cancel_button.visible = false

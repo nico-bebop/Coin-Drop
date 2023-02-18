@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -309,6 +309,22 @@ action = "ui_cancel"
 [sub_resource type="ShortCut" id=24]
 shortcut = SubResource( 23 )
 
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=30]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
 [sub_resource type="DynamicFont" id=25]
 size = 32
 outline_size = 2
@@ -515,7 +531,10 @@ margin_left = 183.0
 margin_top = 25.0
 margin_right = 207.0
 margin_bottom = 49.0
-texture_normal = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="UserInterface/Buttons/RestartButton"]
+position = Vector2( 12, 12 )
+frames = SubResource( 30 )
 
 [node name="AcceptButton" type="Button" parent="UserInterface/Buttons"]
 pause_mode = 1
