@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://board/turn_system/single_player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/shelf.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=6]
 [ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=7]
+[ext_resource path="res://assets/audio/victory.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/defeat.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -129,5 +131,11 @@ anims/RESET = SubResource( 2 )
 [node name="Decoration" type="Sprite" parent="Player/Objective"]
 position = Vector2( 73, 208 )
 texture = ExtResource( 2 )
+
+[node name="VictoryAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="DefeatAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [editable path="Player"]

@@ -113,13 +113,15 @@ color = Color( 0, 0, 0, 1 )
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 180, 320 )
-scale = Vector2( 5, 5 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Disolve = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/SplashLogo = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

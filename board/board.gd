@@ -7,6 +7,8 @@ const INITIAL_COINS = 10
 
 onready var balls = $Balls
 onready var turn_system = $TurnSystem
+onready var coin_combine_audio = $AfterFreeAudios/CoinCombineAudio
+onready var coin_destroy_audio = $AfterFreeAudios/CoinDestroyAudio
 
 signal board_ready
 
@@ -53,7 +55,6 @@ func throw_random_coins(quantity):
 func spawn_random_bombs(quantity):
 	var counter = 0
 	var switches = get_tree().get_nodes_in_group(Globals.GROUP_SWITCHES)
-	switches.shuffle()
 	for switch in switches:
 		if !switch.has_ball:
 			balls.spawn_bomb(switch.coin_spawn_position.global_position)

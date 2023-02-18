@@ -119,6 +119,7 @@ margin_left = -30.0
 margin_top = 46.0
 margin_right = 30.0
 margin_bottom = 87.0
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "ROUND SCORE
 -/-

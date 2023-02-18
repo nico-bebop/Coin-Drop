@@ -7,6 +7,7 @@ var multiplier = 1 setget set_multiplier
 
 onready var animation_player = $AnimationPlayer
 onready var shine_timer = $ShineTimer
+onready var coin_combine_audio =  get_tree().current_scene.coin_combine_audio
 
 
 func _physics_process(_delta):
@@ -34,7 +35,7 @@ func combine_with(colliding_coin):
 
 func play_combine_effects():
 	animation_player.play("HorizontalFlip")
-	$CoinCombineAudio.play()
+	coin_combine_audio.play()
 	$Sparkle.emitting = true
 
 

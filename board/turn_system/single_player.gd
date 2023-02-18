@@ -1,6 +1,7 @@
 extends "res://board/turn_system/turn_system.gd"
 
 const GAME_OVER = ["Game", "Over!"]
+const YOU_WIN = ["You", "Win!"]
 const GET = "GET\n"
 const POINTS = " POINTS"
 const ROUND_SCORE = "\nROUND SCORE\n"
@@ -11,6 +12,8 @@ onready var player = $Player
 onready var objective = $Player/Objective/Scoreboard/Score
 onready var turn_system = get_parent()
 
+var game_over_message
+
 
 func _ready():
 	$Player/Objective/AnimationPlayer.play("Appear")
@@ -20,6 +23,8 @@ func change_turn():
 	if objective_failed():
 		objective.text = FAILED + ROUND_SCORE
 		update_round_score()
+		game_over_message = GAME_OVER
+		$DefeatAudio.play()
 		turn_system.signal_game_over()
 		return
 	
@@ -28,6 +33,8 @@ func change_turn():
 		if current_round != Globals.FINAL_ROUND:
 			start_round()
 		else:
+			game_over_message = YOU_WIN
+			$VictoryAudio.play()
 			turn_system.signal_game_over()
 		return
 
@@ -66,4 +73,4 @@ func update_round_score():
 
 
 func game_over():
-	return GAME_OVER
+	return game_over_message
