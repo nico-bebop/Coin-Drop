@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=1]
 [ext_resource path="res://assets/sprites/ui/coin_meter.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/ui/coin_meter_full.png" type="Texture" id=4]
@@ -92,11 +91,13 @@ tracks/2/keys = {
 }
 
 [node name="Player" type="Control" groups=["Players"]]
+use_parent_material = true
 margin_right = 64.0
 margin_bottom = 64.0
 script = ExtResource( 6 )
 
 [node name="Scoreboard" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 65, 33 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 48 )
@@ -114,7 +115,6 @@ align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="Scoreboard"]
-material = ExtResource( 1 )
 margin_left = -30.0
 margin_top = 46.0
 margin_right = 30.0
@@ -135,6 +135,7 @@ anims/Highlight = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 
 [node name="CoinMeter" type="TextureProgress" parent="."]
+use_parent_material = true
 margin_left = 29.0
 margin_top = 175.0
 margin_right = 85.0

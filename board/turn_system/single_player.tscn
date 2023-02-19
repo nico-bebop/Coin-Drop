@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://board/turn_system/single_player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/shelf.png" type="Texture" id=2]
 [ext_resource path="res://board/turn_system/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=6]
 [ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=7]
 [ext_resource path="res://assets/audio/victory.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/audio/defeat.ogg" type="AudioStream" id=9]
@@ -78,6 +77,7 @@ tracks/2/keys = {
 }
 
 [node name="SinglePlayer" type="Control"]
+use_parent_material = true
 margin_right = 64.0
 margin_bottom = 64.0
 script = ExtResource( 1 )
@@ -92,11 +92,13 @@ TOTAL SCORE
 0"
 
 [node name="Objective" type="Control" parent="Player"]
+use_parent_material = true
 margin_left = 230.0
 margin_right = 270.0
 margin_bottom = 40.0
 
 [node name="Scoreboard" type="Sprite" parent="Player/Objective"]
+use_parent_material = true
 position = Vector2( 65, 33 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, 48 )
@@ -114,7 +116,6 @@ align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="Player/Objective/Scoreboard"]
-material = ExtResource( 6 )
 margin_left = -30.0
 margin_top = 46.0
 margin_right = 30.0
@@ -129,6 +130,7 @@ anims/Appear = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="Decoration" type="Sprite" parent="Player/Objective"]
+use_parent_material = true
 position = Vector2( 73, 208 )
 texture = ExtResource( 2 )
 

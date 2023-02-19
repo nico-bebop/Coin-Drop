@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -23,6 +23,10 @@
 [ext_resource path="res://assets/sprites/ui/arrow.png" type="Texture" id=21]
 [ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/effects/pixel_perfect_scaling.gdshader" type="Shader" id=24]
+
+[sub_resource type="ShaderMaterial" id=32]
+shader = ExtResource( 24 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "ArrowsHint"
@@ -310,10 +314,12 @@ action = "ui_cancel"
 shortcut = SubResource( 23 )
 
 [sub_resource type="AtlasTexture" id=28]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=29]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 24, 0, 24, 24 )
 
@@ -334,16 +340,20 @@ font_data = ExtResource( 13 )
 extents = Vector2( 161, 2.5 )
 
 [node name="Board" type="Node2D"]
+material = SubResource( 32 )
 script = ExtResource( 7 )
 
 [node name="Background" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 180, 320 )
 texture = ExtResource( 11 )
 
 [node name="Holes" type="BackBufferCopy" parent="."]
+use_parent_material = true
 copy_mode = 2
 
 [node name="Board" type="Sprite" parent="Holes"]
+use_parent_material = true
 position = Vector2( 180, 380 )
 texture = ExtResource( 8 )
 
@@ -351,9 +361,11 @@ texture = ExtResource( 8 )
 position = Vector2( 180, 172 )
 
 [node name="Switches" type="Node2D" parent="."]
+use_parent_material = true
 position = Vector2( 20, 220 )
 
 [node name="Row1" type="Node2D" parent="Switches"]
+use_parent_material = true
 position = Vector2( 100, 19 )
 
 [node name="Switch1" parent="Switches/Row1" instance=ExtResource( 5 )]
@@ -368,6 +380,7 @@ position = Vector2( 80, 0 )
 position = Vector2( 120, 0 )
 
 [node name="Row2" type="Node2D" parent="Switches"]
+use_parent_material = true
 position = Vector2( 80, 99 )
 
 [node name="Switch1" parent="Switches/Row2" instance=ExtResource( 5 )]
@@ -385,6 +398,7 @@ position = Vector2( 120, 0 )
 position = Vector2( 160, 0 )
 
 [node name="Row3" type="Node2D" parent="Switches"]
+use_parent_material = true
 position = Vector2( 60, 179 )
 
 [node name="Switch1" parent="Switches/Row3" instance=ExtResource( 5 )]
@@ -405,6 +419,7 @@ position = Vector2( 160, 0 )
 position = Vector2( 200, 0 )
 
 [node name="Row4" type="Node2D" parent="Switches"]
+use_parent_material = true
 position = Vector2( 40, 259 )
 
 [node name="Switch1" parent="Switches/Row4" instance=ExtResource( 5 )]
@@ -428,6 +443,7 @@ position = Vector2( 200, 0 )
 position = Vector2( 240, 0 )
 
 [node name="Row5" type="Node2D" parent="Switches"]
+use_parent_material = true
 position = Vector2( 20, 339 )
 
 [node name="Switch1" parent="Switches/Row5" instance=ExtResource( 5 )]
@@ -454,16 +470,20 @@ position = Vector2( 240, 0 )
 position = Vector2( 280, 0 )
 
 [node name="BottomSlots" parent="." instance=ExtResource( 3 )]
+use_parent_material = true
 position = Vector2( 30, 607 )
 
 [node name="Balls" type="Node2D" parent="."]
+use_parent_material = true
 script = ExtResource( 15 )
 
 [node name="PowerUps" type="Node2D" parent="."]
+use_parent_material = true
 script = ExtResource( 20 )
 
 [node name="UserInterface" type="Control" parent="."]
 pause_mode = 2
+use_parent_material = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 16 )
@@ -477,16 +497,19 @@ anims/SignAppear = SubResource( 20 )
 
 [node name="LeftArrow" type="Sprite" parent="UserInterface"]
 visible = false
+use_parent_material = true
 position = Vector2( 88, 172 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 21 )
 
 [node name="RightArrow" type="Sprite" parent="UserInterface"]
 visible = false
+use_parent_material = true
 position = Vector2( 272, 172 )
 texture = ExtResource( 21 )
 
 [node name="Sign" type="Sprite" parent="UserInterface"]
+use_parent_material = true
 position = Vector2( 180, 76 )
 texture = ExtResource( 4 )
 
@@ -513,10 +536,12 @@ align = 1
 valign = 1
 
 [node name="Buttons" type="Control" parent="UserInterface"]
+use_parent_material = true
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="PauseButton" type="TextureButton" parent="UserInterface/Buttons"]
+use_parent_material = true
 margin_left = 153.0
 margin_top = 25.0
 margin_right = 177.0
@@ -527,12 +552,14 @@ texture_normal = ExtResource( 9 )
 
 [node name="RestartButton" type="TextureButton" parent="UserInterface/Buttons"]
 pause_mode = 1
+use_parent_material = true
 margin_left = 183.0
 margin_top = 25.0
 margin_right = 207.0
 margin_bottom = 49.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UserInterface/Buttons/RestartButton"]
+use_parent_material = true
 position = Vector2( 12, 12 )
 frames = SubResource( 30 )
 
@@ -571,11 +598,13 @@ volume_db = -10.0
 
 [node name="RoundTransition" type="Control" parent="UserInterface"]
 visible = false
+use_parent_material = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 14 )
 
 [node name="RoundSprite" type="Sprite" parent="UserInterface/RoundTransition"]
+use_parent_material = true
 position = Vector2( 180, 320 )
 scale = Vector2( 22.5, 3 )
 texture = ExtResource( 12 )
@@ -590,6 +619,7 @@ align = 1
 valign = 1
 
 [node name="TurnSystem" type="Control" parent="."]
+use_parent_material = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 10 )

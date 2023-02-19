@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://board/moving_parts/ball.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=6]
-[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=8]
 
 [sub_resource type="CircleShape2D" id=11]
 radius = 6.0
@@ -11,6 +10,7 @@ radius = 6.0
 extents = Vector2( 2, 1 )
 
 [node name="Ball" type="KinematicBody2D" groups=["Balls"]]
+use_parent_material = true
 collision_layer = 8
 collision_mask = 23
 script = ExtResource( 3 )
@@ -33,7 +33,6 @@ position = Vector2( 0, 6 )
 shape = SubResource( 10 )
 
 [node name="Label" type="Label" parent="."]
-material = ExtResource( 8 )
 margin_left = -4.0
 margin_top = -7.0
 margin_right = 6.0
