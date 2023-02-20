@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=1]
 [ext_resource path="res://board/fixed_parts/score_slot.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/coin_score.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/effects/confetti.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/fonts/font_material.tres" type="Material" id=5]
 [ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -54,7 +53,6 @@ scale = Vector2( 2, 1 )
 shape = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-material = ExtResource( 5 )
 margin_left = -5.0
 margin_top = -2.0
 margin_right = 5.0

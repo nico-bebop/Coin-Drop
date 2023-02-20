@@ -2,7 +2,7 @@
 
 [ext_resource path="res://board/interactive_parts/switch.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/game/switch.png" type="Texture" id=2]
-[ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=3]
+[ext_resource path="res://assets/effects/white_color_shader.gdshader" type="Shader" id=3]
 [ext_resource path="res://assets/sprites/game/notch.png" type="Texture" id=4]
 [ext_resource path="res://assets/effects/explosion.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/switch_destroy.wav" type="AudioStream" id=6]
@@ -94,6 +94,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:use_parent_material")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -370,11 +382,24 @@ tracks/9/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprite:use_parent_material")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 3 )
 
 [node name="Switch" type="RigidBody2D" groups=["Switches"]]
+use_parent_material = true
 collision_layer = 2
 collision_mask = 0
 mode = 1
@@ -383,11 +408,13 @@ orientation = "LEFT"
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 7 )
+use_parent_material = true
 texture = ExtResource( 2 )
 hframes = 5
 frame = 2
 
 [node name="Notch" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 0, 9 )
 texture = ExtResource( 4 )
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://board/moving_parts/ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/game/bomb.png" type="Texture" id=3]
 [ext_resource path="res://assets/effects/spark.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/effects/WhiterColorShader.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/effects/white_color_shader.gdshader" type="Shader" id=5]
 [ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/effects/explosion.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/bomb_land.wav" type="AudioStream" id=8]
@@ -263,6 +263,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [  ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Sprite:use_parent_material")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "HalfTime"
@@ -502,6 +514,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("Sprite:use_parent_material")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "RedGlow"
@@ -541,6 +565,7 @@ ignited = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 material = SubResource( 12 )
+use_parent_material = true
 position = Vector2( 0, -2 )
 texture = ExtResource( 3 )
 hframes = 7

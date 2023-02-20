@@ -16,3 +16,6 @@ mono_crash.*.json
 
 #Addons
 addons/
+
+#Screenshots
+screenshots/
