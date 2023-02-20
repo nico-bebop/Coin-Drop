@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/volume_controls.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/ui/music_on.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/ui/sound_on.png" type="Texture" id=4]
+[ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=5]
+
+[node name="VolumeControls" type="Control"]
+use_parent_material = true
+margin_left = -54.0
+margin_top = 103.0
+margin_right = -14.0
+margin_bottom = 143.0
+script = ExtResource( 2 )
+
+[node name="MuteSound" type="TextureButton" parent="."]
+use_parent_material = true
+margin_left = -1.0
+margin_top = -2.0
+margin_right = 15.0
+margin_bottom = 14.0
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 4 )
+
+[node name="SoundVolumeSlider" type="HSlider" parent="."]
+use_parent_material = true
+margin_left = 18.0
+margin_top = -4.0
+margin_right = 102.0
+margin_bottom = 19.0
+theme = ExtResource( 1 )
+min_value = -30.0
+max_value = 0.0
+step = 5.0
+
+[node name="MuteMusic" type="TextureButton" parent="."]
+use_parent_material = true
+margin_left = -1.0
+margin_top = 23.0
+margin_right = 15.0
+margin_bottom = 39.0
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 3 )
+
+[node name="MusicVolumeSlider" type="HSlider" parent="."]
+use_parent_material = true
+margin_left = 18.0
+margin_top = 21.0
+margin_right = 102.0
+margin_bottom = 44.0
+theme = ExtResource( 1 )
+min_value = -30.0
+max_value = 0.0
+step = 5.0
+
+[node name="ButtonClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[connection signal="toggled" from="MuteSound" to="." method="_on_MuteSound_toggled"]
+[connection signal="value_changed" from="SoundVolumeSlider" to="." method="_on_SoundVolumeSlider_value_changed"]
+[connection signal="toggled" from="MuteMusic" to="." method="_on_MuteMusic_toggled"]
+[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]

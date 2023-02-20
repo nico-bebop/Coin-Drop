@@ -3,15 +3,15 @@ extends Control
 const PauseButton = preload("res://assets/sprites/ui/pause_button.png")
 const ResumeButton = preload("res://assets/sprites/ui/resume_button.png")
 const RestartButton = preload("res://assets/sprites/ui/restart_button.png")
+const SingleSign = preload("res://assets/sprites/ui/sign.png")
+const DoubleSign = preload("res://assets/sprites/ui/double_sign.png")
 
 const TITLE = ["Coin", "Drop"]
 const PAUSED = ["Paused", ""]
 const RESTART = ["Restart?", ""]
 
-onready var pause_button = $Buttons/PauseButton
 onready var accept_button = $Buttons/AcceptButton
 onready var cancel_button = $Buttons/CancelButton
-onready var quit_button = $Buttons/QuitButton
 onready var button_click_audio = $Buttons/ButtonClickAudio
 
 
@@ -23,9 +23,13 @@ func _ready():
 func _on_PauseButton_pressed():
 	button_click_audio.play()
 	if !get_tree().paused:
-		pause(true, PAUSED, ResumeButton)
+		$Sign.texture = DoubleSign
+		$Buttons/PauseButton.texture_normal = ResumeButton
+		pause(true, PAUSED)
 	else:
-		pause(false, TITLE, PauseButton)
+		$Sign.texture = SingleSign
+		$Buttons/PauseButton.texture_normal = PauseButton
+		pause(false, TITLE)
 
 
 func _on_RestartButton_pressed():
@@ -52,21 +56,21 @@ func _on_QuitButton_pressed():
 func _on_TurnSystem_game_over(message):
 	set_sign_text(message)
 	$Buttons/RestartButton/AnimatedSprite.play()
-	pause_button.disabled = true
 	accept_button.visible = false
 	cancel_button.visible = false
 
 
-func pause(value, message, texture):
+func pause(value, message):
 	set_sign_text(message)
-	pause_button.texture_normal = texture
-	quit_button.visible = value
 	get_tree().paused = value
+	$Buttons/QuitButton.visible = value
+	$Sign/VolumeControls.visible = value
+	accept_button.visible = false
+	cancel_button.visible = false
 
 
 func restart(value, message):
 	set_sign_text(message)
-	pause_button.disabled = value
 	accept_button.visible = value
 	cancel_button.visible = value
 
