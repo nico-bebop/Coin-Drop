@@ -9,7 +9,7 @@ onready var mute_sound = $MuteSound
 onready var mute_music = $MuteMusic
 onready var sound_volume_slider = $SoundVolumeSlider
 onready var music_volume_slider = $MusicVolumeSlider
-onready var button_click_audio = $"../../ButtonClickAudio"
+onready var button_click_audio = $ButtonClickAudio
 
 var master_bus = AudioServer.get_bus_index("Master")
 var music_bus = AudioServer.get_bus_index("Music")
