@@ -54,7 +54,6 @@ tracks/0/keys = {
 }
 
 [node name="Coin" groups=["Coins"] instance=ExtResource( 1 )]
-use_parent_material = true
 script = ExtResource( 3 )
 
 [node name="Sparkle" parent="." index="0" instance=ExtResource( 5 )]

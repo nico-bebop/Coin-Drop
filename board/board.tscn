@@ -475,7 +475,7 @@ position = Vector2( 280, 0 )
 
 [node name="BottomSlots" parent="." instance=ExtResource( 3 )]
 use_parent_material = true
-position = Vector2( 30, 607 )
+position = Vector2( 29, 607 )
 
 [node name="Balls" type="Node2D" parent="."]
 use_parent_material = true
