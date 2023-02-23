@@ -27,6 +27,7 @@
 [ext_resource path="res://admob-lib/admob.gd" type="Script" id=25]
 [ext_resource path="res://menu/volume_controls.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/sprites/ui/watch_ad.png" type="Texture" id=27]
+[ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=28]
 
 [sub_resource type="ShaderMaterial" id=32]
 shader = ExtResource( 24 )
@@ -310,11 +311,6 @@ tracks/2/keys = {
 "values": [ Vector2( 183, -25 ), Vector2( 183, -25 ), Vector2( 183, 25 ) ]
 }
 
-[sub_resource type="DynamicFont" id=33]
-outline_color = Color( 1, 0.945098, 0.909804, 1 )
-extra_spacing_top = -8
-font_data = ExtResource( 13 )
-
 [sub_resource type="InputEventAction" id=23]
 action = "ui_cancel"
 
@@ -562,22 +558,27 @@ margin_bottom = 246.0
 
 [node name="Label" type="Label" parent="UserInterface/Sign/AdControl"]
 margin_top = 1.0
-margin_right = 121.0
-margin_bottom = 34.0
+margin_right = 116.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 33 )
-text = "Watch a video for
-another chance!"
+custom_fonts/font = ExtResource( 28 )
+text = "Get an extra coin!"
 align = 1
 valign = 1
 
-[node name="WatchAdButton" type="TextureButton" parent="UserInterface/Sign/AdControl"]
-use_parent_material = true
-margin_left = 48.0
-margin_top = 27.0
-margin_right = 70.0
+[node name="WatchAdButton" type="Button" parent="UserInterface/Sign/AdControl"]
+margin_left = 3.0
+margin_top = 26.0
+margin_right = 113.0
 margin_bottom = 49.0
-texture_normal = ExtResource( 27 )
+theme = ExtResource( 18 )
+text = "Watch video"
+align = 0
+
+[node name="Sprite" type="Sprite" parent="UserInterface/Sign/AdControl"]
+use_parent_material = true
+position = Vector2( 95, 38 )
+texture = ExtResource( 27 )
 
 [node name="Buttons" type="Control" parent="UserInterface"]
 use_parent_material = true
@@ -714,7 +715,7 @@ rewarded_id = "ca-app-pub-5750725573221909/2569822396"
 [connection signal="game_over" from="TurnSystem" to="UserInterface" method="_on_TurnSystem_game_over"]
 [connection signal="round_ended" from="TurnSystem" to="." method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]
-[connection signal="round_ended" from="TurnSystem" to="Balls" method="explode_bombs"]
+[connection signal="round_ended" from="TurnSystem" to="Balls" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="UserInterface/RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="turn_ready" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_turn_ready"]
 [connection signal="turn_ready" from="TurnSystem" to="PowerUps" method="_on_TurnSystem_turn_ready"]

@@ -51,3 +51,7 @@ func _on_TurnSystem_game_over(_message, first_loss):
 	if !first_loss:
 		explode_coins()
 		explode_bombs()
+
+
+func _on_TurnSystem_round_ended(_current_round):
+	explode_bombs()
