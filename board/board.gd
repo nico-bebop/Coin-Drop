@@ -9,11 +9,14 @@ onready var balls = $Balls
 onready var turn_system = $TurnSystem
 onready var coin_combine_audio = $AfterFreeAudios/CoinCombineAudio
 onready var coin_destroy_audio = $AfterFreeAudios/CoinDestroyAudio
+onready var ad_mob = $AdMob
 
 signal board_ready
 
 
 func _ready():
+	ad_mob.load_interstitial()
+	ad_mob.load_rewarded_video()
 	set_game_mode()
 	randomize()
 

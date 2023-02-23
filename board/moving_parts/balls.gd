@@ -26,7 +26,7 @@ func check_active_balls():
 	emit_signal("no_moving_balls")
 
 
-func explode_bombs(_param):
+func explode_bombs():
 	for bomb in get_tree().get_nodes_in_group(Globals.GROUP_BOMBS):
 		if is_instance_valid(bomb):
 			bomb.explode()
@@ -39,9 +39,15 @@ func explode_coin(here):
 	call_deferred("add_child", explosion)
 
 
-func explode_coins(_param):
+func explode_coins():
 	for coin in get_tree().get_nodes_in_group(Globals.GROUP_COINS):
 		if is_instance_valid(coin):
 			explode_coin(coin.global_position)
 			coin.queue_free()
 			yield(get_tree().create_timer(0.2), "timeout")
+
+
+func _on_TurnSystem_game_over(_message, first_loss):
+	if !first_loss:
+		explode_coins()
+		explode_bombs()

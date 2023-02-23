@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
 [ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
@@ -24,7 +24,9 @@
 [ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/effects/pixel_perfect_scaling.gdshader" type="Shader" id=24]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=25]
 [ext_resource path="res://menu/volume_controls.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/sprites/ui/watch_ad.png" type="Texture" id=27]
 
 [sub_resource type="ShaderMaterial" id=32]
 shader = ExtResource( 24 )
@@ -308,6 +310,11 @@ tracks/2/keys = {
 "values": [ Vector2( 183, -25 ), Vector2( 183, -25 ), Vector2( 183, 25 ) ]
 }
 
+[sub_resource type="DynamicFont" id=33]
+outline_color = Color( 1, 0.945098, 0.909804, 1 )
+extra_spacing_top = -8
+font_data = ExtResource( 13 )
+
 [sub_resource type="InputEventAction" id=23]
 action = "ui_cancel"
 
@@ -545,6 +552,33 @@ margin_top = 203.0
 margin_right = -13.0
 margin_bottom = 243.0
 
+[node name="AdControl" type="Control" parent="UserInterface/Sign"]
+visible = false
+use_parent_material = true
+margin_left = -58.0
+margin_top = 197.0
+margin_right = 58.0
+margin_bottom = 246.0
+
+[node name="Label" type="Label" parent="UserInterface/Sign/AdControl"]
+margin_top = 1.0
+margin_right = 121.0
+margin_bottom = 34.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 33 )
+text = "Watch a video for
+another chance!"
+align = 1
+valign = 1
+
+[node name="WatchAdButton" type="TextureButton" parent="UserInterface/Sign/AdControl"]
+use_parent_material = true
+margin_left = 48.0
+margin_top = 27.0
+margin_right = 70.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 27 )
+
 [node name="Buttons" type="Control" parent="UserInterface"]
 use_parent_material = true
 margin_right = 40.0
@@ -656,6 +690,11 @@ position = Vector2( 180, 320 )
 current = true
 script = ExtResource( 19 )
 
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 25 )
+interstitial_id = "ca-app-pub-5750725573221909/2917306751"
+rewarded_id = "ca-app-pub-5750725573221909/2569822396"
+
 [connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="UserInterface/RoundTransition" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
@@ -663,15 +702,15 @@ script = ExtResource( 19 )
 [connection signal="check_moving_balls" from="BottomSlots" to="Balls" method="check_active_balls"]
 [connection signal="update_score" from="BottomSlots" to="TurnSystem" method="_on_BottomSlots_update_score"]
 [connection signal="no_moving_balls" from="Balls" to="TurnSystem" method="_on_Balls_no_moving_balls"]
+[connection signal="pressed" from="UserInterface/Sign/AdControl/WatchAdButton" to="UserInterface" method="_on_WatchAdButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/RestartButton" to="UserInterface" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/AcceptButton" to="UserInterface" method="_on_AcceptButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/CancelButton" to="UserInterface" method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/QuitButton" to="UserInterface" method="_on_QuitButton_pressed"]
 [connection signal="game_over" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_game_over"]
-[connection signal="game_over" from="TurnSystem" to="Balls" method="explode_coins"]
-[connection signal="game_over" from="TurnSystem" to="Balls" method="explode_bombs"]
-[connection signal="game_over" from="TurnSystem" to="PowerUps" method="explode_power_ups"]
+[connection signal="game_over" from="TurnSystem" to="Balls" method="_on_TurnSystem_game_over"]
+[connection signal="game_over" from="TurnSystem" to="PowerUps" method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="UserInterface" method="_on_TurnSystem_game_over"]
 [connection signal="round_ended" from="TurnSystem" to="." method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]
@@ -679,3 +718,5 @@ script = ExtResource( 19 )
 [connection signal="round_ended" from="TurnSystem" to="UserInterface/RoundTransition" method="_on_TurnSystem_round_ended"]
 [connection signal="turn_ready" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_turn_ready"]
 [connection signal="turn_ready" from="TurnSystem" to="PowerUps" method="_on_TurnSystem_turn_ready"]
+[connection signal="rewarded" from="AdMob" to="UserInterface" method="_on_AdMob_rewarded"]
+[connection signal="rewarded" from="AdMob" to="TurnSystem" method="_on_AdMob_rewarded"]
