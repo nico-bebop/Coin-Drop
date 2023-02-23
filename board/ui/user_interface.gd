@@ -13,11 +13,15 @@ const RESTART = ["Restart?", ""]
 onready var accept_button = $Buttons/AcceptButton
 onready var cancel_button = $Buttons/CancelButton
 onready var button_click_audio = $Buttons/ButtonClickAudio
+onready var restart_animation = $Buttons/RestartButton/AnimatedSprite
+onready var ad_mob = $"../AdMob"
 
 
 func _ready():
 	$AnimationPlayer.play("SignAppear")
 	yield($AnimationPlayer, "animation_finished")
+	$Sign/VolumeControls.load_music_options()
+	ad_mob.load_interstitial()
 
 
 func _on_PauseButton_pressed():
@@ -53,11 +57,13 @@ func _on_QuitButton_pressed():
 	SceneTransition.change_scene("res://menu/main_menu.tscn")
 
 
-func _on_TurnSystem_game_over(message):
+func _on_TurnSystem_game_over(message, first_loss):
 	set_sign_text(message)
-	$Buttons/RestartButton/AnimatedSprite.play()
+	restart_animation.play()
 	accept_button.visible = false
 	cancel_button.visible = false
+	if ad_mob.init() && first_loss:
+		show_ad()
 
 
 func pause(value, message):
@@ -65,6 +71,7 @@ func pause(value, message):
 	get_tree().paused = value
 	$Buttons/QuitButton.visible = value
 	$Sign/VolumeControls.visible = value
+	$Sign/AdControl.visible = false
 	accept_button.visible = false
 	cancel_button.visible = false
 
@@ -78,3 +85,25 @@ func restart(value, message):
 func set_sign_text(text):
 	$Sign/Line1.text = text[0]
 	$Sign/Line2.text = text[1]
+
+
+func show_ad():
+	match Globals.game_mode:
+		Globals.GameModes.SINGLE_PLAYER:
+			$Sign.texture = DoubleSign
+			$Sign/AdControl.visible = true
+		Globals.GameModes.VERSUS:
+			yield(get_tree().create_timer(1.0), "timeout")
+			ad_mob.show_interstitial()
+
+
+func _on_WatchAdButton_pressed():
+	button_click_audio.play()
+	ad_mob.show_rewarded_video()
+
+
+func _on_AdMob_rewarded(_currency, _amount):
+	$Sign.texture = SingleSign
+	$Sign/AdControl.visible = false
+	set_sign_text(TITLE)
+	restart_animation.stop()

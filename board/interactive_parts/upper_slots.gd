@@ -9,7 +9,7 @@ func _on_TurnSystem_turn_ready():
 	enable_slots()
 
 
-func _on_TurnSystem_game_over(_message):
+func _on_TurnSystem_game_over(_message, _first_loss):
 	disable_slots()
 
 

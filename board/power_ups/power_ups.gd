@@ -33,7 +33,7 @@ func explode_power_up(here):
 	call_deferred("add_child", explosion)
 
 
-func explode_power_ups(_param):
+func explode_power_ups():
 	for power in get_tree().get_nodes_in_group(Globals.GROUP_POWER_UPS):
 		if is_instance_valid(power):
 			explode_power_up(power.global_position)
@@ -52,3 +52,8 @@ func _on_TurnSystem_turn_ready():
 		if extra_counter == EXTRA_COINS_TURN:
 			spawn_power_up(ExtraCoins)
 			extra_counter = 0
+
+
+func _on_TurnSystem_game_over(_message, first_loss):
+	if !first_loss:
+		explode_power_ups()

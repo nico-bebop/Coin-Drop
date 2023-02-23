@@ -19,6 +19,10 @@ margin_left = 230.0
 margin_right = 294.0
 player_name = "Player 2"
 
+[node name="Score" parent="Player2/Scoreboard" index="1"]
+margin_left = -38.0
+margin_right = 42.0
+
 [node name="CoinMeter" parent="Player2" index="2"]
 margin_left = 45.0
 margin_right = 101.0

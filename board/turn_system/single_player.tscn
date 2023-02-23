@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/ui/shelf.png" type="Texture" id=2]
 [ext_resource path="res://board/turn_system/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/fonts/tinypixel7px.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/tinypixel9px.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/sprites/ui/scoreboard.png" type="Texture" id=7]
 [ext_resource path="res://assets/audio/victory.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/audio/defeat.ogg" type="AudioStream" id=9]
@@ -105,10 +105,10 @@ offset = Vector2( 0, 48 )
 hframes = 2
 
 [node name="PlayerName" type="Label" parent="Player/Objective/Scoreboard"]
-margin_left = -32.0
-margin_top = 26.0
-margin_right = 32.0
-margin_bottom = 42.0
+margin_left = -36.0
+margin_top = 21.0
+margin_right = 36.0
+margin_bottom = 37.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Objective"
@@ -116,10 +116,10 @@ align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="Player/Objective/Scoreboard"]
-margin_left = -30.0
-margin_top = 46.0
-margin_right = 30.0
-margin_bottom = 87.0
+margin_left = -35.0
+margin_top = 39.0
+margin_right = 36.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 5 )
 align = 1
 valign = 1

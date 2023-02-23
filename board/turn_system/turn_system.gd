@@ -3,8 +3,9 @@ extends Control
 var current_turn setget set_turn
 var current_round = 0 setget set_round
 var current_system
+var first_loss = true
 
-signal game_over(message)
+signal game_over(message, first_loss)
 signal turn_ready
 signal round_ended(current_round)
 
@@ -45,8 +46,15 @@ func set_round(value):
 
 func signal_game_over():
 	SceneTransition.lower_music_volume()
-	emit_signal("game_over", current_system.game_over())
+	emit_signal("game_over", current_system.game_over(), first_loss)
+	first_loss = false
 
 
 func signal_turn_ready():
 	emit_signal("turn_ready")
+
+
+func _on_AdMob_rewarded(_currency, amount):
+	current_system.player.coins_left += amount
+	current_system.player.set_label_text()
+	current_system.change_turn()
