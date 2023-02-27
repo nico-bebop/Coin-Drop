@@ -35,6 +35,7 @@ func change_turn():
 		else:
 			game_over_message = YOU_WIN
 			$VictoryAudio.play()
+			turn_system.first_loss = false
 			turn_system.signal_game_over()
 		return
 
