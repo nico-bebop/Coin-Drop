@@ -693,6 +693,7 @@ script = ExtResource( 19 )
 
 [node name="AdMob" type="Node" parent="."]
 script = ExtResource( 25 )
+is_real = true
 interstitial_id = "ca-app-pub-5750725573221909/2917306751"
 rewarded_id = "ca-app-pub-5750725573221909/2569822396"
 
