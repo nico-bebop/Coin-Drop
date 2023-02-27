@@ -20,6 +20,7 @@ func change_turn():
 			start_round()
 		else:
 			$VictoryAudio.play()
+			turn_system.first_loss = false
 			turn_system.signal_game_over()
 		return
 

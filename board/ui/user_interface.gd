@@ -62,8 +62,8 @@ func _on_TurnSystem_game_over(message, first_loss):
 	restart_animation.play()
 	accept_button.visible = false
 	cancel_button.visible = false
-	if ad_mob.init() && first_loss:
-		show_ad()
+	if ad_mob.init():
+		show_ad(first_loss)
 
 
 func pause(value, message):
@@ -87,14 +87,13 @@ func set_sign_text(text):
 	$Sign/Line2.text = text[1]
 
 
-func show_ad():
-	match Globals.game_mode:
-		Globals.GameModes.SINGLE_PLAYER:
-			$Sign.texture = DoubleSign
-			$Sign/AdControl.visible = true
-		Globals.GameModes.VERSUS:
-			yield(get_tree().create_timer(1.0), "timeout")
-			ad_mob.show_interstitial()
+func show_ad(first_loss):
+	if first_loss:
+		$Sign.texture = DoubleSign
+		$Sign/AdControl.visible = true
+	else:
+		yield(get_tree().create_timer(1.0), "timeout")
+		ad_mob.show_interstitial()
 
 
 func _on_WatchAdButton_pressed():
