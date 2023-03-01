@@ -60,9 +60,10 @@ func start_round():
 func set_objective_text():
 	if player.required_score_met():
 		objective.text = COMPLETED + ROUND_SCORE
+		objective.text += str(player.round_score)
 	else:
 		objective.text = GET + str(player.required_score[current_round]) + POINTS + ROUND_SCORE
-	update_round_score()
+		update_round_score()
 
 
 func objective_failed():
