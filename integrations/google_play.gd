@@ -1,6 +1,6 @@
 extends Node
 
-const CLIENT_ID = "311116801314-qdthd7eg2i4io9nu32u1lqemqo00m5b9.apps.googleusercontent.com"
+const CLIENT_ID = "311116801314-jeauebh6glo66fv8eedbnes5d0tj7hat.apps.googleusercontent.com"
 const LEADERBOARD_ID = "CgkIosqGgIcJEAIQAA"
 
 var play_games_services
