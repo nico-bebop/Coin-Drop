@@ -27,7 +27,7 @@ func change_turn():
 		$DefeatAudio.play()
 		turn_system.signal_game_over()
 		return
-	
+
 	if round_ended():
 		turn_system.change_round()
 		if current_round != Globals.FINAL_ROUND:
@@ -37,6 +37,7 @@ func change_turn():
 			$VictoryAudio.play()
 			turn_system.first_loss = false
 			turn_system.signal_game_over()
+			GooglePlay.submit_score(player.total_score)
 		return
 
 	player.set_label_text()

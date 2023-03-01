@@ -28,12 +28,14 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icons/web/icon-512.png"
+config/quit_on_go_back=false
 
 [autoload]
 
 Globals="*res://board/globals.gd"
 SceneTransition="*res://board/ui/scene_transition.tscn"
 Settings="*res://board/ui/settings.gd"
+GooglePlay="*res://integrations/google_play.gd"
 
 [display]
 

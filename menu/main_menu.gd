@@ -2,7 +2,6 @@ extends Control
 
 
 func _ready():
-	$TripleSign/VolumeControls.load_music_options()
 	yield(SceneTransition.animation_player, "animation_finished")
 	$AnimationPlayer.play("Appear")
 
@@ -19,3 +18,8 @@ func _on_SinglePlayer_pressed():
 
 func _on_Versus_pressed():
 	start_game(Globals.GameModes.VERSUS)
+
+
+func _on_Leaderboard_pressed():
+	$ButtonClickAudio.play()
+	GooglePlay.show_leaderboard()
