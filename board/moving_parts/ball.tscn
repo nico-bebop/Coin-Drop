@@ -24,7 +24,7 @@ enabled = true
 cast_to = Vector2( 0, 15 )
 collision_mask = 8
 
-[node name="SwitchCollision" type="Area2D" parent="." groups=["Balls"]]
+[node name="SwitchCollision" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
 

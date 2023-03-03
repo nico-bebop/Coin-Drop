@@ -43,8 +43,10 @@ func _on_leaderboard_score_submitting_failed(leaderboard_id):
 
 
 func submit_score(score):
-	play_games_services.submitLeaderBoardScore(LEADERBOARD_ID, score)
+	if play_games_services:
+		play_games_services.submitLeaderBoardScore(LEADERBOARD_ID, score)
 
 
 func show_leaderboard():
-	play_games_services.showLeaderBoard(LEADERBOARD_ID)
+	if play_games_services:
+		play_games_services.showLeaderBoard(LEADERBOARD_ID)

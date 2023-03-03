@@ -20,7 +20,7 @@ func spawn_bomb(here):
 
 
 func check_active_balls():
-	for ball in get_children():
+	for ball in get_tree().get_nodes_in_group(Globals.GROUP_BALLS):
 		if ball.is_moving:
 			return
 	emit_signal("no_moving_balls")

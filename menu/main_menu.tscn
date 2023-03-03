@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/ui/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/fonts/alkhemikal32px.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/sprites/ui/triple_sign.png" type="Texture" id=5]
+[ext_resource path="res://menu/volume_controls.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=9]
 [ext_resource path="res://assets/effects/pixel_perfect_scaling.gdshader" type="Shader" id=10]
 
@@ -82,6 +83,13 @@ margin_bottom = 138.0
 theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 text = "Hi Scores"
+
+[node name="VolumeControls" parent="TripleSign" instance=ExtResource( 6 )]
+visible = false
+margin_left = -53.0
+margin_top = 203.0
+margin_right = -13.0
+margin_bottom = 243.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 1 )

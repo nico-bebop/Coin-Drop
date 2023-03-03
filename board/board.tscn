@@ -358,15 +358,15 @@ copy_mode = 2
 
 [node name="Board" type="Sprite" parent="Holes"]
 use_parent_material = true
-position = Vector2( 180, 380 )
+position = Vector2( 180, 389 )
 texture = ExtResource( 8 )
 
 [node name="UpperSlots" parent="." instance=ExtResource( 2 )]
-position = Vector2( 180, 172 )
+position = Vector2( 180, 201 )
 
 [node name="Switches" type="Node2D" parent="."]
 use_parent_material = true
-position = Vector2( 20, 220 )
+position = Vector2( 20, 239 )
 
 [node name="Row1" type="Node2D" parent="Switches"]
 use_parent_material = true
@@ -475,7 +475,7 @@ position = Vector2( 280, 0 )
 
 [node name="BottomSlots" parent="." instance=ExtResource( 3 )]
 use_parent_material = true
-position = Vector2( 29, 607 )
+position = Vector2( 29, 617 )
 
 [node name="Balls" type="Node2D" parent="."]
 use_parent_material = true
@@ -673,7 +673,7 @@ script = ExtResource( 10 )
 position = Vector2( 20, 617 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 160, 1.5 )
+position = Vector2( 160, 9.5 )
 shape = SubResource( 26 )
 
 [node name="AfterFreeAudios" type="Node2D" parent="."]

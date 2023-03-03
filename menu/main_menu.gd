@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	$TripleSign/VolumeControls.load_music_options()
 	yield(SceneTransition.animation_player, "animation_finished")
 	$AnimationPlayer.play("Appear")
 
