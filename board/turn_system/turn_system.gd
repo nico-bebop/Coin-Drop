@@ -24,7 +24,7 @@ func _on_BottomSlots_update_score(value):
 			player.update_score(value)
 
 
-func _on_UpperSlots_subtract_coin():
+func _on_Slotter_subtract_coin():
 	for player in get_tree().get_nodes_in_group(Globals.GROUP_PLAYERS):
 		if current_system.current_turn == player:
 			player.coins_left -= 1
