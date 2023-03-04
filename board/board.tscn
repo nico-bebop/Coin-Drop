@@ -1,6 +1,7 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/slot.mp3" type="AudioStream" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/ui/sign.png" type="Texture" id=4]
 [ext_resource path="res://board/interactive_parts/switch.tscn" type="PackedScene" id=5]
@@ -510,6 +511,10 @@ value = 1.0
 scrollable = false
 
 [node name="Tween" type="Tween" parent="Slotter"]
+
+[node name="SlotAudio" type="AudioStreamPlayer" parent="Slotter"]
+stream = ExtResource( 2 )
+volume_db = -10.0
 
 [node name="PowerUps" type="Node2D" parent="."]
 use_parent_material = true

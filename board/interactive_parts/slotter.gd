@@ -29,6 +29,8 @@ func _on_Slider_drag_ended(_value_changed):
 		yield(coin_sprite, "animation_finished")
 		disable_slotter()
 		balls.spawn_coin(coin_sprite.global_position)
+		yield(get_tree().create_timer(0.4), "timeout")
+		$SlotAudio.play()
 
 
 func _on_TurnSystem_turn_ready():
