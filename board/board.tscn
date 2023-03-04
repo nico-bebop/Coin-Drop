@@ -1,7 +1,7 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
-[ext_resource path="res://board/interactive_parts/upper_slots.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/audio/slot.mp3" type="AudioStream" id=2]
 [ext_resource path="res://board/fixed_parts/bottom_slots.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/ui/sign.png" type="Texture" id=4]
 [ext_resource path="res://board/interactive_parts/switch.tscn" type="PackedScene" id=5]
@@ -20,7 +20,6 @@
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=18]
 [ext_resource path="res://board/camera_shake.gd" type="Script" id=19]
 [ext_resource path="res://board/power_ups/power_ups.gd" type="Script" id=20]
-[ext_resource path="res://assets/sprites/ui/arrow.png" type="Texture" id=21]
 [ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/effects/pixel_perfect_scaling.gdshader" type="Shader" id=24]
@@ -28,61 +27,145 @@
 [ext_resource path="res://menu/volume_controls.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/sprites/ui/watch_ad.png" type="Texture" id=27]
 [ext_resource path="res://assets/fonts/alkhemikal16px.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/sprites/game/slotter.png" type="Texture" id=29]
+[ext_resource path="res://assets/sprites/game/coin.png" type="Texture" id=30]
+[ext_resource path="res://board/interactive_parts/slotter.gd" type="Script" id=31]
+[ext_resource path="res://assets/sprites/game/slots.png" type="Texture" id=32]
 
 [sub_resource type="ShaderMaterial" id=32]
 shader = ExtResource( 24 )
 
-[sub_resource type="Animation" id=27]
-resource_name = "ArrowsHint"
-length = 5.0
+[sub_resource type="Animation" id=36]
+resource_name = "CoinSlot"
+length = 0.4
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("../LeftArrow:position")
+tracks/0/path = NodePath("SlotAudio:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ), Vector2( 86, 172 ), Vector2( 88, 172 ) ]
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../RightArrow:position")
+tracks/1/path = NodePath("../UpperSlots:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ), Vector2( 274, 172 ), Vector2( 272, 172 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../RightArrow:visible")
+tracks/2/path = NodePath("Slider:editable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("../LeftArrow:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+
+[sub_resource type="Animation" id=13]
+resource_name = "Highlight"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UpperSlots:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 0, 9, 0, 9 ]
 }
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UpperSlots:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slider:editable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlotAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 30 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 30 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 30 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 30 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 35 ), SubResource( 12 ), SubResource( 11 ), SubResource( 10 ), SubResource( 9 ) ],
+"loop": true,
+"name": "HorizontalFlip",
+"speed": 20.0
+} ]
+
+[sub_resource type="StyleBoxEmpty" id=33]
 
 [sub_resource type="Animation" id=18]
 length = 0.001
@@ -169,54 +252,6 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 183, 25 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("../LeftArrow:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 88, 172 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("../RightArrow:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 272, 172 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("../LeftArrow:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("../RightArrow:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -358,15 +393,42 @@ copy_mode = 2
 
 [node name="Board" type="Sprite" parent="Holes"]
 use_parent_material = true
-position = Vector2( 180, 380 )
+position = Vector2( 180, 389 )
 texture = ExtResource( 8 )
 
-[node name="UpperSlots" parent="." instance=ExtResource( 2 )]
-position = Vector2( 180, 172 )
+[node name="UpperSlots" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 180, 202 )
+texture = ExtResource( 32 )
+vframes = 10
+
+[node name="Slot1" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( -70, 0 )
+
+[node name="Slot2" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( -50, 0 )
+
+[node name="Slot3" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( -30, 0 )
+
+[node name="Slot4" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( -10, 0 )
+
+[node name="Slot5" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( 10, 0 )
+
+[node name="Slot6" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( 30, 0 )
+
+[node name="Slot7" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( 50, 0 )
+
+[node name="Slot8" type="Node2D" parent="UpperSlots" groups=["Slots"]]
+position = Vector2( 70, 0 )
 
 [node name="Switches" type="Node2D" parent="."]
 use_parent_material = true
-position = Vector2( 20, 220 )
+position = Vector2( 20, 239 )
 
 [node name="Row1" type="Node2D" parent="Switches"]
 use_parent_material = true
@@ -475,11 +537,50 @@ position = Vector2( 280, 0 )
 
 [node name="BottomSlots" parent="." instance=ExtResource( 3 )]
 use_parent_material = true
-position = Vector2( 29, 607 )
+position = Vector2( 29, 617 )
 
 [node name="Balls" type="Node2D" parent="."]
 use_parent_material = true
 script = ExtResource( 15 )
+
+[node name="Slotter" type="Node2D" parent="."]
+use_parent_material = true
+script = ExtResource( 31 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slotter"]
+playback_speed = 0.5
+anims/CoinSlot = SubResource( 36 )
+anims/Highlight = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
+[node name="CoinSprite" type="AnimatedSprite" parent="Slotter"]
+visible = false
+use_parent_material = true
+position = Vector2( 110, 155 )
+frames = SubResource( 34 )
+animation = "HorizontalFlip"
+playing = true
+
+[node name="Slider" type="HSlider" parent="Slotter"]
+use_parent_material = true
+margin_left = 90.0
+margin_top = 155.0
+margin_right = 270.0
+margin_bottom = 211.0
+custom_icons/grabber_disabled = ExtResource( 29 )
+custom_icons/grabber_highlight = ExtResource( 29 )
+custom_icons/grabber = ExtResource( 29 )
+custom_styles/slider = SubResource( 33 )
+min_value = 1.0
+max_value = 8.0
+value = 1.0
+scrollable = false
+
+[node name="Tween" type="Tween" parent="Slotter"]
+
+[node name="SlotAudio" type="AudioStreamPlayer" parent="Slotter"]
+stream = ExtResource( 2 )
+volume_db = -10.0
 
 [node name="PowerUps" type="Node2D" parent="."]
 use_parent_material = true
@@ -494,23 +595,9 @@ script = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface"]
 root_node = NodePath("../RoundTransition")
-anims/ArrowsHint = SubResource( 27 )
 anims/RESET = SubResource( 18 )
 anims/RoundChange = SubResource( 19 )
 anims/SignAppear = SubResource( 20 )
-
-[node name="LeftArrow" type="Sprite" parent="UserInterface"]
-visible = false
-use_parent_material = true
-position = Vector2( 88, 172 )
-scale = Vector2( -1, 1 )
-texture = ExtResource( 21 )
-
-[node name="RightArrow" type="Sprite" parent="UserInterface"]
-visible = false
-use_parent_material = true
-position = Vector2( 272, 172 )
-texture = ExtResource( 21 )
 
 [node name="Sign" type="Sprite" parent="UserInterface"]
 use_parent_material = true
@@ -673,7 +760,7 @@ script = ExtResource( 10 )
 position = Vector2( 20, 617 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 160, 1.5 )
+position = Vector2( 160, 9.5 )
 shape = SubResource( 26 )
 
 [node name="AfterFreeAudios" type="Node2D" parent="."]
@@ -700,25 +787,27 @@ rewarded_id = "ca-app-pub-5750725573221909/2569822396"
 [connection signal="board_ready" from="." to="BottomSlots" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="UserInterface/RoundTransition" method="_on_Board_board_ready"]
 [connection signal="board_ready" from="." to="TurnSystem" method="_on_Board_board_ready"]
-[connection signal="subtract_coin" from="UpperSlots" to="TurnSystem" method="_on_UpperSlots_subtract_coin"]
 [connection signal="check_moving_balls" from="BottomSlots" to="Balls" method="check_active_balls"]
 [connection signal="update_score" from="BottomSlots" to="TurnSystem" method="_on_BottomSlots_update_score"]
 [connection signal="no_moving_balls" from="Balls" to="TurnSystem" method="_on_Balls_no_moving_balls"]
+[connection signal="subtract_coin" from="Slotter" to="TurnSystem" method="_on_Slotter_subtract_coin"]
+[connection signal="drag_ended" from="Slotter/Slider" to="Slotter" method="_on_Slider_drag_ended"]
+[connection signal="value_changed" from="Slotter/Slider" to="Slotter" method="_on_Slider_value_changed"]
 [connection signal="pressed" from="UserInterface/Sign/AdControl/WatchAdButton" to="UserInterface" method="_on_WatchAdButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/PauseButton" to="UserInterface" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/RestartButton" to="UserInterface" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/AcceptButton" to="UserInterface" method="_on_AcceptButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/CancelButton" to="UserInterface" method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/QuitButton" to="UserInterface" method="_on_QuitButton_pressed"]
-[connection signal="game_over" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="Balls" method="_on_TurnSystem_game_over"]
+[connection signal="game_over" from="TurnSystem" to="Slotter" method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="PowerUps" method="_on_TurnSystem_game_over"]
 [connection signal="game_over" from="TurnSystem" to="UserInterface" method="_on_TurnSystem_game_over"]
 [connection signal="round_ended" from="TurnSystem" to="." method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="BottomSlots" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="Balls" method="_on_TurnSystem_round_ended"]
 [connection signal="round_ended" from="TurnSystem" to="UserInterface/RoundTransition" method="_on_TurnSystem_round_ended"]
-[connection signal="turn_ready" from="TurnSystem" to="UpperSlots" method="_on_TurnSystem_turn_ready"]
+[connection signal="turn_ready" from="TurnSystem" to="Slotter" method="_on_TurnSystem_turn_ready"]
 [connection signal="turn_ready" from="TurnSystem" to="PowerUps" method="_on_TurnSystem_turn_ready"]
 [connection signal="rewarded" from="AdMob" to="UserInterface" method="_on_AdMob_rewarded"]
 [connection signal="rewarded" from="AdMob" to="TurnSystem" method="_on_AdMob_rewarded"]
