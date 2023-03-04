@@ -6,6 +6,7 @@ const LEFT_TARGET = Vector2(20, 2)
 const RIGHT_TARGET = Vector2(-20, 2)
 
 export(bool) var is_moving = true
+export(bool) var is_exploding = false
 export(String) var orientation = null
 export(String) var direction = Globals.DOWN
 export(Vector2) var velocity = Vector2.ZERO

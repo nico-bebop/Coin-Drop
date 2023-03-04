@@ -25,9 +25,10 @@ func _on_Slider_value_changed(value):
 
 func _on_Slider_drag_ended(_value_changed):
 	if coin_sprite.visible:
+		disable_slotter()
 		emit_signal("subtract_coin")
 		yield(coin_sprite, "animation_finished")
-		disable_slotter()
+		coin_sprite.visible = false
 		balls.spawn_coin(coin_sprite.global_position)
 		animation_player.play("CoinSlot")
 
@@ -37,14 +38,14 @@ func _on_TurnSystem_turn_ready():
 
 
 func _on_TurnSystem_game_over(_message, _first_loss):
-	$Slider.editable = false
 	disable_slotter()
 
 
 func enable_slotter():
+	$Slider.editable = true
 	coin_sprite.visible = true
 	animation_player.play("Highlight")
 
 
 func disable_slotter():
-	coin_sprite.visible = false
+	$Slider.editable = false

@@ -33,6 +33,7 @@ func _on_ScoreSlot_body_entered(ball):
 
 	elif ball.is_in_group(Globals.GROUP_BOMBS):
 		ball.explode()
+		ball.is_exploding = true
 		yield(ball.animation_player, "animation_finished")
 		destroy_slot()
 
