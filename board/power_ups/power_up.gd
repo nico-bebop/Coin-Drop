@@ -1,6 +1,9 @@
 extends RigidBody2D
 
+export(String) var pickup_text
+
 onready var animation_player = $AnimationPlayer
+onready var effects = $"../../AfterFreeEffects"
 
 
 func _ready():
@@ -14,3 +17,7 @@ func disappear():
 	$CollisionShape2D.queue_free()
 	$Sprite.visible = false
 	$Sparkle.emitting = false
+
+
+func pick_up():
+	effects.instance_floating_text(pickup_text, global_position)

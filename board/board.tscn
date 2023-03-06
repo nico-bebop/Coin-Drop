@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://assets/audio/coin_merge.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/audio/slot.mp3" type="AudioStream" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/styles/default_theme.tres" type="Theme" id=18]
 [ext_resource path="res://board/camera_shake.gd" type="Script" id=19]
 [ext_resource path="res://board/power_ups/power_ups.gd" type="Script" id=20]
+[ext_resource path="res://board/after_free_effects.gd" type="Script" id=21]
 [ext_resource path="res://assets/audio/coin_miss.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/button_click.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/effects/pixel_perfect_scaling.gdshader" type="Shader" id=24]
@@ -772,6 +773,9 @@ volume_db = -10.0
 [node name="CoinDestroyAudio" type="AudioStreamPlayer" parent="AfterFreeAudios"]
 stream = ExtResource( 22 )
 volume_db = -15.0
+
+[node name="AfterFreeEffects" type="Node2D" parent="."]
+script = ExtResource( 21 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 180, 320 )
