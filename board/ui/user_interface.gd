@@ -10,6 +10,8 @@ const TITLE = ["Coin", "Drop"]
 const PAUSED = ["Paused", ""]
 const RESTART = ["Restart?", ""]
 
+var ad_viewed = false
+
 onready var accept_button = $Buttons/AcceptButton
 onready var cancel_button = $Buttons/CancelButton
 onready var button_click_audio = $Buttons/ButtonClickAudio
@@ -48,6 +50,8 @@ func _on_CancelButton_pressed():
 
 func _on_AcceptButton_pressed():
 	button_click_audio.play()
+	if !ad_viewed:
+		ad_mob.show_interstitial()
 	SceneTransition.restart_scene()
 
 
@@ -91,9 +95,12 @@ func show_ad(first_loss):
 	if first_loss:
 		$Sign.texture = DoubleSign
 		$Sign/AdControl.visible = true
-	else:
-		yield(get_tree().create_timer(1.0), "timeout")
+		ad_mob.load_rewarded_video()
+
+	if Globals.game_mode == Globals.GameModes.VERSUS:
+		yield(get_tree().create_timer(2.0), "timeout")
 		ad_mob.show_interstitial()
+		ad_viewed = true
 
 
 func _on_WatchAdButton_pressed():
@@ -106,3 +113,4 @@ func _on_AdMob_rewarded(_currency, _amount):
 	$Sign/AdControl.visible = false
 	set_sign_text(TITLE)
 	restart_animation.stop()
+	ad_viewed = true
