@@ -13,6 +13,7 @@ func _on_BallCollision_body_entered(body):
 	disappear()
 
 	if body.is_in_group(Globals.GROUP_COINS):
+		pick_up()
 		emit_signal("throw_coins", COINS_IN_BAG)
 		for coin in COINS_IN_BAG:
 			$PowerUpAudio.play()

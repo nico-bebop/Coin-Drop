@@ -20,3 +20,5 @@ const GROUP_SLOTS = "Slots"
 
 enum GameModes { SINGLE_PLAYER, VERSUS }
 var game_mode
+
+var offline_score = 0
