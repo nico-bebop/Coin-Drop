@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "AdMob",
 "language": "GDScript",
 "path": "res://admob-lib/admob.gd"
+}, {
+"base": "Reference",
+"class": "SaveSystem",
+"language": "GDScript",
+"path": "res://globals/save_system.gd"
+}, {
+"base": "Resource",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://globals/settings.gd"
 } ]
 _global_script_class_icons={
-"AdMob": "res://admob-lib/icon.png"
+"AdMob": "res://admob-lib/icon.png",
+"SaveSystem": "",
+"Settings": ""
 }
 
 [application]
@@ -33,8 +45,8 @@ config/quit_on_go_back=false
 [autoload]
 
 Globals="*res://board/globals.gd"
+SaveController="*res://globals/save_controller.gd"
 SceneTransition="*res://board/ui/scene_transition.tscn"
-Settings="*res://board/ui/settings.gd"
 GooglePlay="*res://integrations/google_play.gd"
 
 [display]

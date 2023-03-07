@@ -36,6 +36,7 @@ func _on_PauseButton_pressed():
 		$Sign.texture = SingleSign
 		$Buttons/PauseButton.texture_normal = PauseButton
 		pause(false, TITLE)
+		$Sign/VolumeControls.save_music_options()
 
 
 func _on_RestartButton_pressed():

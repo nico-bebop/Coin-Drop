@@ -16,19 +16,28 @@ var music_bus = AudioServer.get_bus_index("Music")
 
 
 func load_music_options():
-	sound_volume_slider.value = Settings.sound_volume
-	music_volume_slider.value = Settings.music_volume
+	var settings = SaveController.get_settings()
+	sound_volume_slider.value = settings.sound_volume
+	music_volume_slider.value = settings.music_volume
 
-	if Settings.sound_muted:
+	if settings.sound_muted:
 		mute_sound.texture_normal = SoundOff
 		mute_sound.pressed = true
-	if Settings.music_muted:
+	if settings.music_muted:
 		mute_music.texture_normal = MusicOff
 		mute_music.pressed = true
 
 
+func save_music_options():
+	var settings = Settings.new()
+	settings.sound_volume = sound_volume_slider.value
+	settings.music_volume = music_volume_slider.value
+	settings.sound_muted = mute_sound.pressed
+	settings.music_muted = mute_music.pressed
+	SaveController.save_sound_settings(settings)
+
+
 func _on_MuteSound_toggled(button_pressed):
-	Settings.sound_muted = button_pressed
 	if button_pressed:
 		mute_sound.texture_normal = SoundOff
 		AudioServer.set_bus_mute(master_bus, true)
@@ -40,7 +49,6 @@ func _on_MuteSound_toggled(button_pressed):
 
 
 func _on_MuteMusic_toggled(button_pressed):
-	Settings.music_muted = button_pressed
 	if button_pressed:
 		mute_music.texture_normal = MusicOff
 		AudioServer.set_bus_mute(music_bus, true)
@@ -52,14 +60,13 @@ func _on_MuteMusic_toggled(button_pressed):
 
 
 func _on_SoundVolumeSlider_value_changed(value):
-	Settings.sound_volume = value
 	AudioServer.set_bus_volume_db(master_bus, value)
 	mute_bus_at_minimum(master_bus, value)
-	button_click_audio.play()
+	if visible:
+		button_click_audio.play()
 
 
 func _on_MusicVolumeSlider_value_changed(value):
-	Settings.music_volume = value
 	AudioServer.set_bus_volume_db(music_bus, value)
 	mute_bus_at_minimum(music_bus, value)
 

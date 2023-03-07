@@ -12,7 +12,8 @@ func _ready():
 		service.init(true, true, true, "")
 	if service:
 		connect_signals()
-		sign_in()
+		if SaveController.get_settings().user_authenticated:
+			sign_in()
 
 
 func sign_in():
@@ -45,6 +46,7 @@ func connect_signals():
 
 
 func _on_sign_in_success(account_id):
+	SaveController.save_login_info(true)
 	print("Sign in success - ", account_id)
 
 
