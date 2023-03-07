@@ -12,6 +12,7 @@ func _ready():
 		service.init(true, true, true, "")
 	if service:
 		connect_signals()
+		sign_in()
 
 
 func sign_in():
